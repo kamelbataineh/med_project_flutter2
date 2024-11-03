@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
-
+import 'package:lottie/lottie.dart';
 class ScreenRegister extends StatefulWidget {
   const ScreenRegister({super.key});
 
@@ -29,10 +29,64 @@ class _HomeState extends State<ScreenRegister> {
         //////////
         //////////
 
-        body: Column(
+        body: Stack(
           children: [
+            // Centered content in the Column
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Lottie.network(
+                  "https://lottie.host/84ad8c2d-1bdd-4b4a-ba71-16243f26c7c5/zNoEoKMJy6.json",
+                  width: 150,
+                  height: 150,
+                  fit: BoxFit.fill,
+                ),
+                SizedBox(height: 10),
+                // Center(
+                //   child: Text(
+                //     "ستصل لك رساله",
+                //     style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                //   ),
+                // ),
+                Padding(
+                  padding: const EdgeInsets.all(13.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                    ),
+                    child: TextFormField(
+                      decoration: decorationPhoneNumber(
+                        lab: "رقم الهاتف",
+                        hint: "أدخل رقم هاتفك",
+                      ),
+                      keyboardType: TextInputType.phone,
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF15b9b4),
+                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  child: Text(
+                    "تأكيد",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
             Align(
-              alignment: Alignment.centerLeft,
+              alignment: Alignment.topLeft,
               child: TextButton(
                 onPressed: () {
                   Navigator.of(context).pushNamed(route_cities2);
@@ -47,58 +101,11 @@ class _HomeState extends State<ScreenRegister> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 50,
-            ),
-            Center(
-                child: Text(
-              "ستصل لك رساله",
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-            )),
-///////////////////////////////////////
-            ///////////////////////////////////
-            ///////////////////////////////
-            Padding(
-              padding: const EdgeInsets.all(13.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white, // يمكنك تحديد اللون هنا
-                ),
-                child: TextFormField(
-                  decoration: decorationPhoneNumber(
-                      lab: "رقم الهاتف", hint: "أدخل رقم هاتفك"),
-                  keyboardType: TextInputType.phone,
-                ),
-              ),
-            ),
-
-            ElevatedButton(
-              onPressed: () {
-                // أضف الإجراء هنا
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF15b9b4),
-                // لون الخلفية
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 12),
-                // أبعاد الزر
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20), // جعل الزر دائريًا
-                ),
-              ),
-              child: Text(
-                "تأكيد",
-                style: TextStyle(
-                  fontSize: 18, // حجم الخط
-                  fontWeight: FontWeight.bold, // جعل النص عريضًا
-                  color: Colors.white, // لون النص
-                ),
-              ),
-            )
           ],
-        ));
+        ),
+    );
   }
 }
-
 //////////////////////////////////
 /////////////////////////////////
 ////////////////////////////////

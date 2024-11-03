@@ -74,10 +74,10 @@ class _HomeState extends State<ScreenCities> {
     return Scaffold(
         appBar: AppBar(
           title: Text('المدن'),
-          backgroundColor: Colors.blue,
+          backgroundColor: Color(0xFF15b9b4),
         ),
         body: ListView.builder(
-            itemCount: cities.length,
+            itemCount: cities.length * 2 - 1,
             itemBuilder: (context, index) {
               return City(index);
             }));

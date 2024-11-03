@@ -24,9 +24,9 @@ class _HomeState extends State<U_Jarash> {
     return Scaffold(
         appBar: AppBar(
           title: Text('جرش'),
-          backgroundColor: Colors.blue,
+          backgroundColor: Color(0xFF15b9b4),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
 
         body: ListView.builder(
             itemCount: jerash.length,
