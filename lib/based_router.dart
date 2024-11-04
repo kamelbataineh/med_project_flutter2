@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/Screen_cities.dart';
+import 'package:med_project_flutter2/Screen_login.dart';
 import 'package:med_project_flutter2/Screen_register.dart';
 import 'package:med_project_flutter2/U.irbed.dart';
 import 'package:med_project_flutter2/U_Amman.dart';
@@ -43,6 +44,8 @@ class RouteClass{
         return builderscreen(U_Tafileh());
         case route_balqa:
         return builderscreen(U_Balqa());
+      case route_login:
+        return builderscreen(Screen_Login());
 
         default:
         return MaterialPageRoute(

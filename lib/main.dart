@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:med_project_flutter2/Screen_login.dart';
 import 'package:med_project_flutter2/U_Amman.dart';
 import 'package:med_project_flutter2/U_Aqaba.dart';
 import 'package:med_project_flutter2/U_Balqa.dart';
@@ -25,9 +26,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: route_register1,
       onGenerateRoute: RouteClass.generator,
-// home: U_Balqa(),
+// home:Screen_Login(),
     );
   }
 }

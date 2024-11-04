@@ -66,15 +66,77 @@ class _HomeState extends State<ScreenCities> {
           'https://i.pinimg.com/564x/9f/d6/83/9fd683479f339e1f9d2a6a62958c379a.jpg',
     },
   ];
+  List<String> list = ["تسجيل دخول", "حساب جديد", "تسجيل خروج"];
   String? select;
   Color color = Colors.white38;
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         appBar: AppBar(
-          title: Text('المدن'),
-          backgroundColor: Color(0xFF15b9b4),
+          title:Align(
+            alignment: Alignment.center,
+            child:Text("المدن"),),
+          backgroundColor: Colors.blue,
+          actions: [
+            PopupMenuButton(
+                icon: Icon(
+                  Icons.density_medium,
+                  size: 25,
+                  color: Colors.black,
+                ),
+                itemBuilder: (context) {
+                  return list.map((element) {
+                    return PopupMenuItem(
+                      value: element,
+                      child: Row(
+                        children: [
+                          Icon(
+                            element == "تسجيل دخول"
+                                ? Icons.person
+                                : element == "حساب جديد"
+                                    ? Icons.person_add
+                                    : Icons.logout,
+                            color: Colors.black54,
+                            size: 25,
+                          ),
+                          SizedBox(width: 30),
+                          Text(
+                            element,
+                            style:
+                                TextStyle(fontSize: 20, color: Colors.black87),
+                          ),
+                        ],
+                      ),
+                    );
+                  }).toList();
+                },
+                color: Colors.white,
+                onCanceled: () {
+                  print("object");
+                },
+                onSelected: (value) {
+                  setState(() {
+                    select = value;
+                    switch (select) {
+                      case "تسجيل دخول":
+                        Navigator.of(context).pushNamed(route_login);
+
+                        break;
+                      case "حساب جديد":
+                        Navigator.of(context).pushNamed(route_register1);
+
+                        break;
+                      case "تسجيل خروج":
+                        Navigator.of(context).pushNamed(route_login);
+                        break;
+                      default:
+                        Navigator.of(context).pushNamed(route_cities2);
+                    }
+                  });
+                })
+          ],
         ),
         body: ListView.builder(
             itemCount: cities.length * 2 - 1,
@@ -143,12 +205,12 @@ class _HomeState extends State<ScreenCities> {
             ),
             Container(
               padding: EdgeInsets.all(4),
-              color: Colors.black54, // لون خلفية نصف شفاف للنص
+              color: Colors.black54,
               child: Text(
                 cities[index]['name']!,
                 style: TextStyle(
-                  color: Colors.white, // لون النص
-                  fontSize: 30, // حجم النص
+                  color: Colors.white,
+                  fontSize: 30,
                 ),
               ),
             ),
