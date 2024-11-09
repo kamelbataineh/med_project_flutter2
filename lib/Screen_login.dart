@@ -7,6 +7,12 @@ class Screen_Login extends StatelessWidget {
     return Scaffold(
       drawerEnableOpenDragGesture: false,
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pushNamed(route_register1); 
+          },
+        ),
         title:  Align(
           alignment: Alignment.centerRight,
           child:Text('تسجيل الدخول'),),

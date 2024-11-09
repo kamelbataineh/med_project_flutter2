@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
 
-class ScreenCities extends StatefulWidget {
+class ScreenCitiesRented extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _HomeState();
   }
 }
 
-class _HomeState extends State<ScreenCities> {
+class _HomeState extends State<ScreenCitiesRented> {
   final List<Map<String, String>> cities = [
     {
       'name': 'اربد',
@@ -75,6 +75,12 @@ class _HomeState extends State<ScreenCities> {
 
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {
+              Navigator.of(context).pushNamed(route_Addinfo);
+            },
+          ),
           title:Align(
             alignment: Alignment.center,
             child:Text("المدن"),),
@@ -139,7 +145,7 @@ class _HomeState extends State<ScreenCities> {
           ],
         ),
         body: ListView.builder(
-            itemCount: cities.length * 2 - 1,
+            itemCount: cities.length,
             itemBuilder: (context, index) {
               return City(index);
             }));

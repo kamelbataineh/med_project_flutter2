@@ -12,6 +12,11 @@ const String route_aqaba = '/aqaba';
 const String route_karak = '/karak';
 const String route_tafileh = '/tafileh';
 const String route_login = '/Login';
+const String route_user = '/user';
+const String route_Userorrented = '/Userorrented';
+const String route_ScreenCitiesUser = '/ScreenCitiesUser';
+const String route_CitiesPage = '/CitiesPage';
+const String route_Addinfo = '/Addinfo';
 
 // const String route4='/screen4';
 // const String route4='/screen2/screen4';

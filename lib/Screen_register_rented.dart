@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
 import 'package:lottie/lottie.dart';
 
+
 class ScreenRegister extends StatefulWidget {
   const ScreenRegister({super.key});
 
@@ -18,9 +19,16 @@ class _HomeState extends State<ScreenRegister> {
     return Scaffold(
 drawerEnableOpenDragGesture: false,
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pushNamed(route_Userorrented);
+          },
+        ),
         title: Align(
           alignment: Alignment.centerRight,
-          child:Text('تسجيل'),),
+          child: Text('تسجيل'),
+        ),
         backgroundColor: Color(0xFF15b9b4),
       ),
       body: SingleChildScrollView(
@@ -35,7 +43,7 @@ drawerEnableOpenDragGesture: false,
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).pushNamed(route_register1);
+                      Navigator.of(context).popAndPushNamed(route_register1);
 
                     },
                     style: ElevatedButton.styleFrom(
@@ -84,8 +92,8 @@ drawerEnableOpenDragGesture: false,
                 ),
               ),
             ),
-            Lottie.network(
-              "https://lottie.host/84ad8c2d-1bdd-4b4a-ba71-16243f26c7c5/zNoEoKMJy6.json",
+
+            Lottie.network("https://lottie.host/84ad8c2d-1bdd-4b4a-ba71-16243f26c7c5/zNoEoKMJy6.json",
               width: 100,
               height: 100,
               fit: BoxFit.none,

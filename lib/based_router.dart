@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:med_project_flutter2/Screen_cities.dart';
+import 'package:med_project_flutter2/Screen_cities_rented.dart';
+import 'package:med_project_flutter2/Screen_cities_user.dart';
 import 'package:med_project_flutter2/Screen_login.dart';
-import 'package:med_project_flutter2/Screen_register.dart';
+import 'package:med_project_flutter2/Screen_register_rented.dart';
+import 'package:med_project_flutter2/Screen_register_user.dart';
 import 'package:med_project_flutter2/U.irbed.dart';
 import 'package:med_project_flutter2/U_Amman.dart';
 import 'package:med_project_flutter2/U_Aqaba.dart';
@@ -13,6 +15,9 @@ import 'package:med_project_flutter2/U_ajlon.dart';
 import 'package:med_project_flutter2/U_jarash.dart';
 import 'package:med_project_flutter2/U_karak.dart';
 import 'package:med_project_flutter2/U_mafraq.dart';
+import 'package:med_project_flutter2/CitiesPage.dart';
+import 'package:med_project_flutter2/add.dart';
+import 'package:med_project_flutter2/userORrented.dart';
 import 'consr_routes.dart';
 
 class RouteClass{
@@ -21,7 +26,7 @@ class RouteClass{
       case route_register1:
         return builderscreen(ScreenRegister());
       case route_cities2:
-        return builderscreen(ScreenCities());
+        return builderscreen(ScreenCitiesRented());
       case route_irbed:
         return builderscreen(U_irbed());
       case route_ajlon:
@@ -46,6 +51,16 @@ class RouteClass{
         return builderscreen(U_Balqa());
       case route_login:
         return builderscreen(Screen_Login());
+      case route_user:
+        return builderscreen(ScreenRegisterUser());
+        case route_Userorrented:
+        return builderscreen(Userorrented());
+case route_ScreenCitiesUser:
+        return builderscreen(ScreenCitiesUser());
+case route_CitiesPage:
+        return builderscreen(CitiesPage());
+case route_Addinfo:
+        return builderscreen(Addinfo());
 
         default:
         return MaterialPageRoute(
