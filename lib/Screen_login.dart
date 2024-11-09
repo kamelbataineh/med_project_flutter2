@@ -7,7 +7,9 @@ class Screen_Login extends StatelessWidget {
     return Scaffold(
       drawerEnableOpenDragGesture: false,
       appBar: AppBar(
-        title: Text('تسجيل الدخول'),
+        title:  Align(
+          alignment: Alignment.centerRight,
+          child:Text('تسجيل الدخول'),),
         backgroundColor: Color(0xFF15b9b4),
       ),
       body: SingleChildScrollView(
@@ -62,8 +64,8 @@ class Screen_Login extends StatelessWidget {
               fit: BoxFit.none,
             ),
             SizedBox(height: 20,),
-            buildTextField('البريد الإلكتروني', Icons.email, true),
-            buildTextField('كلمة السر', Icons.visibility, true,
+            buildTextField('البريد الإلكتروني', Icons.email, true,false),
+            buildTextField('كلمة السر', Icons.visibility, true,true,
             ),
             SizedBox(height: 20),
             ElevatedButton(
@@ -92,17 +94,21 @@ class Screen_Login extends StatelessWidget {
   ///////////////////////////////////
 //////////////////////////////////////
 
-  Widget buildTextField(String label, IconData icon, bool required,) {
+  Widget buildTextField(String label, IconData icon, bool required,bool x) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextField(
         decoration: InputDecoration(
+
           labelText: label,
           prefixIcon: Icon(icon, color: Color(0xFF15b9b4)),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
+
           ),
+
         ),
+        obscureText: x,
       ),
     );
   }

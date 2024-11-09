@@ -18,7 +18,9 @@ class _HomeState extends State<ScreenRegister> {
     return Scaffold(
 drawerEnableOpenDragGesture: false,
       appBar: AppBar(
-        title: Text('تسجيل'),
+        title: Align(
+          alignment: Alignment.centerRight,
+          child:Text('تسجيل'),),
         backgroundColor: Color(0xFF15b9b4),
       ),
       body: SingleChildScrollView(
