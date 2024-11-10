@@ -127,18 +127,18 @@ class _HomeState extends State<ScreenCitiesRented> {
                     select = value;
                     switch (select) {
                       case "تسجيل دخول":
-                        Navigator.of(context).pushNamed(route_login);
+                        Navigator.of(context).pushNamed(route_ScreenLoginRented);
 
                         break;
                       case "حساب جديد":
-                        Navigator.of(context).pushNamed(route_register1);
+                        Navigator.of(context).pushNamed(route_Userorrented);
 
                         break;
                       case "تسجيل خروج":
-                        Navigator.of(context).pushNamed(route_login);
+                        Navigator.of(context).pushNamed(route_ScreenRegisterRented);
                         break;
                       default:
-                        Navigator.of(context).pushNamed(route_cities2);
+                        Navigator.of(context).pushNamed(route_ScreenCitiesRented);
                     }
                   });
                 })
@@ -195,7 +195,7 @@ class _HomeState extends State<ScreenCitiesRented> {
               Navigator.of(context).pushNamed(route_aqaba);
               break;
             default:
-              Navigator.of(context).pushNamed(route_cities2);
+              Navigator.of(context).pushNamed(route_ScreenCitiesRented);
               break;
           }
         },

@@ -32,6 +32,62 @@ class _HomeState extends State<ScreenRegisterUser> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).popAndPushNamed(route_ScreenRegisterUser);
+
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF15b9b4),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Text('حساب جديد',style: TextStyle(color: Colors.black),),
+                  ),
+                ),
+                SizedBox(width: 10),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(route_ScreenLoginUser);
+
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey[300],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Text(
+                      'تسجيل دخول',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed(route_ScreenCitiesUser);
+                },
+                child: Text(
+                  "دخول دون تسجيل",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+
             Lottie.network(
               "https://lottie.host/84ad8c2d-1bdd-4b4a-ba71-16243f26c7c5/zNoEoKMJy6.json",
               width: 100,
@@ -39,14 +95,13 @@ class _HomeState extends State<ScreenRegisterUser> {
               fit: BoxFit.none,
             ),
             SizedBox(height: 20),
-            // حقول التسجيل
             buildTextField('البريد الإلكتروني', Icons.email, true),
             buildTextField('كلمة السر', Icons.lock, true),
             buildTextField('تأكيد كلمة السر', Icons.lock_outline, true),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushReplacementNamed(route_cities2);
+                Navigator.of(context).pushReplacementNamed(route_ScreenLoginUser);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF15b9b4),

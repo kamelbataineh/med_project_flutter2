@@ -23,7 +23,7 @@ class Userorrented extends StatelessWidget {
             SizedBox(height: 50,),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushReplacementNamed(route_register1);
+                Navigator.of(context).pushReplacementNamed(route_ScreenRegisterRented);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF15b9b4),
@@ -37,7 +37,7 @@ class Userorrented extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushReplacementNamed(route_user);
+                Navigator.of(context).pushReplacementNamed(route_ScreenRegisterUser);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF15b9b4),

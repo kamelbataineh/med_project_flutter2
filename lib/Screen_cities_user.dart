@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
 
-class ScreenCitiesUser extends StatefulWidget {
+class  ScreenCitiesUser extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _HomeState();
@@ -75,12 +75,6 @@ class _HomeState extends State<ScreenCitiesUser> {
 
     return Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () {
-              Navigator.of(context).pushNamed(route_cities2);
-            },
-          ),
           title:Align(
             alignment: Alignment.center,
             child:Text("المدن"),),
@@ -127,18 +121,18 @@ class _HomeState extends State<ScreenCitiesUser> {
                     select = value;
                     switch (select) {
                       case "تسجيل دخول":
-                        Navigator.of(context).pushNamed(route_login);
+                        Navigator.of(context).pushNamed(route_Userorrented);
 
                         break;
                       case "حساب جديد":
-                        Navigator.of(context).pushNamed(route_register1);
+                        Navigator.of(context).pushNamed(route_ScreenRegisterUser);
 
                         break;
                       case "تسجيل خروج":
-                        Navigator.of(context).pushNamed(route_login);
+                        Navigator.of(context).pushNamed(route_ScreenLoginUser);
                         break;
                       default:
-                        Navigator.of(context).pushNamed(route_cities2);
+                        Navigator.of(context).pushNamed(route_ScreenCitiesUser);
                     }
                   });
                 })
@@ -195,7 +189,7 @@ class _HomeState extends State<ScreenCitiesUser> {
               Navigator.of(context).pushNamed(route_aqaba);
               break;
             default:
-              Navigator.of(context).pushNamed(route_cities2);
+              Navigator.of(context).pushNamed(route_ScreenCitiesUser);
               break;
           }
         },

@@ -3,14 +3,14 @@ import 'package:med_project_flutter2/consr_routes.dart';
 import 'package:lottie/lottie.dart';
 
 
-class ScreenRegister extends StatefulWidget {
-  const ScreenRegister({super.key});
+class ScreenRegisterRented extends StatefulWidget {
+  const ScreenRegisterRented({super.key});
 
   @override
-  State<ScreenRegister> createState() => _HomeState();
+  State<ScreenRegisterRented> createState() => _HomeState();
 }
 
-class _HomeState extends State<ScreenRegister> {
+class _HomeState extends State<ScreenRegisterRented> {
   String? select;
 
   @override
@@ -43,7 +43,7 @@ drawerEnableOpenDragGesture: false,
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).popAndPushNamed(route_register1);
+                      Navigator.of(context).popAndPushNamed(route_ScreenRegisterRented);
 
                     },
                     style: ElevatedButton.styleFrom(
@@ -59,7 +59,7 @@ drawerEnableOpenDragGesture: false,
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).pushNamed(route_login);
+                      Navigator.of(context).pushNamed(route_ScreenLoginRented);
 
                       },
                     style: ElevatedButton.styleFrom(
@@ -80,7 +80,7 @@ drawerEnableOpenDragGesture: false,
               alignment: Alignment.center,
               child: TextButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(route_cities2);
+                  Navigator.of(context).pushNamed(route_ScreenCitiesUser);
                 },
                 child: Text(
                   "دخول دون تسجيل",
@@ -113,7 +113,7 @@ drawerEnableOpenDragGesture: false,
 
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushReplacementNamed(route_cities2);
+                Navigator.of(context).pushReplacementNamed(route_ScreenLoginRented);
 
               },
               style: ElevatedButton.styleFrom(

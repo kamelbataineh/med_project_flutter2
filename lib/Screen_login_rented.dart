@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
-class Screen_Login extends StatelessWidget {
+class ScreenLoginRented extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +30,7 @@ class Screen_Login extends StatelessWidget {
               Expanded(
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).pushNamed(route_register1);
+                    Navigator.of(context).pushNamed(route_ScreenRegisterRented);
 
                   },
                   style: ElevatedButton.styleFrom(
@@ -46,7 +46,7 @@ class Screen_Login extends StatelessWidget {
               Expanded(
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).pushNamed(route_login);
+                    Navigator.of(context).pushNamed(route_ScreenLoginRented);
 
                   },
                   style: ElevatedButton.styleFrom(
@@ -76,7 +76,7 @@ class Screen_Login extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushReplacementNamed(route_cities2);
+                Navigator.of(context).pushReplacementNamed(route_ScreenCitiesRented);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF15b9b4),
