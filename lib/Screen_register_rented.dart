@@ -11,6 +11,7 @@ class ScreenRegisterRented extends StatefulWidget {
 }
 
 class _HomeState extends State<ScreenRegisterRented> {
+
   String? select;
 
   @override
@@ -36,7 +37,6 @@ drawerEnableOpenDragGesture: false,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
