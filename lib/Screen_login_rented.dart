@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
-class ScreenLoginRented extends StatelessWidget {
+
+class ScreenLoginRented extends StatefulWidget {
+  const ScreenLoginRented({super.key});
+
+  @override
+  State<ScreenLoginRented> createState() => _ScreenLoginRentedState();
+}
+
+class _ScreenLoginRentedState extends State<ScreenLoginRented> {
+  bool isPasswordVisible = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,9 +80,8 @@ class ScreenLoginRented extends StatelessWidget {
               fit: BoxFit.none,
             ),
             SizedBox(height: 20,),
-            buildTextField('البريد الإلكتروني', Icons.email, true,false),
-            buildTextField('كلمة السر', Icons.visibility, true,true,
-            ),
+            buildTextField('البريد الإلكتروني', Icons.email, false),
+            buildPasswordField('كلمة السر'),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
@@ -100,7 +109,7 @@ class ScreenLoginRented extends StatelessWidget {
   ///////////////////////////////////
 //////////////////////////////////////
 
-  Widget buildTextField(String label, IconData icon, bool required,bool x) {
+  Widget buildTextField(String label, IconData icon,bool x) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextField(
@@ -115,6 +124,33 @@ class ScreenLoginRented extends StatelessWidget {
 
         ),
         obscureText: x,
+      ),
+    );
+  }
+  Widget buildPasswordField(String label) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: TextField(
+        ////////////////مهم////////////////////
+        obscureText: isPasswordVisible,
+        ///////////////////////////////////
+        decoration: InputDecoration(
+          labelText: label,
+          prefixIcon:  Icon(Icons.lock, color: Color(0xFF15b9b4)),
+          suffixIcon: IconButton(
+            icon: Icon(isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+              color:  Color(0xFF15b9b4),
+            ),
+            onPressed: () {
+              setState(() {
+                isPasswordVisible = !isPasswordVisible;
+              });
+            },
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
       ),
     );
   }

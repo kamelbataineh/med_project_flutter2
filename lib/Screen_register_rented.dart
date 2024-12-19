@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
 import 'package:lottie/lottie.dart';
 
-
 class ScreenRegisterRented extends StatefulWidget {
   const ScreenRegisterRented({super.key});
 
@@ -11,14 +10,15 @@ class ScreenRegisterRented extends StatefulWidget {
 }
 
 class _HomeState extends State<ScreenRegisterRented> {
+  bool isPasswordVisible = true;
+  bool isPasswordVisibleConfirm = true;
 
   String? select;
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-drawerEnableOpenDragGesture: false,
+      drawerEnableOpenDragGesture: false,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -43,8 +43,8 @@ drawerEnableOpenDragGesture: false,
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).popAndPushNamed(route_ScreenRegisterRented);
-
+                      Navigator.of(context)
+                          .popAndPushNamed(route_ScreenRegisterRented);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF15b9b4),
@@ -52,7 +52,10 @@ drawerEnableOpenDragGesture: false,
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    child: Text('حساب جديد',style: TextStyle(color: Colors.black),),
+                    child: Text(
+                      'حساب جديد',
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
                 ),
                 SizedBox(width: 10),
@@ -60,8 +63,7 @@ drawerEnableOpenDragGesture: false,
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).pushNamed(route_ScreenLoginRented);
-
-                      },
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.grey[300],
                       shape: RoundedRectangleBorder(
@@ -93,28 +95,40 @@ drawerEnableOpenDragGesture: false,
               ),
             ),
 
-            Lottie.network("https://lottie.host/84ad8c2d-1bdd-4b4a-ba71-16243f26c7c5/zNoEoKMJy6.json",
+            Lottie.network(
+              "https://lottie.host/84ad8c2d-1bdd-4b4a-ba71-16243f26c7c5/zNoEoKMJy6.json",
               width: 100,
               height: 100,
               fit: BoxFit.none,
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             ///////////////
             buildTextField('الاسم', Icons.person, true),
             buildTextField('الاسم التجاري', Icons.home, false),
             buildTextField('وصف العمل التجاري', Icons.info, false),
             buildTextField('البريد الإلكتروني', Icons.email, true),
-            buildTextField('كلمة السر', Icons.visibility, true ),
-            buildTextField('تأكيد كلمة السر', Icons.visibility, true,),
+            buildPasswordField("كلمة السر", isPasswordVisible, () {
+              setState(() {
+                isPasswordVisible = !isPasswordVisible;
+              });
+            }),
+            buildPasswordField("تأكيد كلمة السر", isPasswordVisibleConfirm, () {
+              setState(() {
+                isPasswordVisibleConfirm = !isPasswordVisibleConfirm;
+              });
+            }),
             buildTextField('الهاتف', Icons.phone, true),
-            buildTextField('العنوان - شارع - بجانب مكان', Icons.location_city, true),
+            buildTextField(
+                'العنوان - شارع - بجانب مكان', Icons.location_city, true),
             //////////////
             SizedBox(height: 10),
 
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushReplacementNamed(route_ScreenLoginRented);
-
+                Navigator.of(context)
+                    .pushReplacementNamed(route_ScreenLoginRented);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF15b9b4),
@@ -123,7 +137,8 @@ drawerEnableOpenDragGesture: false,
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
-              child: Text('حساب جديد', style: TextStyle(fontSize: 18,color: Colors.black)),
+              child: Text('حساب جديد',
+                  style: TextStyle(fontSize: 18, color: Colors.black)),
             ),
           ],
         ),
@@ -131,7 +146,11 @@ drawerEnableOpenDragGesture: false,
     );
   }
 
-  Widget buildTextField(String label, IconData icon, bool required,) {
+  Widget buildTextField(
+    String label,
+    IconData icon,
+    bool required,
+  ) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextField(
@@ -145,6 +164,29 @@ drawerEnableOpenDragGesture: false,
       ),
     );
   }
+
+  Widget buildPasswordField(
+      String label, bool isVisible, VoidCallback toggleVisibility) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: TextField(
+        ////////////////مهم////////////////////
+        obscureText: isVisible,
+        ///////////////////////////////////
+        decoration: InputDecoration(
+          labelText: label,
+          prefixIcon: Icon(Icons.lock, color: Color(0xFF15b9b4)),
+          suffixIcon: IconButton(
+              icon: Icon(
+                isVisible ? Icons.visibility_off : Icons.visibility,
+                color: Color(0xFF15b9b4),
+              ),
+              onPressed: toggleVisibility),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+      ),
+    );
+  }
 }
-
-

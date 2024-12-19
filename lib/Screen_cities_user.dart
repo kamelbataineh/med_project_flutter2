@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
+import 'package:med_project_flutter2/userORrented.dart';
 
-class  ScreenCitiesUser extends StatefulWidget {
+class ScreenCitiesUser extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _HomeState();
@@ -9,6 +10,8 @@ class  ScreenCitiesUser extends StatefulWidget {
 }
 
 class _HomeState extends State<ScreenCitiesUser> {
+
+
   final List<Map<String, String>> cities = [
     {
       'name': 'اربد',
@@ -72,12 +75,12 @@ class _HomeState extends State<ScreenCitiesUser> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         appBar: AppBar(
-          title:Align(
+          title: Align(
             alignment: Alignment.center,
-            child:Text("المدن"),),
+            child: Text("المدن"),
+          ),
           backgroundColor: Colors.blue,
           actions: [
             PopupMenuButton(
@@ -125,11 +128,12 @@ class _HomeState extends State<ScreenCitiesUser> {
 
                         break;
                       case "حساب جديد":
-                        Navigator.of(context).pushNamed(route_ScreenRegisterUser);
+                        Navigator.of(context)
+                            .pushNamed(route_ScreenRegisterUser);
 
                         break;
                       case "تسجيل خروج":
-                        Navigator.of(context).pushNamed(route_ScreenLoginUser);
+                        Navigator.of(context).pushNamed(route_Userorrented);
                         break;
                       default:
                         Navigator.of(context).pushNamed(route_ScreenCitiesUser);
@@ -138,11 +142,19 @@ class _HomeState extends State<ScreenCitiesUser> {
                 })
           ],
         ),
-        body: ListView.builder(
-            itemCount: cities.length,
-            itemBuilder: (context, index) {
-              return City(index);
-            }));
+        body: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, // Two items per row
+            crossAxisSpacing: 8.0, // Spacing between columns
+            mainAxisSpacing: 8.0, // Spacing between rows
+          ),
+          padding: EdgeInsets.all(5),
+          physics: BouncingScrollPhysics(),
+          itemCount: cities.length,
+          itemBuilder: (context, index) {
+            return City(index);
+          },
+        ));
   }
 
 //////////////////////////////////
@@ -193,28 +205,60 @@ class _HomeState extends State<ScreenCitiesUser> {
               break;
           }
         },
-        child: Stack(
-          alignment: Alignment.topRight,
-          children: [
-            Image.network(
-              cities[index]['image']!,
-              width: double.infinity,
-              height: 150,
-              fit: BoxFit.cover,
-              alignment: Alignment.center,
-            ),
-            Container(
-              padding: EdgeInsets.all(4),
-              color: Colors.black54,
-              child: Text(
-                cities[index]['name']!,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
+        child: Card(
+          shadowColor: Colors.blue,
+          shape: RoundedRectangleBorder(
+
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          elevation: 5,
+          child: Stack(
+            alignment: Alignment.topRight,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.network(
+                  cities[index]['image']!,
+                  width: double.infinity,
+                  height: 200,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.center,
                 ),
               ),
+      Card(
+        color: Colors.black54,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        elevation: 2,
+        child: Container(
+          padding: EdgeInsets.all(16.0),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.black54, Colors.transparent],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
-          ],
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          child: Text(
+            cities[index]['name']!,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              shadows: [
+                Shadow(
+                  blurRadius: 5.0,
+                  color: Colors.black.withOpacity(0.7),
+                ),
+              ],
+            ),
+          ),
+        ),
+      )
+            ],
+          ),
         ));
   }
 }

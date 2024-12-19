@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
-class ScreenLoginUser extends StatelessWidget {
+class ScreenLoginUser extends StatefulWidget {
+  const ScreenLoginUser({super.key});
+
+  @override
+  State<ScreenLoginUser> createState() => _ScreenLoginUserState();
+}
+
+class _ScreenLoginUserState extends State<ScreenLoginUser> {
+bool isPasswordVisible=true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,9 +71,8 @@ class ScreenLoginUser extends StatelessWidget {
               fit: BoxFit.none,
             ),
             SizedBox(height: 20,),
-            buildTextField('البريد الإلكتروني', Icons.email, true, ),
-            buildTextField('كلمة السر', Icons.visibility, true,
-            ),
+            buildTextField('البريد الإلكتروني', Icons.email, false, ),
+            buildPasswordField("كلمة السر"),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
@@ -94,7 +101,7 @@ class ScreenLoginUser extends StatelessWidget {
   ///////////////////////////////////
   ///////////////////////////////////
 //////////////////////////////////////
-  Widget buildTextField(String label, IconData icon, bool required) {
+  Widget buildTextField(String label, IconData icon, bool x) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextField(
@@ -105,30 +112,37 @@ class ScreenLoginUser extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
           ),
         ),
+obscureText:x ,
+      ),
+    );
+  }
+
+  Widget buildPasswordField(String label) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: TextField(
+       ////////////////مهم////////////////////
+        obscureText: isPasswordVisible,
+        ///////////////////////////////////
+        decoration: InputDecoration(
+          labelText: label,
+          prefixIcon:  Icon(Icons.lock, color: Color(0xFF15b9b4)),
+          suffixIcon: IconButton(
+            icon: Icon(isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+              color:  Color(0xFF15b9b4),
+            ),
+            onPressed: () {
+              setState(() {
+                isPasswordVisible = !isPasswordVisible;
+              });
+            },
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
       ),
     );
   }
 }
 
-//   Widget buildTextField(String label, IconData icon, bool required,bool x) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(vertical: 8.0),
-//       child: TextField(
-//         decoration: InputDecoration
-//
-//           (
-//
-//           labelText: label,
-//           prefixIcon: Icon(icon, color: Color(0xFF15b9b4)),
-//           border: OutlineInputBorder(
-//             borderRadius: BorderRadius.circular(8),
-//
-//           ),
-//
-//         )
-//         ,
-//         obscureText: x,
-//       ),
-//     );
-//   }
-// }

@@ -80,8 +80,18 @@ class MyApp extends StatelessWidget {
             borderSide: BorderSide(color: Colors.grey.shade300, width: 2), // border عند التمكين
           ),
         ),
+
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: Colors.green,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.grey,
+        ),
         ),
 
     );
+
   }
+
+
+
 }
