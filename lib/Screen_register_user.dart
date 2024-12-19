@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:med_project_flutter2/Screen_cities_user.dart';
 import 'package:med_project_flutter2/Screen_favorite.dart';
 import 'package:med_project_flutter2/Screen_setting.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
 import 'package:lottie/lottie.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:curved_bottom_navigation_bar/curved_bottom_navigation_bar.dart';
+
 
 class ScreenRegisterUser extends StatefulWidget {
   const ScreenRegisterUser({super.key});
@@ -12,12 +16,7 @@ class ScreenRegisterUser extends StatefulWidget {
 }
 
 class _HomeState extends State<ScreenRegisterUser> {
-  List<Widget> pages = [
-    ScreenRegisterUser(),
-    ScreenFavorite(),
-    ScreenSetting(),
-  ];
-int indexpage =0;
+
   bool isPasswordVisible = true;
   bool isPasswordVisibleConfirm = true;
 
@@ -134,33 +133,15 @@ int indexpage =0;
               child: Text('تسجيل',
                   style: TextStyle(fontSize: 18, color: Colors.black)),
             ),
-        CurvedBottomNavigationBar(
-          selectedIndex: 0,
-          onItemTapped: (index) {
-            print("Tapped on item: $index");
-          },
-          icons: [Icons.home, Icons.search, Icons.notifications, Icons.person],
-          labels: ['Home', 'Search', 'Notifications', 'Profile'],
-          screens: [
-            Center(child: Text("Home Screen")),
-            Center(child: Text("Search Screen")),
-            Center(child: Text("Notifications Screen")),
-            Center(child: Text("Profile Screen")),
-          ],
-          backgroundColor: Colors.blue,
-          selectedIconColor: Colors.white,
-          unselectedIconColor: Colors.white70,
-          selectedItemFontStyle: TextStyle(fontSize: 14, color: Colors.white),
-          unselectedItemFontStyle: TextStyle(fontSize: 12, color: Colors.white70),
-        )
-
-          ],
-
-        ),
-
+    ]
+    )
       ),
+
     );
+
   }
+
+
 
   Widget buildTextField(String label, IconData icon, bool obscureText) {
     return Padding(

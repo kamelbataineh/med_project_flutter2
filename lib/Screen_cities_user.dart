@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
 import 'package:med_project_flutter2/userORrented.dart';
@@ -10,7 +11,11 @@ class ScreenCitiesUser extends StatefulWidget {
 }
 
 class _HomeState extends State<ScreenCitiesUser> {
+  List<Widget> pages = [
+    ScreenCitiesUser(),
 
+  ];
+  int indexpage =0;
 
   final List<Map<String, String>> cities = [
     {
@@ -154,7 +159,29 @@ class _HomeState extends State<ScreenCitiesUser> {
           itemBuilder: (context, index) {
             return City(index);
           },
-        ));
+
+        ),
+        bottomNavigationBar: CurvedNavigationBar(
+          height: 60,
+      index: indexpage,
+      onTap: (index) {
+        setState(() {
+          indexpage = index;
+        });
+      },
+      items: const [
+        Icon(Icons.home),
+        Icon(Icons.search),
+        Icon(Icons.notifications),
+        Icon(Icons.person),
+      ],
+      color: Colors.blue,
+      backgroundColor: Colors.white,
+      buttonBackgroundColor: Colors.black,
+      animationDuration: Duration(milliseconds: 300),
+    )
+    ,
+    );
   }
 
 //////////////////////////////////
@@ -259,6 +286,10 @@ class _HomeState extends State<ScreenCitiesUser> {
       )
             ],
           ),
-        ));
+
+        )
+
+    );
+
   }
 }
