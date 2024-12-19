@@ -1,7 +1,9 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:med_project_flutter2/Screen_cities_rented.dart';
+import 'package:med_project_flutter2/Screen_favorite.dart';
+import 'package:med_project_flutter2/Screen_setting.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
-import 'package:med_project_flutter2/userORrented.dart';
 
 class ScreenCitiesUser extends StatefulWidget {
   @override
@@ -12,10 +14,13 @@ class ScreenCitiesUser extends StatefulWidget {
 
 class _HomeState extends State<ScreenCitiesUser> {
   List<Widget> pages = [
-    ScreenCitiesUser(),
+ScreenCitiesUser(),
+    ScreenSetting(),
+    ScreenFavorite(),
+    ScreenFavorite(),
 
   ];
-  int indexpage =0;
+  int indexpage = 0;
 
   final List<Map<String, String>> cities = [
     {
@@ -147,40 +152,50 @@ class _HomeState extends State<ScreenCitiesUser> {
                 })
           ],
         ),
-        body: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // Two items per row
-            crossAxisSpacing: 8.0, // Spacing between columns
-            mainAxisSpacing: 8.0, // Spacing between rows
-          ),
-          padding: EdgeInsets.all(5),
-          physics: BouncingScrollPhysics(),
-          itemCount: cities.length,
-          itemBuilder: (context, index) {
-            return City(index);
-          },
+      body: Stack(
+        children: [
 
-        ),
-        bottomNavigationBar: CurvedNavigationBar(
-          height: 60,
-      index: indexpage,
-      onTap: (index) {
-        setState(() {
-          indexpage = index;
-        });
-      },
-      items: const [
-        Icon(Icons.home),
-        Icon(Icons.search),
-        Icon(Icons.notifications),
-        Icon(Icons.person),
-      ],
-      color: Colors.blue,
-      backgroundColor: Colors.white,
-      buttonBackgroundColor: Colors.black,
-      animationDuration: Duration(milliseconds: 300),
-    )
-    ,
+           GridView.builder(
+              gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 8.0,
+                mainAxisSpacing: 8.0,
+              ),
+              padding: EdgeInsets.all(5),
+              physics: BouncingScrollPhysics(),
+              itemCount: cities.length,
+              itemBuilder: (context, index) {
+                return City(index);
+              },
+
+          ),
+IndexedStack(
+
+  index: indexpage,
+  children:pages,
+)
+        ],
+      ),
+
+      bottomNavigationBar: CurvedNavigationBar(
+        height: 60,
+        index: indexpage,
+        onTap: (index) {
+          setState(() {
+            indexpage = index; 
+          });
+        },
+        items: const [
+          Icon(Icons.home),
+          Icon(Icons.search),
+          Icon(Icons.notifications),
+          Icon(Icons.person),
+        ],
+        color: Colors.blue,
+        backgroundColor: Colors.white,
+        buttonBackgroundColor: Colors.black,
+        animationDuration: Duration(milliseconds: 300),
+      ),
     );
   }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:med_project_flutter2/Screen_cities_user.dart';
 import 'package:med_project_flutter2/Screen_login_rented.dart';
 import 'package:med_project_flutter2/Screen_register_user.dart';
 import 'package:med_project_flutter2/U_Amman.dart';
@@ -28,10 +29,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: route_Userorrented,
-      onGenerateRoute: RouteClass.generator,
-// home:ScreenRegisterUser(),
+      // debugShowCheckedModeBanner: false,
+      // initialRoute: route_Userorrented,
+      // onGenerateRoute: RouteClass.generator,
+home:ScreenCitiesUser(),
       //////////////////////////////////
       //////////////////////////////////
       //////////////////////////////////

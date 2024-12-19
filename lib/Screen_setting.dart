@@ -11,7 +11,7 @@ class _ScreenSettingState extends State<ScreenSetting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: null,
+      body: Text("data"),
     );
   }
 }
