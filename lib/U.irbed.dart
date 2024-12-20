@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:med_project_flutter2/City_Housing.dart';
+
+import 'consr_routes.dart';
 
 class U_irbed extends StatefulWidget {
   @override
@@ -19,28 +22,27 @@ class _HomeState extends State<U_irbed> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('اربد'),
-          backgroundColor: Color(0xFF15b9b4),
-        ),
-        backgroundColor: Colors.white,
-
-        body: Padding(
-          padding: const EdgeInsets.all(4.0),
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1,
-                mainAxisSpacing: 2.0,
-                childAspectRatio: 4/1.5 ,
-              ),
-              padding: EdgeInsets.all(5),
-              physics: BouncingScrollPhysics(),
-              itemCount: irberUniversities.length,
-              itemBuilder: (context, index) {
-                return City(index);
-              },
-            ),
+      appBar: AppBar(
+        title: Text('اربد'),
+        backgroundColor: Color(0xFF15b9b4),
+      ),
+      backgroundColor: Colors.white,
+      body: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 1,
+            mainAxisSpacing: 2.0,
+            childAspectRatio: 4 / 1.5,
           ),
+          padding: EdgeInsets.all(5),
+          physics: BouncingScrollPhysics(),
+          itemCount: irberUniversities.length,
+          itemBuilder: (context, index) {
+            return City(index);
+          },
+        ),
+      ),
     );
   }
 
@@ -52,11 +54,28 @@ class _HomeState extends State<U_irbed> {
 
   Widget City(int index) {
     return GestureDetector(
-        onTap: () {},
-        child:Card(
+        onTap: () {
+          print("objaect");
+          switch (irberUniversities[index]['name']) {
+            case 'جامعة اليرموك':
+
+              break;
+            // case 'جامعة العلوم والتكنولوجيا الأردنية':
+            //   Navigator.of(context).push(
+            //     MaterialPageRoute(
+            //       builder: (context) => CityHousing(
+            //           universityName: 'جامعة العلوم والتكنولوجيا الأردنية'),
+            //     ),
+            //   );
+            //   break;
+            default:
+              Navigator.of(context).pushNamed(route_ScreenCitiesUser);
+              break;
+          }
+        },
+        child: Card(
           shadowColor: Colors.blue,
           shape: RoundedRectangleBorder(
-
             borderRadius: BorderRadius.circular(20.0),
           ),
           elevation: 5,
@@ -65,7 +84,8 @@ class _HomeState extends State<U_irbed> {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: Image.asset(irberUniversities[index]['image']!,
+                child: Image.asset(
+                  irberUniversities[index]['image']!,
                   width: double.infinity,
                   height: 200,
                   fit: BoxFit.fill,

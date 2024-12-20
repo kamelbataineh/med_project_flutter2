@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'City_Housing.dart';
+import 'consr_routes.dart';
+
 class U_Ajlon extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -51,7 +54,22 @@ class _HomeState extends State<U_Ajlon> {
 
   Widget City(int index) {
     return GestureDetector(
-        onTap: () {},
+        onTap: () {
+          print("objaect");
+          switch (ajloun[index]['name']) {
+            // case 'جامعة عجلون الوطنية':
+            //   Navigator.of(context).push(
+            //     MaterialPageRoute(
+            //       builder: (context) =>
+            //           CityHousing(universityName: 'جامعة عجلون الوطنية'),
+            //     ),
+            //   );
+            //   break;
+            default:
+              Navigator.of(context).pushNamed(route_ScreenCitiesUser);
+              break;
+          }
+        },
         child:Card(
           shadowColor: Colors.blue,
           shape: RoundedRectangleBorder(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:med_project_flutter2/City_Housing.dart';
 import 'package:med_project_flutter2/Screen_cities_user.dart';
 import 'package:med_project_flutter2/Screen_login_rented.dart';
 import 'package:med_project_flutter2/Screen_register_user.dart';
@@ -30,9 +31,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: route_Userorrented,
-      onGenerateRoute: RouteClass.generator,
-// home:ScreenCitiesUser(),
+      // initialRoute: route_ScreenCitiesUser,
+      // onGenerateRoute: RouteClass.generator,
+ home:ScreenCitiesUser(),
       //////////////////////////////////
       //////////////////////////////////
       //////////////////////////////////

@@ -16,6 +16,7 @@ class _HomeState extends State<ScreenCitiesUser> {
   List<Widget> pages = [
 
     ScreenSetting(),
+    ScreenSetting(),
     ScreenFavorite()
   ];
   int indexpage =0;
@@ -151,19 +152,47 @@ class _HomeState extends State<ScreenCitiesUser> {
         ],
       ),
       body:
-      GridView.builder(
-              gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 8.0,
-                mainAxisSpacing: 8.0,
-              ),
-              padding: EdgeInsets.all(5),
-              physics: BouncingScrollPhysics(),
-              itemCount: cities.length,
-              itemBuilder: (context, index) {
-                return City(index);
-              },
-            ),
+      Row(
+        children: [
+          IndexedStack(
+            index: indexpage,
+            children: pages,
+          ),
+          GridView.builder(
+                  gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 8.0,
+                    mainAxisSpacing: 8.0,
+                  ),
+                  padding: EdgeInsets.all(5),
+                  physics: BouncingScrollPhysics(),
+                  itemCount: cities.length,
+                  itemBuilder: (context, index) {
+                    return City(index);
+                  },
+                ),
+        ],
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        height: 60,
+        index: indexpage,
+        onTap: (index) {
+          setState(() {
+            indexpage = index;
+          });
+        },
+        items: const [
+          Icon(Icons.home, color: Colors.black),
+          Icon(Icons.search, color: Colors.black),
+          Icon(Icons.notifications, color: Colors.black),
+          Icon(Icons.person, color: Colors.black),
+        ],
+        color: Colors.blue,
+        backgroundColor: Colors.white,
+        buttonBackgroundColor: Colors.blue,
+        animationDuration:  Duration(milliseconds: 300),
+      ),
+
     );
   }
 
