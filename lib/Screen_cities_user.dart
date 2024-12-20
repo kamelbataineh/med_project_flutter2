@@ -150,12 +150,8 @@ class _HomeState extends State<ScreenCitiesUser> {
               })
         ],
       ),
-      body: Stack(
-
-        children: [
-
-          Expanded(
-            child: GridView.builder(
+      body:
+      GridView.builder(
               gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 8.0,
@@ -168,33 +164,6 @@ class _HomeState extends State<ScreenCitiesUser> {
                 return City(index);
               },
             ),
-          ),
-          IndexedStack(
-            index: indexpage,
-            children: pages,
-          ), ],
-      ),
-
-      bottomNavigationBar: CurvedNavigationBar(
-        height: 60,
-        index: indexpage,
-        onTap: (index) {
-          setState(() {
-            indexpage = index;
-          });
-        },
-        items: [
-          Icon(Icons.home),
-          Icon(Icons.search),
-          Icon(Icons.notifications),
-          Icon(Icons.person),
-        ],
-        color: Colors.blue,
-        backgroundColor: Colors.white,
-        buttonBackgroundColor: Colors.black,
-        animationDuration: Duration(milliseconds: 300),
-      )
-      ,
     );
   }
 

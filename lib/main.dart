@@ -29,10 +29,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // debugShowCheckedModeBanner: false,
-      // initialRoute: route_Userorrented,
-      // onGenerateRoute: RouteClass.generator,
-home:ScreenCitiesUser(),
+      debugShowCheckedModeBanner: false,
+      initialRoute: route_Userorrented,
+      onGenerateRoute: RouteClass.generator,
+// home:ScreenCitiesUser(),
       //////////////////////////////////
       //////////////////////////////////
       //////////////////////////////////
