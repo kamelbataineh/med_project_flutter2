@@ -52,7 +52,6 @@ class CityHousing extends StatelessWidget {
           return CityCard(
             apartment: apartments[index],
             onTap: () {
-              // // تمرير كائن home مع تفاصيل الشقة
               // Navigator.push(
               //   context,
               //   MaterialPageRoute(
