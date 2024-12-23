@@ -31,9 +31,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // initialRoute: route_ScreenCitiesUser,
-      // onGenerateRoute: RouteClass.generator,
- home:ScreenCitiesUser(),
+      initialRoute: route_ScreenCitiesUser,
+      onGenerateRoute: RouteClass.generator,
+ // home:ScreenCitiesUser(),
       //////////////////////////////////
       //////////////////////////////////
       //////////////////////////////////
