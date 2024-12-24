@@ -16,7 +16,6 @@ import 'city/U_Maan.dart';
 import 'city/U_mafraq.dart';
 import 'city/U_Zarqa.dart';
 import 'city/U_Tafileh.dart';
-import 'package:med_project_flutter2/CitiesPage.dart';
 import 'package:med_project_flutter2/Addinfo.dart';
 import 'package:med_project_flutter2/userORrented.dart';
 import 'consr_routes.dart';
@@ -79,8 +78,7 @@ class RouteClass {
       case route_Userorrented:
         return builderscreen(Userorrented());
 
-      case route_CitiesPage:
-        return builderscreen(CitiesPage());
+
 ////////////////////////////////////////////////
       default:
         return MaterialPageRoute(builder: (_) => Userorrented());

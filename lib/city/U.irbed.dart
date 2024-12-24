@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/City_Housing.dart';
 
+import '../Class_Favorites.dart';
 import '../consr_routes.dart';
 
 class U_irbed extends StatefulWidget {
@@ -58,16 +59,20 @@ class _HomeState extends State<U_irbed> {
           print("objaect");
           switch (irberUniversities[index]['name']) {
             case 'جامعة اليرموك':
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => CityHousing(itemhous: itemhous), // هنا نمرر itemhous إلى صفحة CityHousing
+                ),
+              );
 
               break;
-            // case 'جامعة العلوم والتكنولوجيا الأردنية':
-            //   Navigator.of(context).push(
-            //     MaterialPageRoute(
-            //       builder: (context) => CityHousing(
-            //           universityName: 'جامعة العلوم والتكنولوجيا الأردنية'),
-            //     ),
-            //   );
-            //   break;
+            case 'جامعة العلوم والتكنولوجيا الأردنية':
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => CityHousing(itemhous: itemhous),
+                ),
+              );
+              break;
             default:
               Navigator.of(context).pushNamed(route_ScreenCitiesUser);
               break;
