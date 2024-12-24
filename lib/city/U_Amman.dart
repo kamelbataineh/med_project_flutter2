@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:med_project_flutter2/City_Housing.dart';
+import 'package:med_project_flutter2/consr_routes.dart';
+
 class U_Amman extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -9,10 +12,7 @@ class U_Amman extends StatefulWidget {
 
 class _HomeState extends State<U_Amman> {
   final List<Map<String, String>> amman = [
-    {
-      'name': 'الجامعة الأردنية',
-      'image': 'imgs/JU.png',
-    },
+    {'name': 'جامعة الأردنية', 'image': 'imgs/JU.png'}
   ];
 
   String? select;
@@ -21,11 +21,11 @@ class _HomeState extends State<U_Amman> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('عمان'),
-          backgroundColor:  Color(0xFF15b9b4),
-        ),
-        backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text('عمان'),
+        backgroundColor:  Color(0xFF15b9b4),
+      ),
+      backgroundColor: Colors.white,
 
       body: Padding(
         padding: const EdgeInsets.all(4.0),
@@ -54,7 +54,22 @@ class _HomeState extends State<U_Amman> {
 
   Widget City(int index) {
     return GestureDetector(
-        onTap: () {},
+        onTap: () {
+          print("objaect");
+          switch (amman[index]['name']) {
+          // case 'جامعة عجلون الوطنية':
+          //   Navigator.of(context).push(
+          //     MaterialPageRoute(
+          //       builder: (context) =>
+          //           CityHousing(universityName: 'جامعة عجلون الوطنية'),
+          //     ),
+          //   );
+          //   break;
+            default:
+              Navigator.of(context).pushNamed(route_ScreenCitiesUser);
+              break;
+          }
+        },
         child:Card(
           shadowColor: Colors.blue,
           shape: RoundedRectangleBorder(
@@ -108,6 +123,5 @@ class _HomeState extends State<U_Amman> {
               )
             ],
           ),
-        ));
-  }
+        ));  }
 }

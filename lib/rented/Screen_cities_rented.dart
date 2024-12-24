@@ -1,0 +1,381 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:med_project_flutter2/consr_routes.dart';
+
+import '../Class_Favorites.dart';
+import '../Screen_favorite.dart';
+import '../Screen_setting.dart';
+
+class ScreenCitiesRented extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _HomeState();
+  }
+}
+class _HomeState extends State<ScreenCitiesRented> {
+  bool isicon = false;
+  @override
+  List<Widget> pages = [
+    ScreenSetting(),
+  ];
+  int indexpage = 0;
+
+  final List<PagesCitis> cities = [
+    PagesCitis(
+      'اربد',
+      'https://i.pinimg.com/564x/e0/5a/34/e05a3477a58ac454e827aac2ab2ec03c.jpg',
+    ),
+    PagesCitis(
+      'جرش',
+      'https://i.pinimg.com/474x/00/e1/f4/00e1f45e889bb474e710a4533c50d544.jpg',
+    ),
+    PagesCitis(
+      'عجلون',
+      'https://i.pinimg.com/564x/d4/da/1f/d4da1f8c3742f9501681a9e607a29920.jpg',
+    ),
+    PagesCitis(
+      'المفرق',
+      'https://i.pinimg.com/736x/8d/41/ea/8d41ea639119ca1dc2628b76fde9ca8b.jpg',
+    ),
+    PagesCitis(
+      'عمان',
+      'https://i.pinimg.com/564x/03/b4/ff/03b4ffbe9860921a696898d41fe25091.jpg',
+    ),
+    PagesCitis(
+      'مادبا',
+      'https://i.pinimg.com/564x/d2/f6/28/d2f628a0612545a60f4781974674149a.jpg',
+    ),
+    PagesCitis(
+      'البلقاء',
+      'https://i.pinimg.com/236x/71/70/69/717069eb2e3f4d752808749870c1464f.jpg',
+    ),
+    PagesCitis(
+      'الكرك',
+      'https://i.pinimg.com/564x/13/58/cf/1358cf4a6077d0f67d13ece19f148eb7.jpg',
+    ),
+    PagesCitis(
+      'الطفيلة',
+      'https://i.pinimg.com/736x/48/13/49/4813497936c9154ff6060fb2ef5c0db8.jpg',
+    ),
+    PagesCitis(
+      'معان',
+      'https://i.pinimg.com/564x/b9/e4/25/b9e425b64550bb7e3b45a272d7de6f74.jpg',
+    ),
+    PagesCitis(
+      'العقبة',
+      'https://i.pinimg.com/564x/9f/d6/83/9fd683479f339e1f9d2a6a62958c379a.jpg',
+    ),
+  ];
+
+  List<String> list = ["تسجيل دخول", "حساب جديد", "تسجيل خروج"];
+  String? select;
+  Color color = Colors.white38;
+  List<String> appBarTitles = ["مدن", "إعدادات", "المفضلة", "الملف الشخصي"];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Align(
+          alignment: Alignment.center,
+          child: Text(appBarTitles[indexpage]),
+        ),
+        backgroundColor: Colors.blue,
+        //   actions: [
+        //     PopupMenuButton(
+        //         icon: Icon(
+        //           Icons.density_medium,
+        //           size: 25,
+        //           color: Colors.black,
+        //         ),
+        //         itemBuilder: (context) {
+        //           return list.map((element) {
+        //             return PopupMenuItem(
+        //               value: element,
+        //               child: Row(
+        //                 children: [
+        //                   Icon(
+        //                     element == "تسجيل دخول"
+        //                         ? Icons.person
+        //                         : element == "حساب جديد"
+        //                         ? Icons.person_add
+        //                         : Icons.logout,
+        //                     color: Colors.black54,
+        //                     size: 25,
+        //                   ),
+        //                   SizedBox(width: 30),
+        //                   Text(
+        //                     element,
+        //                     style:
+        //                     TextStyle(fontSize: 20, color: Colors.black87),
+        //                   ),
+        //                 ],
+        //               ),
+        //             );
+        //           }).toList();
+        //         },
+        //         color: Colors.white,
+        //         onCanceled: () {
+        //           print("object");
+        //         },
+        //         onSelected: (value) {
+        //           setState(() {
+        //             select = value;
+        //             switch (select) {
+        //               case "تسجيل دخول":
+        //                 Navigator.of(context).pushNamed(route_Userorrented);
+        //
+        //                 break;
+        //               case "حساب جديد":
+        //                 Navigator.of(context)
+        //                     .pushNamed(route_ScreenRegisterUser);
+        //
+        //                 break;
+        //               case "تسجيل خروج":
+        //                 Navigator.of(context).pushNamed(route_Userorrented);
+        //                 break;
+        //               default:
+        //                 Navigator.of(context).pushNamed(route_ScreenCitiesUser);
+        //             }
+        //           });
+        //         })
+        //  - ],
+      ),
+      body: indexpage == 0
+          ? Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Icon(Icons.search),
+                  style: ElevatedButton.styleFrom(
+                    shape: CircleBorder(),
+                    padding: EdgeInsets.all(16),
+                    backgroundColor: Colors.blue,
+                  ),
+                ),
+                SizedBox(width: 8),
+                Expanded(
+                  child: Container(
+                    height: 50,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          blurRadius: 6.0,
+                          spreadRadius: 0.5,
+                        ),
+                      ],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: TextField(
+                      onChanged: null,
+                      decoration: InputDecoration(
+                        hintText: "ابحث هنا...",
+                        hintStyle:
+                        TextStyle(color: Colors.black, fontSize: 16),
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.all(12),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 8.0,
+                mainAxisSpacing: 8.0,
+              ),
+              padding: EdgeInsets.all(5),
+              physics: BouncingScrollPhysics(),
+              itemCount: cities.length,
+              itemBuilder: (context, index) {
+                return City(index);
+              },
+            ),
+          ),
+        ],
+      )
+          : IndexedStack(
+        index: indexpage,
+        children: pages,
+      ),
+
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.black,
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (BuildContext context) {
+              return Container(
+                width: double.infinity,
+                height: double.infinity,
+                padding: const EdgeInsets.all(8.0),
+                child:Column(
+                  crossAxisAlignment: CrossAxisAlignment.start, // لضبط العناصر إلى اليسار
+                  children: [
+
+                    Align(
+                      alignment: Alignment.centerRight, // محاذاة النص إلى اليمين
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pushNamed(route_Addinfo);
+                        },
+
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min, // لضبط حجم الـ Row بما يتناسب مع المحتوى
+                          children: [
+                            Text(
+                           "اضافه سكن",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                            SizedBox(width: 10), // المسافة بين الرمز والنص
+                            Icon(
+                              Icons.add,
+                              color: Colors.black, // لون الرمز
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+
+              );
+            },
+          );
+        },
+
+        shape: CircleBorder(),
+        child: const Icon(
+          Icons.add,
+          size: 28,
+          color: Colors.blue,
+        ),
+      ),
+
+      bottomNavigationBar: CurvedNavigationBar(
+        height: 60,
+        index: indexpage,
+        onTap: (index) {
+          setState(() {
+            indexpage = index;
+          });
+        },
+        items:  [
+          Icon(Icons.home, color: Colors.black),
+          Icon(Icons.favorite, color: Colors.black),
+        ],
+        color: Colors.blue,
+        backgroundColor: Colors.white,
+        buttonBackgroundColor: Colors.blue,
+      ),
+    );
+  }
+
+//////////////////////////////////
+/////////////////////////////////
+////////////////////////////////
+///////////////////////////////
+//////////////////////////////
+
+  Widget City(int index) {
+    return GestureDetector(
+      onTap: () {
+        switch (cities[index].name) {
+          case 'اربد':
+            Navigator.of(context).pushNamed(route_irbed);
+            break;
+          case 'جرش':
+            Navigator.of(context).pushNamed(route_jarash);
+            break;
+          case 'عجلون':
+            Navigator.of(context).pushNamed(route_ajlon);
+            break;
+          case 'المفرق':
+            Navigator.of(context).pushNamed(route_mafraq);
+            break;
+          case 'عمان':
+            Navigator.of(context).pushNamed(route_amman);
+            break;
+          case 'مادبا':
+            Navigator.of(context).pushNamed(route_maan);
+            break;
+          case 'البلقاء':
+            Navigator.of(context).pushNamed(route_balqa);
+            break;
+          case 'الكرك':
+            Navigator.of(context).pushNamed(route_karak);
+            break;
+          case 'الطفيلة':
+            Navigator.of(context).pushNamed(route_tafileh);
+            break;
+          case 'معان':
+            Navigator.of(context).pushNamed(route_maan);
+            break;
+          case 'العقبة':
+            Navigator.of(context).pushNamed(route_aqaba);
+            break;
+          default:
+            Navigator.of(context).pushNamed(route_ScreenCitiesUser);
+            break;
+        }
+      },
+      child:Card(
+        shadowColor: Colors.blue,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        elevation: 5,
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.network(
+                cities[index].image,
+                width: double.infinity,
+                height: 200,
+                fit: BoxFit.cover,
+                alignment: Alignment.center,
+              ),
+            ),
+
+            Positioned(
+              top: 8,
+              left: 8,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+                decoration: BoxDecoration(
+                  color: Colors.black54,
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                child: Text(
+                  cities[index].name,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    shadows: [
+                      Shadow(
+                        blurRadius: 5.0,
+                        color: Colors.black.withOpacity(0.7),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+

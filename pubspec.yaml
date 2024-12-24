@@ -38,6 +38,7 @@ dependencies:
   carousel_slider: ^4.2.1
   curved_bottom_navigation_bar: ^0.0.8
   curved_navigation_bar: ^1.0.3
+  bottom_bar_with_sheet: ^2.4.0
 
 dev_dependencies:
   flutter_test:

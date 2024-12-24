@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'City_Housing.dart';
-import 'consr_routes.dart';
+import 'package:med_project_flutter2/City_Housing.dart';
+import 'package:med_project_flutter2/consr_routes.dart';
 
 class U_Ajlon extends StatefulWidget {
   @override

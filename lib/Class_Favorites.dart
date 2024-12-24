@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Class_Favorites.dart';
 import 'Class_Favorites.dart';
-import 'Screen_cities_user.dart';
+import 'user/Screen_cities_user.dart';
 
 class PagesCitis {
   String name;
@@ -20,3 +20,29 @@ class FavoritClass {
 }
 
 FavoritClass itemfavorit = FavoritClass([]);
+///////////////////////////
+///////////////////////////
+///////////////////////////
+///////////////////////////
+///////////////////////////
+///////////////////////////
+///////////////////////////
+class AddHous {
+  String name;
+  String typename;
+  String cityname;
+  List<String> images = [];
+  String phone;
+  String map;
+
+  AddHous(this.name, this.images, this.phone, this.cityname, this.map,
+      this.typename);
+}
+///////////////////////////
+class HousClass {
+  late List<AddHous> favorit;
+
+  HousClass(this.favorit);
+}
+
+HousClass itemhous = HousClass([]);

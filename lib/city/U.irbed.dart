@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/City_Housing.dart';
 
-import 'consr_routes.dart';
+import '../consr_routes.dart';
 
 class U_irbed extends StatefulWidget {
   @override
