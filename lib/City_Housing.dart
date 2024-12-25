@@ -29,6 +29,7 @@ class CityHousing extends StatelessWidget {
           );
         },
       ),
+
     );
   }
 }

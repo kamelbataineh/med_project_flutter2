@@ -1,7 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
-
 import '../Class_Favorites.dart';
 import '../Screen_favorite.dart';
 import '../Screen_setting.dart';
@@ -17,6 +16,8 @@ class _HomeState extends State<ScreenCitiesRented> {
   @override
   List<Widget> pages = [
     ScreenSetting(),
+    FavoritesPage(),
+
   ];
   int indexpage = 0;
 
@@ -71,6 +72,7 @@ class _HomeState extends State<ScreenCitiesRented> {
   String? select;
   Color color = Colors.white38;
   List<String> appBarTitles = ["مدن", "إعدادات", "المفضلة", "الملف الشخصي"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,7 +81,7 @@ class _HomeState extends State<ScreenCitiesRented> {
           alignment: Alignment.center,
           child: Text(appBarTitles[indexpage]),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xFF15b9b4),
         //   actions: [
         //     PopupMenuButton(
         //         icon: Icon(
@@ -149,11 +151,11 @@ class _HomeState extends State<ScreenCitiesRented> {
               children: [
                 ElevatedButton(
                   onPressed: () {},
-                  child: Icon(Icons.search),
+                  child: Icon(Icons.search, color: Colors.black,),
                   style: ElevatedButton.styleFrom(
                     shape: CircleBorder(),
                     padding: EdgeInsets.all(16),
-                    backgroundColor: Colors.blue,
+                    backgroundColor: Color(0xFF15b9b4),
                   ),
                 ),
                 SizedBox(width: 8),
@@ -215,38 +217,41 @@ class _HomeState extends State<ScreenCitiesRented> {
             context: context,
             builder: (BuildContext context) {
               return Container(
-                width: double.infinity,
-                height: double.infinity,
-                padding: const EdgeInsets.all(8.0),
-                child:Column(
-                  crossAxisAlignment: CrossAxisAlignment.start, // لضبط العناصر إلى اليسار
-                  children: [
+                  width: double.infinity,
+                  height: double.infinity,
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    // لضبط العناصر إلى اليسار
+                    children: [
 
-                    Align(
-                      alignment: Alignment.centerRight, // محاذاة النص إلى اليمين
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pushNamed(route_Addinfo);
-                        },
+                      Align(
+                        alignment: Alignment.centerRight,
+                        // محاذاة النص إلى اليمين
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pushNamed(route_Addinfo);
+                          },
 
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min, // لضبط حجم الـ Row بما يتناسب مع المحتوى
-                          children: [
-                            Text(
-                           "اضافه سكن",
-                              style: TextStyle(color: Colors.black),
-                            ),
-                            SizedBox(width: 10), // المسافة بين الرمز والنص
-                            Icon(
-                              Icons.add,
-                              color: Colors.black, // لون الرمز
-                            ),
-                          ],
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            // لضبط حجم الـ Row بما يتناسب مع المحتوى
+                            children: [
+                              Text(
+                                "اضافه سكن",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              SizedBox(width: 10), // المسافة بين الرمز والنص
+                              Icon(
+                                Icons.add,
+                                color: Colors.black, // لون الرمز
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                )
+                    ],
+                  )
 
               );
             },
@@ -257,7 +262,7 @@ class _HomeState extends State<ScreenCitiesRented> {
         child: const Icon(
           Icons.add,
           size: 28,
-          color: Colors.blue,
+          color: Color(0xFF15b9b4),
         ),
       ),
 
@@ -269,13 +274,47 @@ class _HomeState extends State<ScreenCitiesRented> {
             indexpage = index;
           });
         },
-        items:  [
+        items: [
           Icon(Icons.home, color: Colors.black),
           Icon(Icons.favorite, color: Colors.black),
         ],
-        color: Colors.blue,
+        color: Color(0xFF15b9b4),
         backgroundColor: Colors.white,
-        buttonBackgroundColor: Colors.blue,
+        buttonBackgroundColor: Color(0xFF15b9b4),
+      ),
+      endDrawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xFF15b9b4),
+              ),
+              child: Column(
+                children: [
+                  Image.network(
+                    "https://cdn-icons-png.flaticon.com/128/3177/3177440.png",
+                    width: 50,
+                    fit: BoxFit.fill,),
+                  Center(
+                    child: Text(
+                      'name: ',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            FnListTile("ملف شخصي", Icon(Icons.person)),
+            FnListTile("الإعدادات", Icon(Icons.settings)),
+            FnListTile("دعم فني", Icon(Icons.support_agent_outlined))
+,            FnListTile("تسجيل خروج", Icon(Icons.logout))
+
+          ],
+        ),
       ),
     );
   }
@@ -328,7 +367,7 @@ class _HomeState extends State<ScreenCitiesRented> {
             break;
         }
       },
-      child:Card(
+      child: Card(
         shadowColor: Colors.blue,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
@@ -376,6 +415,77 @@ class _HomeState extends State<ScreenCitiesRented> {
         ),
       ),
     );
+    /////////////////////////////
+    /////////////////////////////
+    /////////////////////////////
+    /////////////////////////////
+    /////////////////////////////
+    /////////////////////////////
+
+
+  }
+
+  Widget FnListTile(String title, Icon icon) {
+    return ListTile(
+        leading: icon,
+        title: Text(
+          title,
+          style: Theme
+              .of(context)
+              .textTheme
+              .bodyMedium,
+          textAlign: TextAlign.right,
+        ),
+        onTap: () {
+          switch (title) {
+            case "ملف شخصي":
+            // Navigator.of(context).push(MaterialPageRoute(
+            // builder: (context) => ProfilePage(),
+            // ));
+              break;
+
+            case "الإعدادات":
+            // Navigator.of(context).push(MaterialPageRoute(
+            // builder: (context) => SettingsPage(),
+            // ));
+              break;
+
+            case "دعم فني":
+            // Navigator.of(context).push(MaterialPageRoute(
+            // builder: (context) => SupportPage(),
+            // ));
+              break;
+
+            case "تسجيل خروج":
+              Navigator.of(context).pop();
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text('تسجيل خروج'),
+                    content: Text('هل تريد تسجيل الخروج؟'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Text('إلغاء'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Text('خروج'),
+                      ),
+                    ],
+                  );
+                },
+              );
+              break;
+
+            default:
+              break;
+          }
+        });
   }
 }
-

@@ -18,7 +18,6 @@ class _HomeState extends State<ScreenCitiesUser> {
   @override
   List<Widget> pages = [
     ScreenSetting(),
-    ScreenSetting(),
     FavoritesPage(),
   ];
   int indexpage = 0;
@@ -73,7 +72,8 @@ class _HomeState extends State<ScreenCitiesUser> {
   List<String> list = ["تسجيل دخول", "حساب جديد", "تسجيل خروج"];
   String? select;
   Color color = Colors.white38;
-  List<String> appBarTitles = ["مدن", "إعدادات", "المفضلة", "الملف الشخصي"];
+  List<String> appBarTitles = ["مدن", "المفضلة"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,7 +82,7 @@ class _HomeState extends State<ScreenCitiesUser> {
           alignment: Alignment.center,
           child: Text(appBarTitles[indexpage]),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xFF15b9b4),
         //   actions: [
         //     PopupMenuButton(
         //         icon: Icon(
@@ -152,11 +152,14 @@ class _HomeState extends State<ScreenCitiesUser> {
                     children: [
                       ElevatedButton(
                         onPressed: () {},
-                        child: Icon(Icons.search),
+                        child: Icon(
+                          Icons.search,
+                          color: Colors.black,
+                        ),
                         style: ElevatedButton.styleFrom(
                           shape: CircleBorder(),
                           padding: EdgeInsets.all(16),
-                          backgroundColor: Colors.blue,
+                          backgroundColor: Color(0xFF15b9b4),
                         ),
                       ),
                       SizedBox(width: 8),
@@ -215,19 +218,54 @@ class _HomeState extends State<ScreenCitiesUser> {
         onTap: (index) {
           setState(() {
             indexpage = index;
-
           });
         },
-        items: const [
+        items: [
           Icon(Icons.home, color: Colors.black),
-          Icon(Icons.search, color: Colors.black),
           Icon(Icons.favorite, color: Colors.black),
-          Icon(Icons.person, color: Colors.black),
         ],
-        color: Colors.blue,
+        color: Color(0xFF15b9b4),
         backgroundColor: Colors.white,
-        buttonBackgroundColor: Colors.blue,
+        buttonBackgroundColor: Color(0xFF15b9b4),
         animationDuration: Duration(milliseconds: 300),
+      ),
+      ////////////////////////
+      ////////////////////////
+      ////////////////////////
+      ////////////////////////
+      endDrawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xFF15b9b4),
+              ),
+              child: Column(
+                children: [
+                  Image.network(
+                    "https://cdn-icons-png.flaticon.com/128/3177/3177440.png",
+                    width: 50,
+                    fit: BoxFit.fill,
+                  ),
+                  Center(
+                    child: Text(
+                      'name: ',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            FnListTile("ملف شخصي", Icon(Icons.person)),
+            FnListTile("الإعدادات", Icon(Icons.settings)),
+            FnListTile("دعم فني", Icon(Icons.support_agent_outlined)),
+            FnListTile("تسجيل خروج", Icon(Icons.logout))
+          ],
+        ),
       ),
     );
   }
@@ -240,121 +278,188 @@ class _HomeState extends State<ScreenCitiesUser> {
 
   Widget City(int index) {
     return GestureDetector(
+      onTap: () {
+        switch (cities[index].name) {
+          case 'اربد':
+            Navigator.of(context).pushNamed(route_irbed);
+            break;
+          case 'جرش':
+            Navigator.of(context).pushNamed(route_jarash);
+            break;
+          case 'عجلون':
+            Navigator.of(context).pushNamed(route_ajlon);
+            break;
+          case 'المفرق':
+            Navigator.of(context).pushNamed(route_mafraq);
+            break;
+          case 'عمان':
+            Navigator.of(context).pushNamed(route_amman);
+            break;
+          case 'مادبا':
+            Navigator.of(context).pushNamed(route_maan);
+            break;
+          case 'البلقاء':
+            Navigator.of(context).pushNamed(route_balqa);
+            break;
+          case 'الكرك':
+            Navigator.of(context).pushNamed(route_karak);
+            break;
+          case 'الطفيلة':
+            Navigator.of(context).pushNamed(route_tafileh);
+            break;
+          case 'معان':
+            Navigator.of(context).pushNamed(route_maan);
+            break;
+          case 'العقبة':
+            Navigator.of(context).pushNamed(route_aqaba);
+            break;
+          default:
+            Navigator.of(context).pushNamed(route_ScreenCitiesUser);
+            break;
+        }
+      },
+      child: Card(
+        shadowColor: Color(0xFF15b9b4),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        elevation: 5,
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.network(
+                cities[index].image,
+                width: double.infinity,
+                height: 200,
+                fit: BoxFit.cover,
+                alignment: Alignment.center,
+              ),
+            ),
+            Positioned(
+              top: 8,
+              right: 8,
+              child: GestureDetector(
+                onTap: () {
+                  if (index >= 0 && index < cities.length) {
+                    final city = cities[index];
+                    setState(() {
+                      if (itemfavorit.favorit.contains(city)) {
+                        itemfavorit.favorit.remove(city);
+                        print("Removed ${city.name} from favorites.");
+                      } else {
+                        itemfavorit.favorit.add(city);
+                        print("Added ${city.name} to favorites.");
+                      }
+                    });
+                  } else {
+                    print("Invalid operation: Index $index is out of range.");
+                  }
+                },
+                child: Icon(
+                  itemfavorit.favorit.contains(cities[index])
+                      ? Icons.favorite
+                      : Icons.favorite_border,
+                  color: Colors.red,
+                  size: 28,
+                ),
+              ),
+            ),
+            Positioned(
+              top: 8,
+              left: 8,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+                decoration: BoxDecoration(
+                  color: Colors.black54,
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                child: Text(
+                  cities[index].name,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    shadows: [
+                      Shadow(
+                        blurRadius: 5.0,
+                        color: Colors.black.withOpacity(0.7),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  ////////////////////////
+  ////////////////////////
+  ////////////////////////
+  ////////////////////////
+  ////////////////////////
+
+  Widget FnListTile(String title, Icon icon) {
+    return ListTile(
+        leading: icon,
+        title: Text(
+          title,
+          style: Theme.of(context).textTheme.bodyMedium,
+          textAlign: TextAlign.right,
+        ),
         onTap: () {
-          switch (cities[index].name) {
-            case 'اربد':
-              Navigator.of(context).pushNamed(route_irbed);
+          switch (title) {
+            case "ملف شخصي":
+              // Navigator.of(context).push(MaterialPageRoute(
+              // builder: (context) => ProfilePage(),
+              // ));
               break;
-            case 'جرش':
-              Navigator.of(context).pushNamed(route_jarash);
+
+            case "الإعدادات":
+              // Navigator.of(context).push(MaterialPageRoute(
+              // builder: (context) => SettingsPage(),
+              // ));
               break;
-            case 'عجلون':
-              Navigator.of(context).pushNamed(route_ajlon);
+
+            case "دعم فني":
+              // Navigator.of(context).push(MaterialPageRoute(
+              // builder: (context) => SupportPage(),
+              // ));
               break;
-            case 'المفرق':
-              Navigator.of(context).pushNamed(route_mafraq);
+
+            case "تسجيل خروج":
+              Navigator.of(context).pop();
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text('تسجيل خروج'),
+                    content: Text('هل تريد تسجيل الخروج؟'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Text('إلغاء'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Text('خروج'),
+                      ),
+                    ],
+                  );
+                },
+              );
               break;
-            case 'عمان':
-              Navigator.of(context).pushNamed(route_amman);
-              break;
-            case 'مادبا':
-              Navigator.of(context).pushNamed(route_maan);
-              break;
-            case 'البلقاء':
-              Navigator.of(context).pushNamed(route_balqa);
-              break;
-            case 'الكرك':
-              Navigator.of(context).pushNamed(route_karak);
-              break;
-            case 'الطفيلة':
-              Navigator.of(context).pushNamed(route_tafileh);
-              break;
-            case 'معان':
-              Navigator.of(context).pushNamed(route_maan);
-              break;
-            case 'العقبة':
-              Navigator.of(context).pushNamed(route_aqaba);
-              break;
+
             default:
-              Navigator.of(context).pushNamed(route_ScreenCitiesUser);
               break;
           }
-        },
-        child:Card(
-          shadowColor: Colors.blue,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          elevation: 5,
-          child: Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  cities[index].image,
-                  width: double.infinity,
-                  height: 200,
-                  fit: BoxFit.cover,
-                  alignment: Alignment.center,
-                ),
-              ),
-              Positioned(
-                top: 8,
-                right: 8,
-                child: GestureDetector(
-                  onTap: () {
-                    if (index >= 0 && index < cities.length) {
-                      final city = cities[index];
-                      setState(() {
-                        if (itemfavorit.favorit.contains(city)) {
-                          itemfavorit.favorit.remove(city);
-                          print("Removed ${city.name} from favorites.");
-                        } else {
-                          itemfavorit.favorit.add(city);
-                          print("Added ${city.name} to favorites.");
-                        }
-                      });
-                    } else {
-                      print("Invalid operation: Index $index is out of range.");
-                    }
-                  },
-                  child: Icon(
-                    itemfavorit.favorit.contains(cities[index])
-                        ? Icons.favorite
-                        : Icons.favorite_border,
-                    color: Colors.red,
-                    size: 28,
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 8,
-                left: 8,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
-                  decoration: BoxDecoration(
-                    color: Colors.black54,
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  child: Text(
-                    cities[index].name,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      shadows: [
-                        Shadow(
-                          blurRadius: 5.0,
-                          color: Colors.black.withOpacity(0.7),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        );
+        });
   }
 }
