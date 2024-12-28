@@ -473,7 +473,7 @@ class _HomeState extends State<ScreenCitiesRented> {
                       ),
                       TextButton(
                         onPressed: () {
-                          Navigator.of(context).pop();
+                          Navigator.of(context).pushNamed(route_Userorrented);
                         },
                         child: Text('خروج'),
                       ),
