@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       //////////////////////////////////
       //////////////////////////////////
       //////////////////////////////////
-
+darkTheme:ThemeData.light(),
       theme: ThemeData(
         textTheme: TextTheme(
           bodySmall: TextStyle(

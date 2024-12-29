@@ -4,6 +4,7 @@ import 'package:med_project_flutter2/Class_Favorites.dart';
 import 'package:med_project_flutter2/Screen_favorite.dart';
 import 'package:med_project_flutter2/Screen_setting.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
+import 'package:med_project_flutter2/free.dart';
 import 'package:med_project_flutter2/userORrented.dart';
 
 class ScreenCitiesUser extends StatefulWidget {
@@ -17,7 +18,7 @@ class _HomeState extends State<ScreenCitiesUser> {
   bool isicon = false;
   @override
   List<Widget> pages = [
-    ScreenSetting(),
+    Free(),
     FavoritesPage(),
   ];
   int indexpage = 0;

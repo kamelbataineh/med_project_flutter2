@@ -17,6 +17,8 @@ class _HomeState extends State<ScreenRegisterRented> {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       drawerEnableOpenDragGesture: false,
       appBar: AppBar(

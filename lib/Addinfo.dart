@@ -21,7 +21,7 @@ class _AddHousingScreenState extends State<Addinfo> {
   List<String> regions = [];
 
   // Create a HousClass object to store the favorite houses
-  HousClass itemhous = HousClass([]);
+  irbidClass itemhous = irbidClass([]);
 
   void addImage() {
     if (imageCount < 15) {

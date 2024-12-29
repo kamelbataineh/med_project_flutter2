@@ -1,6 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
+import 'package:med_project_flutter2/free.dart';
 import '../Class_Favorites.dart';
 import '../Screen_favorite.dart';
 import '../Screen_setting.dart';
@@ -13,9 +14,12 @@ class ScreenCitiesRented extends StatefulWidget {
 }
 class _HomeState extends State<ScreenCitiesRented> {
   bool isicon = false;
+
+
   @override
+
   List<Widget> pages = [
-    ScreenSetting(),
+    Free(),
     FavoritesPage(),
 
   ];
@@ -71,10 +75,15 @@ class _HomeState extends State<ScreenCitiesRented> {
   List<String> list = ["تسجيل دخول", "حساب جديد", "تسجيل خروج"];
   String? select;
   Color color = Colors.white38;
-  List<String> appBarTitles = ["مدن", "إعدادات", "المفضلة", "الملف الشخصي"];
+  List<String> appBarTitles = ["مدن","المفضلة",];
+
+
+
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       appBar: AppBar(
         title: Align(
@@ -445,9 +454,9 @@ class _HomeState extends State<ScreenCitiesRented> {
               break;
 
             case "الإعدادات":
-            // Navigator.of(context).push(MaterialPageRoute(
-            // builder: (context) => SettingsPage(),
-            // ));
+            Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => ScreenSetting(  onThemeChanged: (bool ) {  },),
+            ));
               break;
 
             case "دعم فني":

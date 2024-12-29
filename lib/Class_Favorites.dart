@@ -39,10 +39,14 @@ class AddHous {
       this.typename);
 }
 ///////////////////////////
-class HousClass {
+///////////////////////////
+///////////////////////////
+///////////////////////////
+///////////////////////////
+class irbidClass {
   late List<AddHous> favorit;
 
-  HousClass(this.favorit);
+  irbidClass(this.favorit);
 }
 
-HousClass itemhous = HousClass([]);
+irbidClass itemhous = irbidClass([]);
