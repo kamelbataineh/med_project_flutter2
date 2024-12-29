@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/City_Housing.dart';
+import 'package:med_project_flutter2/city/U.irbed.dart';
+import 'package:med_project_flutter2/consr_routes.dart';
+import 'package:med_project_flutter2/rented/Screen_cities_rented.dart';
 import 'Class_Favorites.dart'; // Import the file where AddHous and HousClass are defined
 
 class Addinfo extends StatefulWidget {
@@ -8,7 +11,7 @@ class Addinfo extends StatefulWidget {
 }
 
 class _AddHousingScreenState extends State<Addinfo> {
-  int imageCount = 0;  // Number of images added
+  String? imageCount;   // Now holds a single image URL
   String? housingName;
   String? residentType;
   String? governorate;
@@ -20,14 +23,6 @@ class _AddHousingScreenState extends State<Addinfo> {
   List<String> regions = [];
 
   irbidClass itemhous = irbidClass([]);
-
-  void addImage() {
-    if (imageCount < 15) {
-      setState(() {
-        imageCount++;
-      });
-    }
-  }
 
   void updateRegions(String selectedGovernorate) {
     setState(() {
@@ -72,19 +67,16 @@ class _AddHousingScreenState extends State<Addinfo> {
     });
   }
 
-  // Function to add a new housing item to favorites
   void addHousingItem() {
-    if (housingName != null && residentType != null && governorate != null && phoneNumber != null && address != null && googleMapLink != null) {
+    if (housingName != null && residentType != null && governorate != null && phoneNumber != null && address != null && googleMapLink != null && imageCount != null) {
       AddHous newHouse = AddHous(
         housingName!,
-        [], // Empty list for images, you can add images later
+        imageCount!,  // Now passing the image URL
         phoneNumber!,
         governorate!,
         googleMapLink!,
         residentType!,
       );
-
-      // Add the new house to the list of favorites
       setState(() {
         itemhous.favorit.add(newHouse);
       });
@@ -96,7 +88,8 @@ class _AddHousingScreenState extends State<Addinfo> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => CityHousing(itemhous: itemhous),),
+          builder: (context) => CityHousing(itemhous: itemhous),
+        ),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -124,14 +117,18 @@ class _AddHousingScreenState extends State<Addinfo> {
               children: [
                 Icon(Icons.camera_alt, color: Colors.grey),
                 Spacer(),
-                Text('$imageCount / 15', style: TextStyle(color: Colors.grey)),
+                Text('$imageCount / 1', style: TextStyle(color: Colors.grey)),  // Showing 1 image
                 SizedBox(width: 8),
                 TextButton(
-                  onPressed: addImage,
                   child: Text(
-                    'إضافة صور',
+                    'إضافة صورة',
                     style: TextStyle(color: Colors.black),
                   ),
+                  onPressed: () {
+                    setState(() {
+                      imageCount = 'https://i.pinimg.com/236x/e2/03/b4/e203b442e640f751c9cdd744261b786d.jpg';  // Example single image URL
+                    });
+                  },
                 ),
               ],
             ),

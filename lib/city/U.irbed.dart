@@ -61,8 +61,7 @@ class _HomeState extends State<U_irbed> {
             case 'جامعة اليرموك':
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => CityHousing(itemhous: itemhous), // هنا نمرر itemhous إلى صفحة CityHousing
-                ),
+                  builder: (context) => CityHousing(itemhous: itemhous),  ),
               );
 
               break;

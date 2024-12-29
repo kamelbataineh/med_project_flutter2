@@ -31,7 +31,7 @@ class AddHous {
   String name;
   String typename;
   String cityname;
-  List<String> images = [];
+  String images ;
   String phone;
   String map;
 
@@ -49,4 +49,27 @@ class irbidClass {
   irbidClass(this.favorit);
 }
 
-irbidClass itemhous = irbidClass([]);
+irbidClass itemhous = irbidClass([
+
+  AddHous("goo",'https://i.pinimg.com/236x/e2/03/b4/e203b442e640f751c9cdd744261b786d.jpg', "077777777", "Husing", "amman", "Students")
+]);
+////////////////////////////////
+////////////////////////////////
+////////////////////////////////
+////////////////////////////////
+////////////////////////////////
+class HousingClass {
+  final String name;
+  final String location;
+  final double price;
+  final int rooms;
+  final String availabilityDate;
+
+  HousingClass({
+    required this.name,
+    required this.location,
+    required this.price,
+    required this.rooms,
+    required this.availabilityDate,
+  });
+}
