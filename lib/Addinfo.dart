@@ -86,7 +86,7 @@ class _AddHousingScreenState extends State<Addinfo> {
 
       // Add the new house to the list of favorites
       setState(() {
-        itemhous.favorit.add(irbidClass(newHouse));
+        itemhous.favorit.add(newHouse);
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
