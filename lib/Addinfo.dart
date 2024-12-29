@@ -17,10 +17,8 @@ class _AddHousingScreenState extends State<Addinfo> {
   String? address;
   String? googleMapLink;
 
-  // Initialize regions as an empty list
   List<String> regions = [];
 
-  // Create a HousClass object to store the favorite houses
   irbidClass itemhous = irbidClass([]);
 
   void addImage() {
@@ -88,23 +86,19 @@ class _AddHousingScreenState extends State<Addinfo> {
 
       // Add the new house to the list of favorites
       setState(() {
-        itemhous.favorit.add(newHouse);
+        itemhous.favorit.add(irbidClass(newHouse));
       });
 
-      // Show confirmation message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('تم إضافة السكن بنجاح!')),
       );
 
-      // Navigate to the new page to display the housing list
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => CityHousing(itemhous: itemhous), // Pass itemhous to the new page
-        ),
+          builder: (context) => CityHousing(itemhous: itemhous),),
       );
     } else {
-      // If any field is missing, show a message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('يرجى تعبئة جميع الحقول!')),
       );

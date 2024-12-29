@@ -27,7 +27,6 @@ class CityHousing extends StatelessWidget {
     itemCount:itemhous.favorit.length,
     itemBuilder: (context, index) {
     final house = itemhous.favorit[index];
-
     return Card(
         margin: EdgeInsets.all(10),
         child: ListTile(
@@ -38,19 +37,6 @@ class CityHousing extends StatelessWidget {
       );},
     ),
     ),
-
-        //   .builder(
-        // itemCount: itemhous.favorit.length,
-        // itemBuilder: (context, index) {
-        //   final house = itemhous.favorit[index];
-        //   return Card(
-        //     margin: EdgeInsets.all(10),
-        //     child: ListTile(
-        //       title: Text(house.name),
-        //       subtitle: Text('${house.cityname} - ${house.typename}'),
-        //       trailing: Icon(Icons.location_on),
-        //     ),
-        //   );
 
     );
   }
