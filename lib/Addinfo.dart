@@ -11,7 +11,8 @@ class Addinfo extends StatefulWidget {
 }
 
 class _AddHousingScreenState extends State<Addinfo> {
-  String? imageCount;   // Now holds a single image URL
+  double ?price;
+  String? imageCount;
   String? housingName;
   String? residentType;
   String? governorate;
@@ -68,8 +69,9 @@ class _AddHousingScreenState extends State<Addinfo> {
   }
 
   void addHousingItem() {
-    if (housingName != null && residentType != null && governorate != null && phoneNumber != null && address != null && googleMapLink != null && imageCount != null) {
+    if (price!=null && housingName != null && residentType != null && governorate != null && phoneNumber != null && address != null && googleMapLink != null && imageCount != null) {
       AddHous newHouse = AddHous(
+  price!,
         housingName!,
         imageCount!,  // Now passing the image URL
         phoneNumber!,
@@ -168,6 +170,9 @@ class _AddHousingScreenState extends State<Addinfo> {
             }),
             buildTextField('رابط جوجل ماب', Icons.map, onChanged: (value) {
               googleMapLink = value;
+            }),
+            buildTextField('السعر', Icons.monetization_on_outlined, onChanged: (value) {
+              price = value as double?;
             }),
             SizedBox(height: 20),
             ElevatedButton(

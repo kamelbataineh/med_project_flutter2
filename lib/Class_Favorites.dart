@@ -34,8 +34,9 @@ class AddHous {
   String images ;
   String phone;
   String map;
+  double price;
 
-  AddHous(this.name, this.images, this.phone, this.cityname, this.map,
+  AddHous(this.price,this.name, this.images, this.phone, this.cityname, this.map,
       this.typename);
 }
 ///////////////////////////
@@ -51,7 +52,12 @@ class irbidClass {
 
 irbidClass itemhous = irbidClass([
 
-  AddHous("goo",'https://i.pinimg.com/236x/e2/03/b4/e203b442e640f751c9cdd744261b786d.jpg', "077777777", "Husing", "amman", "Students")
+  AddHous(140,"Home1",'https://i.pinimg.com/236x/e2/03/b4/e203b442e640f751c9cdd744261b786d.jpg', "077777777", "Husing", "amman", "Students"),
+  AddHous(120,"Home2",'', "077777777", "Husing", "amman", "Students"),
+  AddHous(200,"Home3",'https://i.pinimg.com/236x/e2/03/b4/e203b442e640f751c9cdd744261b786d.jpg', "077777777", "Husing", "amman", "Students"),
+  AddHous(300,"Home4",'https://i.pinimg.com/236x/e2/03/b4/e203b442e640f751c9cdd744261b786d.jpg', "077777777", "Husing", "amman", "Students"),
+  AddHous(150,"Home5",'https://i.pinimg.com/236x/e2/03/b4/e203b442e640f751c9cdd744261b786d.jpg', "077777777", "Husing", "amman", "Students"),
+
 ]);
 ////////////////////////////////
 ////////////////////////////////
@@ -59,16 +65,10 @@ irbidClass itemhous = irbidClass([
 ////////////////////////////////
 ////////////////////////////////
 class HousingClass {
-  final String name;
-  final String location;
-  final double price;
   final int rooms;
   final String availabilityDate;
 
   HousingClass({
-    required this.name,
-    required this.location,
-    required this.price,
     required this.rooms,
     required this.availabilityDate,
   });

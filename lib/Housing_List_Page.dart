@@ -1,52 +1,36 @@
-import 'package:flutter/material.dart';
-import 'Class_Favorites.dart';
-import 'Housing_Details_Page.dart';
-class HousingListPage extends StatelessWidget {
-  final List<HousingClass> housings = [
-    HousingClass(
-      name: 'شقة في إربد',
-      location: 'الحصن',
-      price: 300,
-      rooms: 2,
-      availabilityDate: '2023-12-01',
-    ),
-    HousingClass(
-      name: 'شقة في إربد',
-      location: 'دوار الثقافة',
-      price: 350,
-      rooms: 3,
-      availabilityDate: '2024-01-10',
-    ),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('قائمة السكن'),
-      ),
-      body: ListView.builder(
-        itemCount: housings.length,
-        itemBuilder: (context, index) {
-          final housing = housings[index];
-          return Card(
-            margin: const EdgeInsets.all(8.0),
-            child: ListTile(
-              title: Text(housing.name),
-              subtitle: Text('${housing.price} دولار/شهر'),
-              trailing: Icon(Icons.arrow_forward),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => HousingDetailsPage(housing: housing),
-                  ),
-                );
-              },
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
+// import 'package:flutter/material.dart';
+// import 'Class_Favorites.dart';
+//
+// class HousingDetailsPage extends StatelessWidget {
+//   final irbidClass itemhous;
+//   HousingDetailsPage({required this.itemhous});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     final house = itemhous.favorit[0]; // Access the first house/item from the favorit list
+//
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('تفاصيل السكن'),
+//       ),
+//       body: Padding(
+//         padding: const EdgeInsets.all(16.0),
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             // Display the image if you have an image URL or asset
+//             Image.network(house.phone), // Make sure house.imageUrl is properly defined
+//             SizedBox(height: 8),
+//             Text('اسم السكن: ${house.name}', style: TextStyle(fontSize: 18)),
+//             SizedBox(height: 8),
+//             Text('عدد الغرف: ${house.images}', style: TextStyle(fontSize: 18)),
+//             SizedBox(height: 8),
+//             Text('متاح من: ${house.cityname}', style: TextStyle(fontSize: 18)),
+//             SizedBox(height: 8),
+//             Text('السعر: ${house.price} دولار/شهر', style: TextStyle(fontSize: 18)),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
