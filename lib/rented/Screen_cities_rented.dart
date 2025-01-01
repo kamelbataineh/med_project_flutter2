@@ -455,7 +455,7 @@ class _HomeState extends State<ScreenCitiesRented> {
 
             case "الإعدادات":
             Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => ScreenSetting(  onThemeChanged: (bool ) {  },),
+            builder: (context) => ScreenSetting(),
             ));
               break;
 

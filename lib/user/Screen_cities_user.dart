@@ -420,9 +420,9 @@ class _HomeState extends State<ScreenCitiesUser> {
               break;
 
             case "الإعدادات":
-              // Navigator.of(context).push(MaterialPageRoute(
-              // builder: (context) => SettingsPage(),
-              // ));
+              Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) =>ScreenSetting(),
+              ));
               break;
 
             case "دعم فني":
