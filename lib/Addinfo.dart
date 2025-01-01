@@ -11,8 +11,8 @@ class Addinfo extends StatefulWidget {
 }
 
 class _AddHousingScreenState extends State<Addinfo> {
-  double ?price;
-  String? imageCount;
+  String? imageUrl = '';
+  double? price;
   String? housingName;
   String? residentType;
   String? governorate;
@@ -32,7 +32,13 @@ class _AddHousingScreenState extends State<Addinfo> {
           regions = ['جامعة اليرموك', 'جامعة العلوم والتكنولوجيا الأردنية'];
           break;
         case 'عمان':
-          regions = ['الجامعة الأردنية', 'جامعة الأميرة سمية للتكنولوجيا', 'جامعة البترا', 'الجامعة الألمانية الأردنية', 'جامعة الشرق الأوسط'];
+          regions = [
+            'الجامعة الأردنية',
+            'جامعة الأميرة سمية للتكنولوجيا',
+            'جامعة البترا',
+            'الجامعة الألمانية الأردنية',
+            'جامعة الشرق الأوسط'
+          ];
           break;
         case 'الزرقاء':
           regions = ['جامعة الهاشمية'];
@@ -69,11 +75,18 @@ class _AddHousingScreenState extends State<Addinfo> {
   }
 
   void addHousingItem() {
-    if (price!=null && housingName != null && residentType != null && governorate != null && phoneNumber != null && address != null && googleMapLink != null && imageCount != null) {
+    if (price != null &&
+        housingName != null &&
+        residentType != null &&
+        governorate != null &&
+        phoneNumber != null &&
+        address != null &&
+        googleMapLink != null &&
+        imageUrl != null) {
       AddHous newHouse = AddHous(
-  price!,
+        price!,
         housingName!,
-        imageCount!,  // Now passing the image URL
+        imageUrl!,
         phoneNumber!,
         governorate!,
         googleMapLink!,
@@ -119,7 +132,8 @@ class _AddHousingScreenState extends State<Addinfo> {
               children: [
                 Icon(Icons.camera_alt, color: Colors.grey),
                 Spacer(),
-                Text('$imageCount / 1', style: TextStyle(color: Colors.grey)),  // Showing 1 image
+                Text('', style: TextStyle(color: Colors.grey)),
+                // Showing image count
                 SizedBox(width: 8),
                 TextButton(
                   child: Text(
@@ -128,10 +142,14 @@ class _AddHousingScreenState extends State<Addinfo> {
                   ),
                   onPressed: () {
                     setState(() {
-                      imageCount = 'https://i.pinimg.com/236x/e2/03/b4/e203b442e640f751c9cdd744261b786d.jpg';  // Example single image URL
+                      imageUrl =
+                      'https://i.pinimg.com/236x/e2/03/b4/e203b442e640f751c9cdd744261b786d.jpg'; // Example image URL
                     });
                   },
                 ),
+                if (imageUrl != null && imageUrl!.isNotEmpty)
+                  Image.network(imageUrl!),
+                // Show the image if URL is available
               ],
             ),
             SizedBox(height: 10),
@@ -147,7 +165,19 @@ class _AddHousingScreenState extends State<Addinfo> {
             ),
             buildDropdown(
               'اختر المحافظة',
-              ['إربد', 'عمان', 'الزرقاء', 'العقبة', 'مأدبا', 'السلط', 'جرش', 'عجلون', 'الكرك', 'الطفيلة', 'معان'],
+              [
+                'إربد',
+                'عمان',
+                'الزرقاء',
+                'العقبة',
+                'مأدبا',
+                'السلط',
+                'جرش',
+                'عجلون',
+                'الكرك',
+                'الطفيلة',
+                'معان'
+              ],
                   (value) {
                 setState(() {
                   governorate = value;
@@ -165,15 +195,17 @@ class _AddHousingScreenState extends State<Addinfo> {
             buildTextField('الهاتف', Icons.phone, onChanged: (value) {
               phoneNumber = value;
             }),
-            buildTextField('العنوان - شارع - بجانب مكان', Icons.location_on, onChanged: (value) {
-              address = value;
-            }),
+            buildTextField('العنوان - شارع - بجانب مكان', Icons.location_on,
+                onChanged: (value) {
+                  address = value;
+                }),
             buildTextField('رابط جوجل ماب', Icons.map, onChanged: (value) {
               googleMapLink = value;
             }),
-            buildTextField('السعر', Icons.monetization_on_outlined, onChanged: (value) {
-              price = value as double?;
-            }),
+            buildTextField('السعر', Icons.monetization_on_outlined,
+                onChanged: (value) {
+                  price = double.tryParse(value); // Convert text to double
+                }),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: addHousingItem,
@@ -189,7 +221,8 @@ class _AddHousingScreenState extends State<Addinfo> {
     );
   }
 
-  Widget buildTextField(String label, IconData icon, {Function(String)? onChanged}) {
+  Widget buildTextField(String label, IconData icon,
+      {Function(String)? onChanged}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextField(
@@ -205,7 +238,8 @@ class _AddHousingScreenState extends State<Addinfo> {
     );
   }
 
-  Widget buildDropdown(String label, List<String> items, Function(String?) onChanged) {
+  Widget buildDropdown(
+      String label, List<String> items, Function(String?) onChanged) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: DropdownButtonFormField<String>(

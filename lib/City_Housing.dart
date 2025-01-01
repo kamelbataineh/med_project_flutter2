@@ -42,7 +42,7 @@ class CityHousing extends StatelessWidget {
                     housing: HousingClass(
                       rooms: 3,
                       availabilityDate: "2024-12-31",
-                    ), itemhous: itemhous,
+                    ),
                   ),
                 ),
               );
