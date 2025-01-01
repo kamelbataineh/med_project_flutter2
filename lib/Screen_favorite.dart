@@ -23,12 +23,11 @@ class _FavoritesPageState extends State<FavoritesPage> {
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
+
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 3,
-                        blurRadius: 5,
+
                         offset: Offset(0, 3), // Shadow position
                       ),
                     ],
@@ -69,7 +68,6 @@ class _FavoritesPageState extends State<FavoritesPage> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
                 ),
               ),
             ),

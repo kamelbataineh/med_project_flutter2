@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_common/get_reset.dart';
@@ -113,30 +114,57 @@ class HousingClass {
 //////////////////////
 //////////////////////
 
-
-
-
-
-
 class ThemeService {
   final lightTheme = ThemeData.light().copyWith(
     primaryColor: Colors.blueGrey.shade300,
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.blueGrey,
-      iconTheme: IconThemeData(color: Colors.white),
+      backgroundColor: Color(0xFF15b9b4),
+      iconTheme: IconThemeData(color: Colors.black),
       titleTextStyle: TextStyle(
-        color: Colors.white,
+        color: Colors.black,
         fontSize: 20,
         fontWeight: FontWeight.bold,
       ),
     ),
-    dividerColor: Colors.black12,
+
+    canvasColor: Colors.black,
+    dividerColor: Colors.black,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.blueGrey.shade300,
+        backgroundColor: Colors.black,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+
+      filled: true,
+      fillColor: Colors.grey,
+      hintStyle: TextStyle(
+        color: Colors.black,       fontSize: 16,
+      ),
+      labelStyle: TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.bold,
+      ),
+
+
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: Colors.black45),
+      ),
+
+
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: Color(0xFF15b9b4), width: 2),
+      ),
+
+
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: Colors.black45, width: 1),
       ),
     ),
   );
@@ -154,13 +182,49 @@ class ThemeService {
     ),
     dividerColor: Colors.white54,
     elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.blue.shade800,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
+        style: ElevatedButton.styleFrom(
+      iconColor: Colors.black,
+      backgroundColor: Colors.white54,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+    )),
+    /////////////////////
+    /////////////////////
+    /////////////////////
+    /////////////////////
+    /////////////////////
+    inputDecorationTheme: InputDecorationTheme(
+
+      filled: true,
+      fillColor: Colors.grey,
+      hintStyle: TextStyle(
+ color: Colors.black,       fontSize: 16,
+      ),
+      labelStyle: TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.bold,
+      ),
+
+
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: Colors.black45),
+      ),
+
+
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: Color(0xFF15b9b4), width: 2),
+      ),
+
+
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: Colors.black45, width: 1),
       ),
     ),
+
   );
 
   final _getStorage = GetStorage();

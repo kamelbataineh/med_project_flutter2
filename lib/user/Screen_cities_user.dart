@@ -83,7 +83,6 @@ class _HomeState extends State<ScreenCitiesUser> {
           alignment: Alignment.center,
           child: Text(appBarTitles[indexpage]),
         ),
-        backgroundColor: Color(0xFF15b9b4),
         //   actions: [
         //     PopupMenuButton(
         //         icon: Icon(
@@ -155,12 +154,10 @@ class _HomeState extends State<ScreenCitiesUser> {
                         onPressed: () {},
                         child: Icon(
                           Icons.search,
-                          color: Colors.black,
                         ),
                         style: ElevatedButton.styleFrom(
                           shape: CircleBorder(),
                           padding: EdgeInsets.all(16),
-                          backgroundColor: Color(0xFF15b9b4),
                         ),
                       ),
                       SizedBox(width: 8),
@@ -170,9 +167,6 @@ class _HomeState extends State<ScreenCitiesUser> {
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.3),
-                                blurRadius: 6.0,
-                                spreadRadius: 0.5,
                               ),
                             ],
                             borderRadius: BorderRadius.circular(10),
@@ -180,12 +174,15 @@ class _HomeState extends State<ScreenCitiesUser> {
                           child: TextField(
                             onChanged: null,
                             decoration: InputDecoration(
+                              counterStyle: TextStyle(color: Colors.black),
                               hintText: "ابحث هنا...",
                               hintStyle:
-                                  TextStyle(color: Colors.black, fontSize: 16),
+                                  TextStyle( fontSize: 16 ,color: Colors.black),
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.all(12),
+
                             ),
+                            style: TextStyle(color: Colors.black),
                           ),
                         ),
                       ),
@@ -214,7 +211,7 @@ class _HomeState extends State<ScreenCitiesUser> {
               children: pages,
             ),
       bottomNavigationBar: CurvedNavigationBar(
-        height: 60,
+        height: 50,
         index: indexpage,
         onTap: (index) {
           setState(() {
