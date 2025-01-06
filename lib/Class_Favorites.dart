@@ -6,7 +6,6 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get_storage/get_storage.dart';
 import 'Class_Favorites.dart';
 import 'Class_Favorites.dart';
-import 'user/Screen_cities_user.dart';
 
 class PagesCitis {
   String name;

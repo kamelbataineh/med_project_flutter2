@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:med_project_flutter2/City_Housing.dart';
-import 'package:med_project_flutter2/Class_Favorites.dart';
-import 'package:med_project_flutter2/user/Screen_cities_user.dart';
-import 'package:med_project_flutter2/rented/Screen_login_rented.dart';
-import '../../../../AndroidStudioProjects/Aplication_HOME/lib/city/U.irbed.dart';
-import 'package:med_project_flutter2/consr_routes.dart';
-import 'package:med_project_flutter2/userORrented.dart';
-import 'rented/Screen_register_rented.dart';
-import 'package:med_project_flutter2/user/Screen_cities_user.dart';
-import '../../../../AndroidStudioProjects/Aplication_HOME/lib/city/U.irbed.dart';
+
+import 'Class_Favorites.dart';
 import 'based_router.dart';
+import 'consr_routes.dart';
 
 void main() {
   runApp(const MyApp());
