@@ -231,12 +231,10 @@ class _HomeState extends State<ScreenCitiesRented> {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    // لضبط العناصر إلى اليسار
                     children: [
 
                       Align(
                         alignment: Alignment.centerRight,
-                        // محاذاة النص إلى اليمين
                         child: TextButton(
                           onPressed: () {
                             Navigator.of(context).pushNamed(route_Addinfo);
@@ -244,16 +242,15 @@ class _HomeState extends State<ScreenCitiesRented> {
 
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
-                            // لضبط حجم الـ Row بما يتناسب مع المحتوى
                             children: [
                               Text(
                                 "اضافه سكن",
                                 style: TextStyle(color: Colors.black),
                               ),
-                              SizedBox(width: 10), // المسافة بين الرمز والنص
+                              SizedBox(width: 10),
                               Icon(
                                 Icons.add,
-                                color: Colors.black, // لون الرمز
+                                color: Colors.black,
                               ),
                             ],
                           ),

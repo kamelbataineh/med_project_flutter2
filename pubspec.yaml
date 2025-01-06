@@ -41,6 +41,8 @@ dependencies:
   bottom_bar_with_sheet: ^2.4.0
   get_storage: ^2.1.1
   get: ^4.6.1
+  cached_network_image: ^3.2.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -79,24 +81,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-       - family: play
-         fonts:
-         - asset: imgs/AABU.png
-         - asset: imgs/YU.png
-         - asset: imgs/SFJI.png
-         - asset: imgs/ANU.png
-         - asset: imgs/MU.png
-         - asset: imgs/JU.png
-         - asset: imgs/AHU.png
-         - asset: imgs/TTU.png
-         - asset: imgs/BAU.png
-         - asset: imgs/HU.png
-         - asset: imgs/map1.png
-         - asset: imgs/map2.png
-         - asset: imgs/map3.png
+  assets:
+      - assets/imgs/
 
-  #         - asset: fonts/Schyler-Regular.ttf
+    #         - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
