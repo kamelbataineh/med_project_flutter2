@@ -4,12 +4,12 @@ import 'package:med_project_flutter2/City_Housing.dart';
 import 'package:med_project_flutter2/Class_Favorites.dart';
 import 'package:med_project_flutter2/user/Screen_cities_user.dart';
 import 'package:med_project_flutter2/rented/Screen_login_rented.dart';
-import 'package:med_project_flutter2/city/U.irbed.dart';
+import '../../../../AndroidStudioProjects/Aplication_HOME/lib/city/U.irbed.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
 import 'package:med_project_flutter2/userORrented.dart';
 import 'rented/Screen_register_rented.dart';
 import 'package:med_project_flutter2/user/Screen_cities_user.dart';
-import 'city/U.irbed.dart';
+import '../../../../AndroidStudioProjects/Aplication_HOME/lib/city/U.irbed.dart';
 import 'based_router.dart';
 
 void main() {

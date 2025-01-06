@@ -41,7 +41,6 @@ dependencies:
   bottom_bar_with_sheet: ^2.4.0
   get_storage: ^2.1.1
   get: ^4.6.1
-  cached_network_image: ^3.2.3
 
 dev_dependencies:
   flutter_test:
@@ -82,7 +81,8 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   assets:
-      - assets/imgs/
+      - imgs/
+
 
     #         - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
@@ -95,3 +95,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+distributionUrl=https\://services:
+  gradle:
+    org/distributions/gradle-7:
+      3:
+        3-bin:
+          zip:
