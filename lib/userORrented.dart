@@ -66,14 +66,21 @@ class _UserorrentedState extends State<Userorrented> {
                         Navigator.of(context)
                             .pushReplacementNamed(route_ScreenRegisterRented);
                       },
-                      style: Theme.of(context).elevatedButtonTheme.style,
-                      child: const Text(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFF15b9b4),
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),child: const Text(
                         'مؤجر',
                         style: TextStyle(fontSize: 18, color: Colors.black),
                       ),
                     ),
                     SizedBox(height: 20),
+
                     ElevatedButton(
+
                       onPressed: () {
                         Navigator.of(context)
                             .pushReplacementNamed(route_ScreenRegisterUser);

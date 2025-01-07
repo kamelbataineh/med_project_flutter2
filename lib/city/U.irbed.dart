@@ -62,14 +62,14 @@ class _HomeState extends State<U_irbed> {
             case 'جامعة اليرموك':
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => CityHousing(itemhous: itemhous),  ),
+                  builder: (context) => CityHousing(),  ),
               );
 
               break;
             case 'جامعة العلوم والتكنولوجيا الأردنية':
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => CityHousing(itemhous: itemhous),
+                  builder: (context) => CityHousing(),
                 ),
               );
               break;

@@ -154,13 +154,17 @@ class _HomeState extends State<ScreenRegisterRented> {
     bool required,
   ) {
     return Padding(
+
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextField(
         decoration: InputDecoration(
           labelText: label,
+          fillColor: Colors.grey[200],
+          filled: true,
           prefixIcon: Icon(icon, color: Color(0xFF15b9b4)),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
+
           ),
         ),
       ),
@@ -176,6 +180,8 @@ class _HomeState extends State<ScreenRegisterRented> {
         obscureText: isVisible,
         ///////////////////////////////////
         decoration: InputDecoration(
+          fillColor: Colors.grey[200],
+          filled: true,
           labelText: label,
           prefixIcon: Icon(Icons.lock, color: Color(0xFF15b9b4)),
           suffixIcon: IconButton(

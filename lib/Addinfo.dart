@@ -19,7 +19,6 @@ class _AddHousingScreenState extends State<Addinfo> {
 
   List<String> regions = [];
 
-  irbidClass itemhous = irbidClass([]);
 
   void updateRegions(String selectedGovernorate) {
     setState(() {
@@ -87,10 +86,9 @@ class _AddHousingScreenState extends State<Addinfo> {
         governorate!,
         googleMapLink!,
         residentType!,
+        address as int
       );
-      setState(() {
-        itemhous.favorit.add(newHouse);
-      });
+
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('تم إضافة السكن بنجاح!')),
@@ -99,7 +97,7 @@ class _AddHousingScreenState extends State<Addinfo> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => CityHousing(itemhous: itemhous),
+          builder: (context) => CityHousing(),
         ),
       );
     } else {
@@ -256,3 +254,89 @@ class _AddHousingScreenState extends State<Addinfo> {
     );
   }
 }
+// import 'package:flutter/material.dart';
+// import 'Class_Favorites.dart';
+//
+// class Addinfo extends StatefulWidget {
+//   @override
+//   _AddHousePageState createState() => _AddHousePageState();
+// }
+//
+// class _AddHousePageState extends State<Addinfo> {
+//   final TextEditingController priceController = TextEditingController();
+//   final TextEditingController nameController = TextEditingController();
+//   final TextEditingController phoneController = TextEditingController();
+//   final TextEditingController cityController = TextEditingController();
+//   final TextEditingController linkController = TextEditingController();
+//   final TextEditingController typeController = TextEditingController();
+//   final TextEditingController idController = TextEditingController();
+//
+//   void addHouse() {
+//     final double price = double.tryParse(priceController.text) ?? 0.0;
+//     final String name = nameController.text;
+//     final String phone = phoneController.text;
+//     final String city = cityController.text;
+//     final String link = linkController.text;
+//     final String type = typeController.text;
+//     final int id = int.tryParse(idController.text) ?? 0;
+//
+//     final newHouse = AddHous(price, name, 'https://via.placeholder.com/150', phone, city, link, type, id);
+//
+//     Navigator.pop(context, newHouse);
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Add New House'),
+//       ),
+//       body: Padding(
+//         padding: const EdgeInsets.all(16.0),
+//         child: ScrollNotificationObserver(
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               TextField(
+//                 controller: priceController,
+//                 decoration: InputDecoration(labelText: 'Price'),
+//                 keyboardType: TextInputType.number,
+//               ),
+//               TextField(
+//                 controller: nameController,
+//                 decoration: InputDecoration(labelText: 'House Name'),
+//               ),
+//               TextField(
+//                 controller: phoneController,
+//                 decoration: InputDecoration(labelText: 'Phone'),
+//               ),
+//               TextField(
+//                 controller: cityController,
+//                 decoration: InputDecoration(labelText: 'City'),
+//               ),
+//               TextField(
+//                 controller: linkController,
+//                 decoration: InputDecoration(labelText: 'Location Link'),
+//               ),
+//               TextField(
+//                 controller: typeController,
+//                 decoration: InputDecoration(labelText: 'Type'),
+//               ),
+//               TextField(
+//                 controller: idController,
+//                 decoration: InputDecoration(labelText: 'House ID'),
+//                 keyboardType: TextInputType.number,
+//               ),
+//               SizedBox(height: 20),
+//               ElevatedButton(
+//                 onPressed: addHouse,
+//                 child: Text('Add House'),
+//                 style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.green)),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

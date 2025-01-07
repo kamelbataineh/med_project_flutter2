@@ -106,6 +106,8 @@ bool isPasswordVisible=true;
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextField(
         decoration: InputDecoration(
+          fillColor: Colors.grey[200],
+          filled: true,
           labelText: label,
           prefixIcon: Icon(icon, color: const Color(0xFF15b9b4)),
           border: OutlineInputBorder(
@@ -125,6 +127,8 @@ obscureText:x ,
         obscureText: isPasswordVisible,
         ///////////////////////////////////
         decoration: InputDecoration(
+          fillColor: Colors.grey[200],
+          filled: true,
           labelText: label,
           prefixIcon:  Icon(Icons.lock, color: Color(0xFF15b9b4)),
           suffixIcon: IconButton(

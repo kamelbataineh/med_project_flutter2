@@ -37,13 +37,13 @@ class AddHous {
   String typename;
   String cityname;
   String images;
-
+  int rooms;
   String phone;
   String map;
   double price;
 
   AddHous(this.price, this.name, this.images, this.phone, this.cityname,
-      this.map, this.typename);
+      this.map, this.typename, this.rooms);
 }
 
 ///////////////////////////
@@ -51,62 +51,67 @@ class AddHous {
 ///////////////////////////
 ///////////////////////////
 ///////////////////////////
-class irbidClass {
-  late List<AddHous> favorit;
+// class irbidClass {
+//   late List<AddHous> favorit;
+//
+//   irbidClass(this.favorit);
+// }
+//
+// irbidClass itemhous = irbidClass([
+//   // AddHous(
+//   //   140,
+//   //   "Home1",
+//   //   'https://i.pinimg.com/236x/e2/03/b4/e203b442e640f751c9cdd744261b786d.jpg',
+//   //   "077777777",
+//   //   "Husing",
+//   //   "amman",
+//   //   "Students",
+//   //   3,
+//   // ),
+//   // AddHous(120, "Home2", '', "077777777", "Husing", "amman", "Students", 4),
+//   // AddHous(
+//   //     200,
+//   //     "Home3",
+//   //     'https://i.pinimg.com/236x/e2/03/b4/e203b442e640f751c9cdd744261b786d.jpg',
+//   //     "077777777",
+//   //     "Husing",
+//   //     "amman",
+//   //     "Students",
+//   //     5),
+//   // AddHous(
+//   //     300,
+//   //     "Home4",
+//   //     'https://i.pinimg.com/236x/e2/03/b4/e203b442e640f751c9cdd744261b786d.jpg',
+//   //     "077777777",
+//   //     "Husing",
+//   //     "amman",
+//   //     "Students",
+//   //     6),
+//   // AddHous(
+//   //     150,
+//   //     "Home5",
+//   //     'https://i.pinimg.com/236x/e2/03/b4/e203b442e640f751c9cdd744261b786d.jpg',
+//   //     "077777777",
+//   //     "Husing",
+//   //     "amman",
+//   //     "Students",
+//   //     4),
+// ]);
 
-  irbidClass(this.favorit);
-}
-
-irbidClass itemhous = irbidClass([
-  AddHous(
-      140,
-      "Home1",
-      'https://i.pinimg.com/236x/e2/03/b4/e203b442e640f751c9cdd744261b786d.jpg',
-      "077777777",
-      "Husing",
-      "amman",
-      "Students"),
-  AddHous(120, "Home2", '', "077777777", "Husing", "amman", "Students"),
-  AddHous(
-      200,
-      "Home3",
-      'https://i.pinimg.com/236x/e2/03/b4/e203b442e640f751c9cdd744261b786d.jpg',
-      "077777777",
-      "Husing",
-      "amman",
-      "Students"),
-  AddHous(
-      300,
-      "Home4",
-      'https://i.pinimg.com/236x/e2/03/b4/e203b442e640f751c9cdd744261b786d.jpg',
-      "077777777",
-      "Husing",
-      "amman",
-      "Students"),
-  AddHous(
-      150,
-      "Home5",
-      'https://i.pinimg.com/236x/e2/03/b4/e203b442e640f751c9cdd744261b786d.jpg',
-      "077777777",
-      "Husing",
-      "amman",
-      "Students"),
-]);
-
 ////////////////////////////////
 ////////////////////////////////
 ////////////////////////////////
 ////////////////////////////////
 ////////////////////////////////
-class HousingClass {
-  final int rooms;
-  final String availabilityDate;
-
-  HousingClass({
-    required this.rooms,
-    required this.availabilityDate,
-  });
-}
+// class HousingClass {
+//   final int rooms;
+//   final String availabilityDate;
+//
+//   HousingClass({
+//     required this.rooms,
+//     required this.availabilityDate,
+//   });
+// }
 
 //////////////////////
 //////////////////////
@@ -125,7 +130,6 @@ class ThemeService {
         fontWeight: FontWeight.bold,
       ),
     ),
-
     canvasColor: Colors.black,
     dividerColor: Colors.black,
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -137,30 +141,24 @@ class ThemeService {
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
-
       filled: true,
       fillColor: Colors.grey,
       hintStyle: TextStyle(
-        color: Colors.black,       fontSize: 16,
+        color: Colors.black,
+        fontSize: 16,
       ),
       labelStyle: TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.bold,
       ),
-
-
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(color: Colors.black45),
       ),
-
-
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(color: Color(0xFF15b9b4), width: 2),
       ),
-
-
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(color: Colors.black45, width: 1),
@@ -194,36 +192,29 @@ class ThemeService {
     /////////////////////
     /////////////////////
     inputDecorationTheme: InputDecorationTheme(
-
       filled: true,
       fillColor: Colors.grey,
       hintStyle: TextStyle(
- color: Colors.black,       fontSize: 16,
+        color: Colors.black,
+        fontSize: 16,
       ),
       labelStyle: TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.bold,
       ),
-
-
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(color: Colors.black45),
       ),
-
-
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(color: Color(0xFF15b9b4), width: 2),
       ),
-
-
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(color: Colors.black45, width: 1),
       ),
     ),
-
   );
 
   final _getStorage = GetStorage();
