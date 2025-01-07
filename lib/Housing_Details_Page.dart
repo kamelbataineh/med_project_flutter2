@@ -25,7 +25,7 @@ HousingDetailsPage({required this.housing});
             SizedBox(height: 8),
             // housing.imageUrl.isNotEmpty
             //     ? Image.network(housing.imageUrl)
-            //     : Container(), // عرض الصورة إذا كانت موجودة
+            //     : Container(),
           ],
         ),
       ),
