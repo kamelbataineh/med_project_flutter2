@@ -22,7 +22,6 @@ class _HomeState extends State<U_mafraq> {
           title: Text('المفرق'),
           backgroundColor:  Color(0xFF15b9b4),
         ),
-        backgroundColor: Colors.white,
 
       body: Padding(
         padding: const EdgeInsets.all(4.0),

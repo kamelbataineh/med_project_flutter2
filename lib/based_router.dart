@@ -14,6 +14,7 @@ import 'city/U_Aqaba.dart';
 import 'city/U_Balqa.dart';
 import 'city/U_Maan.dart';
 import 'city/U_Tafileh.dart';
+import 'city/U_Zarqa.dart';
 import 'city/U_ajlon.dart';
 import 'city/U_jarash.dart';
 import 'city/U_karak.dart';

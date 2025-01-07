@@ -304,7 +304,7 @@ class _HomeState extends State<ScreenCitiesRented> {
                     fit: BoxFit.fill,),
                   Center(
                     child: Text(
-                      'name: ',
+                      'name:______',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
