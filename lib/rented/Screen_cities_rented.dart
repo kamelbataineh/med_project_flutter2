@@ -1,5 +1,17 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:med_project_flutter2/Addinfo.dart';
+import 'package:med_project_flutter2/City_Housing.dart';
+import 'package:med_project_flutter2/city/U.irbed.dart';
+import 'package:med_project_flutter2/city/U_Amman.dart';
+import 'package:med_project_flutter2/city/U_Aqaba.dart';
+import 'package:med_project_flutter2/city/U_Balqa.dart';
+import 'package:med_project_flutter2/city/U_Maan.dart';
+import 'package:med_project_flutter2/city/U_Tafileh.dart';
+import 'package:med_project_flutter2/city/U_ajlon.dart';
+import 'package:med_project_flutter2/city/U_jarash.dart';
+import 'package:med_project_flutter2/city/U_karak.dart';
+import 'package:med_project_flutter2/city/U_mafraq.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
 import 'package:med_project_flutter2/free.dart';
 import '../Class_Favorites.dart';
@@ -12,62 +24,60 @@ class ScreenCitiesRented extends StatefulWidget {
     return _HomeState();
   }
 }
+
 class _HomeState extends State<ScreenCitiesRented> {
   bool isicon = false;
 
-
   @override
-
   List<Widget> pages = [
     Free(),
     FavoritesPage(),
-
   ];
   int indexpage = 0;
 
   final List<PagesCitis> cities = [
     PagesCitis(
-      'اربد',
+      'Irbid',
       'https://i.pinimg.com/564x/e0/5a/34/e05a3477a58ac454e827aac2ab2ec03c.jpg',
     ),
     PagesCitis(
-      'جرش',
+      'Jarash',
       'https://i.pinimg.com/474x/00/e1/f4/00e1f45e889bb474e710a4533c50d544.jpg',
     ),
     PagesCitis(
-      'عجلون',
+      'Ajlon',
       'https://i.pinimg.com/564x/d4/da/1f/d4da1f8c3742f9501681a9e607a29920.jpg',
     ),
     PagesCitis(
-      'المفرق',
+      'Mafraq',
       'https://i.pinimg.com/736x/8d/41/ea/8d41ea639119ca1dc2628b76fde9ca8b.jpg',
     ),
     PagesCitis(
-      'عمان',
+      'Amman',
       'https://i.pinimg.com/564x/03/b4/ff/03b4ffbe9860921a696898d41fe25091.jpg',
     ),
     PagesCitis(
-      'مادبا',
+      'Mdapa',
       'https://i.pinimg.com/564x/d2/f6/28/d2f628a0612545a60f4781974674149a.jpg',
     ),
     PagesCitis(
-      'البلقاء',
+      'Balqa',
       'https://i.pinimg.com/236x/71/70/69/717069eb2e3f4d752808749870c1464f.jpg',
     ),
     PagesCitis(
-      'الكرك',
+      'Karak',
       'https://i.pinimg.com/564x/13/58/cf/1358cf4a6077d0f67d13ece19f148eb7.jpg',
     ),
     PagesCitis(
-      'الطفيلة',
+      'Tafileh',
       'https://i.pinimg.com/736x/48/13/49/4813497936c9154ff6060fb2ef5c0db8.jpg',
     ),
     PagesCitis(
-      'معان',
+      'Maan',
       'https://i.pinimg.com/564x/b9/e4/25/b9e425b64550bb7e3b45a272d7de6f74.jpg',
     ),
     PagesCitis(
-      'العقبة',
+      'Aqaba',
       'https://i.pinimg.com/564x/9f/d6/83/9fd683479f339e1f9d2a6a62958c379a.jpg',
     ),
   ];
@@ -75,203 +85,90 @@ class _HomeState extends State<ScreenCitiesRented> {
   List<String> list = ["تسجيل دخول", "حساب جديد", "تسجيل خروج"];
   String? select;
   Color color = Colors.white38;
-  List<String> appBarTitles = ["مدن","المفضلة",];
-
-
-
+  List<String> appBarTitles = [
+    "City",
+    "Favorites",
+  ];
 
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       appBar: AppBar(
-        title: Align(
-          alignment: Alignment.center,
+        title: Center(
           child: Text(appBarTitles[indexpage]),
         ),
-        backgroundColor: Color(0xFF15b9b4),
-        //   actions: [
-        //     PopupMenuButton(
-        //         icon: Icon(
-        //           Icons.density_medium,
-        //           size: 25,
-        //           color: Colors.black,
-        //         ),
-        //         itemBuilder: (context) {
-        //           return list.map((element) {
-        //             return PopupMenuItem(
-        //               value: element,
-        //               child: Row(
-        //                 children: [
-        //                   Icon(
-        //                     element == "تسجيل دخول"
-        //                         ? Icons.person
-        //                         : element == "حساب جديد"
-        //                         ? Icons.person_add
-        //                         : Icons.logout,
-        //                     color: Colors.black54,
-        //                     size: 25,
-        //                   ),
-        //                   SizedBox(width: 30),
-        //                   Text(
-        //                     element,
-        //                     style:
-        //                     TextStyle(fontSize: 20, color: Colors.black87),
-        //                   ),
-        //                 ],
-        //               ),
-        //             );
-        //           }).toList();
-        //         },
-        //         color: Colors.white,
-        //         onCanceled: () {
-        //           print("object");
-        //         },
-        //         onSelected: (value) {
-        //           setState(() {
-        //             select = value;
-        //             switch (select) {
-        //               case "تسجيل دخول":
-        //                 Navigator.of(context).pushNamed(route_Userorrented);
-        //
-        //                 break;
-        //               case "حساب جديد":
-        //                 Navigator.of(context)
-        //                     .pushNamed(route_ScreenRegisterUser);
-        //
-        //                 break;
-        //               case "تسجيل خروج":
-        //                 Navigator.of(context).pushNamed(route_Userorrented);
-        //                 break;
-        //               default:
-        //                 Navigator.of(context).pushNamed(route_ScreenCitiesUser);
-        //             }
-        //           });
-        //         })
-        //  - ],
+        leading: IconButton(
+          icon: Icon(Icons.search),
+          onPressed: () {
+          },
+        ),
+        bottom: indexpage == 0
+            ? PreferredSize(
+            preferredSize: Size(0, 100),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(children: [
+                SizedBox(
+                  width: 20,
+                ),
+                floatAction(
+                    "ADD", Icon(Icons.add), Colors.cyan[100]!, Colors.cyan),
+                SizedBox(
+                  width: 10,
+                ),
+                floatAction("FLIGHTS", Icon(Icons.flight),
+                    Colors.deepOrange[100]!, Colors.deepOrange[400]!),
+                SizedBox(
+                  width: 10,
+                ),
+                floatAction("FOODS", Icon(Icons.fastfood_rounded),
+                    Colors.orange[100]!, Colors.orange),
+                SizedBox(
+                  width: 10,
+                ),
+                floatAction("EVENTS", Icon(Icons.event_note),
+                    Colors.purple[100]!, Colors.pink),
+                SizedBox(
+                  width: 10,
+                ),
+              ]),
+            ))
+            : null,
+        backgroundColor: Colors.white,
+
       ),
       body: indexpage == 0
           ? Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
               children: [
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Icon(Icons.search, color: Colors.black,),
-                  style: ElevatedButton.styleFrom(
-                    shape: CircleBorder(),
-                    padding: EdgeInsets.all(16),
-                    backgroundColor: Color(0xFF15b9b4),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      SizedBox(width: 8),
+                    ],
                   ),
                 ),
-                SizedBox(width: 8),
                 Expanded(
-                  child: Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.3),
-                          blurRadius: 6.0,
-                          spreadRadius: 0.5,
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(10),
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 8.0,
+                      mainAxisSpacing: 8.0,
                     ),
-                    child: TextField(
-                      onChanged: null,
-                      decoration: InputDecoration(
-                        hintText: "ابحث هنا...",
-                        hintStyle:
-                        TextStyle(color: Colors.black, fontSize: 16),
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.all(12),
-                      ),
-                    ),
+                    padding: EdgeInsets.all(5),
+                    physics: BouncingScrollPhysics(),
+                    itemCount: cities.length,
+                    itemBuilder: (context, index) {
+                      return City(index);
+                    },
                   ),
                 ),
               ],
-            ),
-          ),
-          Expanded(
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 8.0,
-                mainAxisSpacing: 8.0,
-              ),
-              padding: EdgeInsets.all(5),
-              physics: BouncingScrollPhysics(),
-              itemCount: cities.length,
-              itemBuilder: (context, index) {
-                return City(index);
-              },
-            ),
-          ),
-        ],
-      )
+            )
           : IndexedStack(
-        index: indexpage,
-        children: pages,
-      ),
-
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black,
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            builder: (BuildContext context) {
-              return Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pushNamed(route_Addinfo);
-                          },
-
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                "اضافه سكن",
-                                style: TextStyle(color: Colors.black),
-                              ),
-                              SizedBox(width: 10),
-                              Icon(
-                                Icons.add,
-                                color: Colors.black,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
-
-              );
-            },
-          );
-        },
-
-        shape: CircleBorder(),
-        child: const Icon(
-          Icons.add,
-          size: 28,
-          color: Color(0xFF15b9b4),
-        ),
-      ),
-
+              index: indexpage,
+              children: pages,
+            ),
       bottomNavigationBar: CurvedNavigationBar(
         height: 60,
         index: indexpage,
@@ -301,7 +198,8 @@ class _HomeState extends State<ScreenCitiesRented> {
                   Image.network(
                     "https://cdn-icons-png.flaticon.com/128/3177/3177440.png",
                     width: 50,
-                    fit: BoxFit.fill,),
+                    fit: BoxFit.fill,
+                  ),
                   Center(
                     child: Text(
                       'name:______',
@@ -316,9 +214,8 @@ class _HomeState extends State<ScreenCitiesRented> {
             ),
             FnListTile("ملف شخصي", Icon(Icons.person)),
             FnListTile("الإعدادات", Icon(Icons.settings)),
-            FnListTile("دعم فني", Icon(Icons.support_agent_outlined))
-,            FnListTile("تسجيل خروج", Icon(Icons.logout))
-
+            FnListTile("دعم فني", Icon(Icons.support_agent_outlined)),
+            FnListTile("تسجيل خروج", Icon(Icons.logout))
           ],
         ),
       ),
@@ -330,49 +227,86 @@ class _HomeState extends State<ScreenCitiesRented> {
 ////////////////////////////////
 ///////////////////////////////
 //////////////////////////////
+  Widget Iconbtn({required String text, required Icon icon}) {
+    return IconButton(
+      onPressed: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("waiting...."),
+          ),
+        );
+      },
+      icon: icon,
+      focusColor: Colors.black,
+    );
+  }
 
   Widget City(int index) {
     return GestureDetector(
-      onTap: () {
-        switch (cities[index].name) {
-          case 'اربد':
-            Navigator.of(context).pushNamed(route_irbed);
-            break;
-          case 'جرش':
-            Navigator.of(context).pushNamed(route_jarash);
-            break;
-          case 'عجلون':
-            Navigator.of(context).pushNamed(route_ajlon);
-            break;
-          case 'المفرق':
-            Navigator.of(context).pushNamed(route_mafraq);
-            break;
-          case 'عمان':
-            Navigator.of(context).pushNamed(route_amman);
-            break;
-          case 'مادبا':
-            Navigator.of(context).pushNamed(route_maan);
-            break;
-          case 'البلقاء':
-            Navigator.of(context).pushNamed(route_balqa);
-            break;
-          case 'الكرك':
-            Navigator.of(context).pushNamed(route_karak);
-            break;
-          case 'الطفيلة':
-            Navigator.of(context).pushNamed(route_tafileh);
-            break;
-          case 'معان':
-            Navigator.of(context).pushNamed(route_maan);
-            break;
-          case 'العقبة':
-            Navigator.of(context).pushNamed(route_aqaba);
-            break;
-          default:
-            Navigator.of(context).pushNamed(route_ScreenCitiesUser);
-            break;
-        }
-      },
+        onTap: () {
+      switch (cities[index].name) {
+        case 'Irbid':
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => U_irbed(),
+          ));
+          break;
+        case 'Jarash':
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => U_Jarash(),
+          ));
+          break;
+        case 'Ajloun':
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => U_Ajlon(),
+          ));
+          break;
+        case 'Mafraq':
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => U_mafraq(),
+          ));
+          break;
+        case 'Amman':
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => U_Amman(),
+          ));
+          break;
+        case 'Madaba':
+          // Navigator.of(context).push(MaterialPageRoute(
+          //   builder: (context) => U_Mdaba(),
+          // ));
+          break;
+        case 'Balqa':
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => U_Balqa(),
+          ));
+          break;
+        case 'Karak':
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => U_Karak(),
+          ));
+          break;
+        case 'Tafileh':
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => U_Tafileh(),
+          ));
+          break;
+        case 'Maan':
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => U_Maan(),
+          ));
+          break;
+        case 'Aqaba':
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => U_Aqaba(),
+          ));
+          break;
+        default:
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => ScreenCitiesRented(),
+          ));
+          break;
+      }
+    },
       child: Card(
         shadowColor: Colors.blue,
         shape: RoundedRectangleBorder(
@@ -391,7 +325,6 @@ class _HomeState extends State<ScreenCitiesRented> {
                 alignment: Alignment.center,
               ),
             ),
-
             Positioned(
               top: 8,
               left: 8,
@@ -427,8 +360,6 @@ class _HomeState extends State<ScreenCitiesRented> {
     /////////////////////////////
     /////////////////////////////
     /////////////////////////////
-
-
   }
 
   Widget FnListTile(String title, Icon icon) {
@@ -436,30 +367,27 @@ class _HomeState extends State<ScreenCitiesRented> {
         leading: icon,
         title: Text(
           title,
-          style: Theme
-              .of(context)
-              .textTheme
-              .bodyMedium,
+          style: Theme.of(context).textTheme.bodyMedium,
           textAlign: TextAlign.right,
         ),
         onTap: () {
           switch (title) {
             case "ملف شخصي":
-            // Navigator.of(context).push(MaterialPageRoute(
-            // builder: (context) => ProfilePage(),
-            // ));
+              // Navigator.of(context).push(MaterialPageRoute(
+              // builder: (context) => ProfilePage(),
+              // ));
               break;
 
             case "الإعدادات":
-            Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => ScreenSetting(),
-            ));
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => ScreenSetting(),
+              ));
               break;
 
             case "دعم فني":
-            // Navigator.of(context).push(MaterialPageRoute(
-            // builder: (context) => SupportPage(),
-            // ));
+              // Navigator.of(context).push(MaterialPageRoute(
+              // builder: (context) => SupportPage(),
+              // ));
               break;
 
             case "تسجيل خروج":
@@ -493,5 +421,49 @@ class _HomeState extends State<ScreenCitiesRented> {
               break;
           }
         });
+  }
+
+  Widget floatAction(String text, Icon icon, Color col, Color colIcon) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: FloatingActionButton(
+            onPressed: () {
+              switch (text) {
+                case "ADD":
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Addinfo()),
+                  );
+                  break;
+                case "FLIGHTS":
+                  break;
+                case "FOODS":
+                  break;
+                case "EVENTS":
+                  break;
+                default:
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ScreenCitiesRented()),
+                  );
+                  break;
+              }
+            },
+            backgroundColor: col,
+            foregroundColor: colIcon,
+            child: icon,
+          ),
+        ),
+        Text(
+          text,
+          style: TextStyle(fontSize: 14, color: Colors.black),
+        ),
+        SizedBox(height: 6),
+      ],
+    );
   }
 }

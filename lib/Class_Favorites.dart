@@ -282,3 +282,29 @@ class ThemeService {
 ///////////////////////
 ///////////////////////
 ///////////////////////
+//البحث
+// Expanded(
+// child: Container(
+// height: 50,
+// decoration: BoxDecoration(
+// boxShadow: [
+// BoxShadow(
+// color: Colors.black.withOpacity(0.3),
+// blurRadius: 6.0,
+// spreadRadius: 0.5,
+// ),
+// ],
+// borderRadius: BorderRadius.circular(10),
+// ),
+// child: TextField(
+// onChanged: null,
+// decoration: InputDecoration(
+// hintText: "ابحث هنا...",
+// hintStyle:
+// TextStyle(color: Colors.black, fontSize: 16),
+// border: InputBorder.none,
+// contentPadding: EdgeInsets.all(12),
+// ),
+// ),
+// ),
+// ),

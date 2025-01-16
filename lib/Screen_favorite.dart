@@ -11,6 +11,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: Column(
         children: [
           Expanded(
@@ -28,7 +29,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.2),
 
-                        offset: Offset(0, 3), // Shadow position
+                        offset: Offset(0, 3),
                       ),
                     ],
                   ),
@@ -64,7 +65,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
             )
                 : Center(
               child: Text(
-                "لا توجد عناصر في المفضلة",
+    "There are no items in favorites.",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,

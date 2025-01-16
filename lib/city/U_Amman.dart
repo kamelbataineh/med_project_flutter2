@@ -1,126 +1,176 @@
 import 'package:flutter/material.dart';
-
 import 'package:med_project_flutter2/City_Housing.dart';
-import 'package:med_project_flutter2/consr_routes.dart';
-
+import '../Class_Favorites.dart';
+import '../Housing_Details_Page.dart';
 class U_Amman extends StatefulWidget {
+  const U_Amman({super.key});
+
   @override
-  State<StatefulWidget> createState() {
-    return _HomeState();
-  }
+  _U_AmmanState createState() => _U_AmmanState(itemhous: []);
 }
 
-class _HomeState extends State<U_Amman> {
-  final List<Map<String, String>> amman = [
-    {'name': 'جامعة الأردنية', 'image': 'imgs/JU.png'}
-  ];
+class _U_AmmanState extends State<U_Amman> {
+  final List<AddHous> itemhous;
 
-  String? select;
-  Color color = Colors.white38;
+  _U_AmmanState({required this.itemhous});
+
+
+  List<AddHous> randomHousings = [
+
+    AddHous(
+        1100.0,
+        'House 2',
+        'https://i.pinimg.com/236x/3b/4a/b3/3b4ab3a6f53616bc80882372503c2122.jpg',
+        '123-456-7891',
+        'City 2',
+        'https://www.google.com/maps/place/City2',
+        'Type 2',
+        2),
+    AddHous(
+        1200.0,
+        'House 3',
+        'https://i.pinimg.com/236x/5a/96/07/5a960747b6fa3fb1ebc970c7b56e4c51.jpg',
+        '123-456-7892',
+        'City 3',
+        'https://www.google.com/maps/place/City3',
+        'Type 3',
+        3),
+    AddHous(
+        1300.0,
+        'House 4',
+        'https://i.pinimg.com/236x/7f/6f/0a/7f6f0a8668aa2da61d9025859406e2f1.jpg',
+        '123-456-7893',
+        'City 4',
+        'https://www.google.com/maps/place/City4',
+        'Type 4',
+        4),
+
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('عمان'),
-        backgroundColor:  Color(0xFF15b9b4),
-      ),
-
-      body: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 1,
-            mainAxisSpacing: 2.0,
-            childAspectRatio: 4/1.5 ,
+        appBar: AppBar(
+          title: Center(
+            child: Text("Housing"),
           ),
-          padding: EdgeInsets.all(5),
-          physics: BouncingScrollPhysics(),
-          itemCount: amman.length,
-          itemBuilder: (context, index) {
-            return City(index);
-          },
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {},
+            ),
+          ],
+          backgroundColor: Colors.white,
+          elevation: 0,
         ),
-      ),
+        body: Amman()
     );
   }
 
-//////////////////////////////////
-/////////////////////////////////
-////////////////////////////////
-///////////////////////////////
-//////////////////////////////
-
-  Widget City(int index) {
-    return GestureDetector(
-        onTap: () {
-          print("objaect");
-          switch (amman[index]['name']) {
-          // case 'جامعة عجلون الوطنية':
-          //   Navigator.of(context).push(
-          //     MaterialPageRoute(
-          //       builder: (context) =>
-          //           CityHousing(universityName: 'جامعة عجلون الوطنية'),
-          //     ),
-          //   );
-          //   break;
-            default:
-              Navigator.of(context).pushNamed(route_ScreenCitiesUser);
-              break;
-          }
-        },
-        child:Card(
-          shadowColor: Colors.blue,
-          shape: RoundedRectangleBorder(
-
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          elevation: 5,
-          child: Stack(
-            alignment: Alignment.topRight,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.asset(amman[index]['image']!,
-                  width: double.infinity,
-                  height: 200,
-                  fit: BoxFit.fill,
-                  alignment: Alignment.center,
-                ),
+  Widget Amman() {
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 8.0,
+        mainAxisSpacing: 8.0,
+        childAspectRatio: 0.75,
+      ),
+      padding: EdgeInsets.all(10),
+      physics: BouncingScrollPhysics(),
+      itemCount: randomHousings.length,
+      itemBuilder: (context, index) {
+        final house = randomHousings[index];
+        return InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    HousingDetailsPage(
+                      housing: house,
+                    ),
               ),
-              Card(
-                color: Colors.black54,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                elevation: 2,
-                child: Container(
-                  padding: EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [Colors.black54, Colors.transparent],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  child: Text(
-                    amman[index]['name']!,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      shadows: [
-                        Shadow(
-                          blurRadius: 5.0,
-                          color: Colors.black.withOpacity(0.7),
-                        ),
-                      ],
+            );
+          },
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            elevation: 10,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+
+                Expanded(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(10)),
+                    child: Image.network(
+                      house.images.isNotEmpty
+                          ? house.images
+                          : 'https://via.placeholder.com/150',
+                      width: double.infinity,
+                      height: double.infinity,
+                      fit: BoxFit.fill,
                     ),
                   ),
                 ),
-              )
-            ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        house.name,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        '${house.cityname} - ${house.typename} \$${house
+                            .price}',
+                        style: TextStyle(color: Colors.grey[600], fontSize: 14),
+                      ),
+                      // GestureDetector(
+                      //   onTap: () {
+                      //     if (index >= 0 && index < randomHousings.length) {
+                      //       final city = randomHousings[index];
+                      //       setState(() {
+                      //         if (itemfavorit.favorit.contains(city)) {
+                      //           itemfavorit.favorit.remove(city);
+                      //           print("Removed ${city.name} from favorites.");
+                      //         } else {
+                      //           itemfavorit.favorit.add(city as PagesCitis);
+                      //           print("Added ${city.name} to favorites.");
+                      //         }
+                      //       });
+                      //     } else {
+                      //       print("Invalid operation: Index $index is out of range.");
+                      //     }
+                      //   },
+                      //   child: Icon(
+                      //     itemfavorit.favorit.contains(itemhous)
+                      //         ? Icons.favorite
+                      //         : Icons.favorite_border,
+                      //     color: Colors.red,
+                      //     size: 28,
+                      //   ),
+                      // ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
-        ));  }
+        );
+      },
+    );
+  }
+
 }

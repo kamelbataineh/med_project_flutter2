@@ -7,6 +7,18 @@ import 'package:med_project_flutter2/consr_routes.dart';
 import 'package:med_project_flutter2/free.dart';
 import 'package:med_project_flutter2/userORrented.dart';
 
+import '../city/U.irbed.dart';
+import '../city/U_Amman.dart';
+import '../city/U_Aqaba.dart';
+import '../city/U_Balqa.dart';
+import '../city/U_Maan.dart';
+import '../city/U_Tafileh.dart';
+import '../city/U_ajlon.dart';
+import '../city/U_jarash.dart';
+import '../city/U_karak.dart';
+import '../city/U_mafraq.dart';
+import '../rented/Screen_cities_rented.dart';
+
 class ScreenCitiesUser extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -25,47 +37,47 @@ class _HomeState extends State<ScreenCitiesUser> {
 
   final List<PagesCitis> cities = [
     PagesCitis(
-      'اربد',
+      'Irbid',
       'https://i.pinimg.com/564x/e0/5a/34/e05a3477a58ac454e827aac2ab2ec03c.jpg',
     ),
     PagesCitis(
-      'جرش',
+      'Jarash',
       'https://i.pinimg.com/474x/00/e1/f4/00e1f45e889bb474e710a4533c50d544.jpg',
     ),
     PagesCitis(
-      'عجلون',
+      'Ajlon',
       'https://i.pinimg.com/564x/d4/da/1f/d4da1f8c3742f9501681a9e607a29920.jpg',
     ),
     PagesCitis(
-      'المفرق',
+      'Mafraq',
       'https://i.pinimg.com/736x/8d/41/ea/8d41ea639119ca1dc2628b76fde9ca8b.jpg',
     ),
     PagesCitis(
-      'عمان',
+      'Amman',
       'https://i.pinimg.com/564x/03/b4/ff/03b4ffbe9860921a696898d41fe25091.jpg',
     ),
     PagesCitis(
-      'مادبا',
+      'Mdapa',
       'https://i.pinimg.com/564x/d2/f6/28/d2f628a0612545a60f4781974674149a.jpg',
     ),
     PagesCitis(
-      'البلقاء',
+      'Balqa',
       'https://i.pinimg.com/236x/71/70/69/717069eb2e3f4d752808749870c1464f.jpg',
     ),
     PagesCitis(
-      'الكرك',
+      'Karak',
       'https://i.pinimg.com/564x/13/58/cf/1358cf4a6077d0f67d13ece19f148eb7.jpg',
     ),
     PagesCitis(
-      'الطفيلة',
+      'Tafileh',
       'https://i.pinimg.com/736x/48/13/49/4813497936c9154ff6060fb2ef5c0db8.jpg',
     ),
     PagesCitis(
-      'معان',
+      'Maan',
       'https://i.pinimg.com/564x/b9/e4/25/b9e425b64550bb7e3b45a272d7de6f74.jpg',
     ),
     PagesCitis(
-      'العقبة',
+      'Aqaba',
       'https://i.pinimg.com/564x/9f/d6/83/9fd683479f339e1f9d2a6a62958c379a.jpg',
     ),
   ];
@@ -73,75 +85,47 @@ class _HomeState extends State<ScreenCitiesUser> {
   List<String> list = ["تسجيل دخول", "حساب جديد", "تسجيل خروج"];
   String? select;
   Color color = Colors.white38;
-  List<String> appBarTitles = ["مدن", "المفضلة"];
+  List<String> appBarTitles = ["City", "favorite"];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Align(
-          alignment: Alignment.center,
+        title: Center(
           child: Text(appBarTitles[indexpage]),
         ),
-        //   actions: [
-        //     PopupMenuButton(
-        //         icon: Icon(
-        //           Icons.density_medium,
-        //           size: 25,
-        //           color: Colors.black,
-        //         ),
-        //         itemBuilder: (context) {
-        //           return list.map((element) {
-        //             return PopupMenuItem(
-        //               value: element,
-        //               child: Row(
-        //                 children: [
-        //                   Icon(
-        //                     element == "تسجيل دخول"
-        //                         ? Icons.person
-        //                         : element == "حساب جديد"
-        //                         ? Icons.person_add
-        //                         : Icons.logout,
-        //                     color: Colors.black54,
-        //                     size: 25,
-        //                   ),
-        //                   SizedBox(width: 30),
-        //                   Text(
-        //                     element,
-        //                     style:
-        //                     TextStyle(fontSize: 20, color: Colors.black87),
-        //                   ),
-        //                 ],
-        //               ),
-        //             );
-        //           }).toList();
-        //         },
-        //         color: Colors.white,
-        //         onCanceled: () {
-        //           print("object");
-        //         },
-        //         onSelected: (value) {
-        //           setState(() {
-        //             select = value;
-        //             switch (select) {
-        //               case "تسجيل دخول":
-        //                 Navigator.of(context).pushNamed(route_Userorrented);
-        //
-        //                 break;
-        //               case "حساب جديد":
-        //                 Navigator.of(context)
-        //                     .pushNamed(route_ScreenRegisterUser);
-        //
-        //                 break;
-        //               case "تسجيل خروج":
-        //                 Navigator.of(context).pushNamed(route_Userorrented);
-        //                 break;
-        //               default:
-        //                 Navigator.of(context).pushNamed(route_ScreenCitiesUser);
-        //             }
-        //           });
-        //         })
-        //   ],
+        leading: IconButton(
+          icon: Icon(Icons.search),
+          onPressed: () {},
+        ),
+        bottom: indexpage == 0
+            ? PreferredSize(
+                preferredSize: Size(0, 100),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    floatAction("FLIGHTS", Icon(Icons.flight),
+                        Colors.deepOrange[100]!, Colors.deepOrange[400]!),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    floatAction("FOODS", Icon(Icons.fastfood_rounded),
+                        Colors.orange[100]!, Colors.orange),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    floatAction("EVENTS", Icon(Icons.event_note),
+                        Colors.purple[100]!, Colors.pink),
+                    SizedBox(
+                      width: 10,
+                    ),
+                  ]),
+                ))
+            : null,
+        backgroundColor: Colors.white,
       ),
       body: indexpage == 0
           ? Column(
@@ -149,44 +133,7 @@ class _HomeState extends State<ScreenCitiesUser> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Icon(
-                          Icons.search,
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          shape: CircleBorder(),
-                          padding: EdgeInsets.all(16),
-                        ),
-                      ),
-                      SizedBox(width: 8),
-                      Expanded(
-                        child: Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: TextField(
-                            onChanged: null,
-                            decoration: InputDecoration(
-                              counterStyle: TextStyle(color: Colors.black),
-                              hintText: "ابحث هنا...",
-                              hintStyle:
-                                  TextStyle( fontSize: 16 ,color: Colors.black),
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.all(12),
-
-                            ),
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                      ),
-                    ],
+                    children: [],
                   ),
                 ),
                 Expanded(
@@ -278,41 +225,65 @@ class _HomeState extends State<ScreenCitiesUser> {
     return GestureDetector(
       onTap: () {
         switch (cities[index].name) {
-          case 'اربد':
-            Navigator.of(context).pushNamed(route_irbed);
+          case 'Irbid':
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => U_irbed(),
+            ));
             break;
-          case 'جرش':
-            Navigator.of(context).pushNamed(route_jarash);
+          case 'Jarash':
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => U_Jarash(),
+            ));
             break;
-          case 'عجلون':
-            Navigator.of(context).pushNamed(route_ajlon);
+          case 'Ajloun':
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => U_Ajlon(),
+            ));
             break;
-          case 'المفرق':
-            Navigator.of(context).pushNamed(route_mafraq);
+          case 'Mafraq':
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => U_mafraq(),
+            ));
             break;
-          case 'عمان':
-            Navigator.of(context).pushNamed(route_amman);
+          case 'Amman':
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => U_Amman(),
+            ));
             break;
-          case 'مادبا':
-            Navigator.of(context).pushNamed(route_maan);
+          case 'Madaba':
+          // Navigator.of(context).push(MaterialPageRoute(
+          //   builder: (context) => U_Mdaba(),
+          // ));
             break;
-          case 'البلقاء':
-            Navigator.of(context).pushNamed(route_balqa);
+          case 'Balqa':
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => U_Balqa(),
+            ));
             break;
-          case 'الكرك':
-            Navigator.of(context).pushNamed(route_karak);
+          case 'Karak':
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => U_Karak(),
+            ));
             break;
-          case 'الطفيلة':
-            Navigator.of(context).pushNamed(route_tafileh);
+          case 'Tafileh':
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => U_Tafileh(),
+            ));
             break;
-          case 'معان':
-            Navigator.of(context).pushNamed(route_maan);
+          case 'Maan':
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => U_Maan(),
+            ));
             break;
-          case 'العقبة':
-            Navigator.of(context).pushNamed(route_aqaba);
+          case 'Aqaba':
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => U_Aqaba(),
+            ));
             break;
           default:
-            Navigator.of(context).pushNamed(route_ScreenCitiesUser);
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => ScreenCitiesRented(),
+            ));
             break;
         }
       },
@@ -337,7 +308,8 @@ class _HomeState extends State<ScreenCitiesUser> {
             Positioned(
               top: 8,
               right: 8,
-              child: GestureDetector(
+              child:
+              GestureDetector(
                 onTap: () {
                   if (index >= 0 && index < cities.length) {
                     final city = cities[index];
@@ -418,7 +390,7 @@ class _HomeState extends State<ScreenCitiesUser> {
 
             case "الإعدادات":
               Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) =>ScreenSetting(),
+                builder: (context) => ScreenSetting(),
               ));
               break;
 
@@ -459,5 +431,42 @@ class _HomeState extends State<ScreenCitiesUser> {
               break;
           }
         });
+  }
+
+  Widget floatAction(String text, Icon icon, Color col, Color colIcon) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: FloatingActionButton(
+            onPressed: () {
+              switch (text) {
+                case "FLIGHTS":
+                  break;
+                case "FOODS":
+                  break;
+                case "EVENTS":
+                  break;
+                default:
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ScreenCitiesUser()),
+                  );
+                  break;
+              }
+            },
+            backgroundColor: col,
+            foregroundColor: colIcon,
+            child: icon,
+          ),
+        ),
+        Text(
+          text,
+          style: TextStyle(fontSize: 14, color: Colors.black),
+        ),
+        SizedBox(height: 6),
+      ],
+    );
   }
 }

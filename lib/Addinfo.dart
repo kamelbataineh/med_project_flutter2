@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'City_Housing.dart';
 import 'Class_Favorites.dart';
+
 class Addinfo extends StatefulWidget {
   @override
   _AddHousingScreenState createState() => _AddHousingScreenState();
@@ -8,6 +9,7 @@ class Addinfo extends StatefulWidget {
 
 class _AddHousingScreenState extends State<Addinfo> {
   String? imageUrl = '';
+  String? imageUrl1 = '';
   double? price;
   String? housingName;
   String? residentType;
@@ -18,7 +20,6 @@ class _AddHousingScreenState extends State<Addinfo> {
   String? googleMapLink;
 
   List<String> regions = [];
-
 
   void updateRegions(String selectedGovernorate) {
     setState(() {
@@ -78,17 +79,8 @@ class _AddHousingScreenState extends State<Addinfo> {
         address != null &&
         googleMapLink != null &&
         imageUrl != null) {
-      AddHous newHouse = AddHous(
-        price!,
-        housingName!,
-        imageUrl!,
-        phoneNumber!,
-        governorate!,
-        googleMapLink!,
-        residentType!,
-        address as int
-      );
-
+      AddHous newHouse = AddHous(price!, housingName!, imageUrl!, phoneNumber!,
+          governorate!, googleMapLink!, residentType!, address as int);
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('تم إضافة السكن بنجاح!')),
@@ -111,103 +103,180 @@ class _AddHousingScreenState extends State<Addinfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Align(
-          alignment: Alignment.centerRight,
-          child: Text('إضافة سكن', style: TextStyle(color: Colors.black)),
+        title: Center(
+          child: Text("Add Housing"),
         ),
-        backgroundColor: Color(0xFF15b9b4),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              children: [
-                Icon(Icons.camera_alt, color: Colors.grey),
-                Spacer(),
-                Text('', style: TextStyle(color: Colors.grey)),
-                // Showing image count
-                SizedBox(width: 8),
-                TextButton(
-                  child: Text(
-                    'إضافة صورة',
-                    style: TextStyle(color: Colors.black),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Icon(Icons.camera_alt, color: Colors.grey),
+                        SizedBox(width: 8),
+                        TextButton(
+                          child: Text(
+                            'إضافة صورة',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              imageUrl =
+                                  'https://i.pinimg.com/236x/f5/4b/bc/f54bbc3f479cfe3cad0cc629f72d4b61.jpg';
+                              imageUrl1 =
+                                  'https://i.pinimg.com/236x/3b/4a/b3/3b4ab3a6f53616bc80882372503c2122.jpg'; // Second image URL
+                            });
+                          },
+                        ),
+                        // First image
+                        if (imageUrl != null && imageUrl!.isNotEmpty)
+                          ClipRRect(
+                            borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(10),
+                                bottom: Radius.circular(10)),
+                            child: Image.network(
+                              imageUrl!,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        if (imageUrl1 != null && imageUrl1!.isNotEmpty)
+                          ClipRRect(
+                            borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(10),
+                                bottom: Radius.circular(10)),
+                            child: Image.network(
+                              imageUrl1!,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                      ],
+                    ),
                   ),
-                  onPressed: () {
-                    setState(() {
-                      imageUrl =
-                      'https://i.pinimg.com/236x/e2/03/b4/e203b442e640f751c9cdd744261b786d.jpg'; // Example image URL
-                    });
-                  },
-                ),
-                if (imageUrl != null && imageUrl!.isNotEmpty)
-                  Image.network(imageUrl!),
-                // Show the image if URL is available
-              ],
-            ),
-            SizedBox(height: 10),
-            buildTextField('اسم السكن', Icons.apartment, onChanged: (value) {
-              housingName = value;
-            }),
-            buildDropdown(
-              'اختر نوع الساكنين',
-              ['طالبات', 'طلاب'],
-                  (value) {
-                setState(() => residentType = value);
-              },
-            ),
-            buildDropdown(
-              'اختر المحافظة',
-              [
-                'إربد',
-                'عمان',
-                'الزرقاء',
-                'العقبة',
-                'مأدبا',
-                'السلط',
-                'جرش',
-                'عجلون',
-                'الكرك',
-                'الطفيلة',
-                'معان'
-              ],
-                  (value) {
-                setState(() {
-                  governorate = value;
-                  updateRegions(value!);
-                });
-              },
-            ),
-            buildDropdown(
-              'بقرب من',
-              regions,
-                  (value) {
-                setState(() => region = value);
-              },
-            ),
-            buildTextField('الهاتف', Icons.phone, onChanged: (value) {
-              phoneNumber = value;
-            }),
-            buildTextField('العنوان - شارع - بجانب مكان', Icons.location_on,
-                onChanged: (value) {
-                  address = value;
-                }),
-            buildTextField('رابط جوجل ماب', Icons.map, onChanged: (value) {
-              googleMapLink = value;
-            }),
-            buildTextField('السعر', Icons.monetization_on_outlined,
-                onChanged: (value) {
-                  price = double.tryParse(value); // Convert text to double
-                }),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: addHousingItem,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF15b9b4),
-                padding: EdgeInsets.symmetric(vertical: 15),
+                ],
               ),
-              child: Text('إضافة السكن', style: TextStyle(fontSize: 16)),
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  color: Colors.white,
+                  child: Column(
+                    children: [
+                      SizedBox(height: 10),
+                      buildTextField(
+                        'اسم السكن',
+                        Icons.apartment,
+                        onChanged: (value) {
+                          housingName = value;
+                        },
+                      ),
+                      buildDropdown(
+                        'اختر نوع الساكنين',
+                        ['طالبات', 'طلاب'],
+                        (value) {
+                          setState(() => residentType = value);
+                        },
+                      ),
+                      buildDropdown(
+                        'اختر المحافظة',
+                        [
+                          'إربد',
+                          'عمان',
+                          'الزرقاء',
+                          'العقبة',
+                          'مأدبا',
+                          'السلط',
+                          'جرش',
+                          'عجلون',
+                          'الكرك',
+                          'الطفيلة',
+                          'معان',
+                        ],
+                        (value) {
+                          setState(() {
+                            governorate = value;
+                            updateRegions(value!);
+                          });
+                        },
+                      ),
+                      buildDropdown(
+                        'بقرب من',
+                        regions,
+                        (value) {
+                          setState(() => region = value);
+                        },
+                      ),
+                      buildTextField(
+                        'الهاتف',
+                        Icons.phone,
+                        onChanged: (value) {
+                          phoneNumber = value;
+                        },
+                      ),
+                      buildTextField(
+                        'العنوان - شارع - بجانب مكان',
+                        Icons.location_on,
+                        onChanged: (value) {
+                          address = value;
+                        },
+                      ),
+                      buildTextField(
+                        'رابط جوجل ماب',
+                        Icons.map,
+                        onChanged: (value) {
+                          googleMapLink = value;
+                        },
+                      ),
+                      buildTextField(
+                        'السعر',
+                        Icons.monetization_on_outlined,
+                        onChanged: (value) {
+                          price = double.tryParse(value);
+                        },
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: addHousingItem,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFF15b9b4),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 40),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          elevation: 5,
+                        ),
+                        child: Text(
+                          'إضافة السكن',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                    ],
+                  ),
+                ),
+              ),
             ),
           ],
         ),
@@ -218,14 +287,26 @@ class _AddHousingScreenState extends State<Addinfo> {
   Widget buildTextField(String label, IconData icon,
       {Function(String)? onChanged}) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: TextField(
         onChanged: onChanged,
         decoration: InputDecoration(
           labelText: label,
-          prefixIcon: Icon(icon, color: Colors.grey),
+          labelStyle: TextStyle(color: Colors.grey[600]),
+          prefixIcon: Icon(icon, color: Color(0xFF15b9b4)),
+          filled: true,
+          fillColor: Colors.grey[200],
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: Colors.grey[400]!, width: 1),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: Color(0xFF15b9b4), width: 2),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: Colors.grey[400]!, width: 1),
           ),
         ),
       ),
@@ -235,12 +316,24 @@ class _AddHousingScreenState extends State<Addinfo> {
   Widget buildDropdown(
       String label, List<String> items, Function(String?) onChanged) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: DropdownButtonFormField<String>(
         decoration: InputDecoration(
           labelText: label,
+          labelStyle: TextStyle(color: Colors.grey[600]),
+          filled: true,
+          fillColor: Colors.grey[200],
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: Colors.grey[400]!, width: 1),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: Color(0xFF15b9b4), width: 2),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: Colors.grey[400]!, width: 1),
           ),
         ),
         items: items
@@ -250,6 +343,7 @@ class _AddHousingScreenState extends State<Addinfo> {
         value: items.contains(label == 'اختر المحافظة' ? governorate : region)
             ? (label == 'اختر المحافظة' ? governorate : region)
             : null,
+        dropdownColor: Colors.white,
       ),
     );
   }
