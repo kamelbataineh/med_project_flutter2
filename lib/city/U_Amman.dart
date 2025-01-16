@@ -91,10 +91,7 @@ class _U_AmmanState extends State<U_Amman> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>
-                    HousingDetailsPage(
-                      housing: house,
-                    ),
+                builder: (context) => HousingDetailsPage(housing: house),
               ),
             );
           },
@@ -106,11 +103,10 @@ class _U_AmmanState extends State<U_Amman> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 Expanded(
                   child: ClipRRect(
-                    borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(10)),
+                    borderRadius:
+                    BorderRadius.vertical(top: Radius.circular(10)),
                     child: Image.network(
                       house.images.isNotEmpty
                           ? house.images
@@ -126,42 +122,53 @@ class _U_AmmanState extends State<U_Amman> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        house.name,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            house.name,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
+                          Positioned(
+                            top: 8,
+                            right: 8,
+                            child: GestureDetector(
+                              onTap: () {
+                                if (index >= 0 &&
+                                    index < randomHousings.length) {
+                                  final house = randomHousings[index];
+                                  setState(() {
+                                    if (itemfavorit.favorit.contains(house)) {
+                                      itemfavorit.favorit.remove(house);
+                                    } else {
+                                      itemfavorit.favorit.add(PagesCitis(
+                                          house.name, house.cityname));
+
+                                    }
+                                  });
+                                } else {
+
+                                }
+                              },
+                              child: Icon(
+                                itemfavorit.favorit.contains(house)
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: itemfavorit.favorit.contains(house)
+                                    ? Colors.red
+                                    : Colors.grey,
+                                size: 28,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       SizedBox(height: 4),
                       Text(
-                        '${house.cityname} - ${house.typename} \$${house
-                            .price}',
+                        '${house.cityname} - ${house.typename} \$${house.price}',
                         style: TextStyle(color: Colors.grey[600], fontSize: 14),
                       ),
-                      // GestureDetector(
-                      //   onTap: () {
-                      //     if (index >= 0 && index < randomHousings.length) {
-                      //       final city = randomHousings[index];
-                      //       setState(() {
-                      //         if (itemfavorit.favorit.contains(city)) {
-                      //           itemfavorit.favorit.remove(city);
-                      //           print("Removed ${city.name} from favorites.");
-                      //         } else {
-                      //           itemfavorit.favorit.add(city as PagesCitis);
-                      //           print("Added ${city.name} to favorites.");
-                      //         }
-                      //       });
-                      //     } else {
-                      //       print("Invalid operation: Index $index is out of range.");
-                      //     }
-                      //   },
-                      //   child: Icon(
-                      //     itemfavorit.favorit.contains(itemhous)
-                      //         ? Icons.favorite
-                      //         : Icons.favorite_border,
-                      //     color: Colors.red,
-                      //     size: 28,
-                      //   ),
-                      // ),
                     ],
                   ),
                 ),

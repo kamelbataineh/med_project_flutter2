@@ -80,7 +80,8 @@ class _U_ZarqaState extends State<U_Zarqa> {
               children: [
                 Expanded(
                   child: ClipRRect(
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+                    borderRadius:
+                    BorderRadius.vertical(top: Radius.circular(10)),
                     child: Image.network(
                       house.images.isNotEmpty
                           ? house.images
@@ -101,25 +102,40 @@ class _U_ZarqaState extends State<U_Zarqa> {
                         children: [
                           Text(
                             house.name,
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
                           ),
-                          IconButton(
-                            icon: Icon(
-                              favorit.contains(house)
-                                  ? Icons.favorite
-                                  : Icons.favorite_border,
-                              color: Colors.red,
-                              size: 28,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                if (favorit.contains(house)) {
-                                  favorit.remove(house);
+                          Positioned(
+                            top: 8,
+                            right: 8,
+                            child: GestureDetector(
+                              onTap: () {
+                                if (index >= 0 &&
+                                    index < randomHousings.length) {
+                                  final house = randomHousings[index];
+                                  setState(() {
+                                    if (itemfavorit.favorit.contains(house)) {
+                                      itemfavorit.favorit.remove(house);
+                                    } else {
+                                      itemfavorit.favorit.add(PagesCitis(
+                                          house.name, house.cityname));
+
+                                    }
+                                  });
                                 } else {
-                                  favorit.add(house);
+
                                 }
-                              });
-                            },
+                              },
+                              child: Icon(
+                                itemfavorit.favorit.contains(house)
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: itemfavorit.favorit.contains(house)
+                                    ? Colors.red
+                                    : Colors.grey,
+                                size: 28,
+                              ),
+                            ),
                           ),
                         ],
                       ),

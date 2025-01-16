@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: route_ScreenCitiesRented,
+      initialRoute: route_ScreenCitiesUser,
       onGenerateRoute: RouteClass.generator,
  // home:ScreenCitiesUser(),
       //////////////////////////////////

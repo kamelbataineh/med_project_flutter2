@@ -35,13 +35,17 @@ class _FavoritesPageState extends State<FavoritesPage> {
                   ),
                   child: Row(
                     children: [
-                      Image.network(
-                        itemfavorit.favorit[index].image,
-                        width: 50,
-                        height: 50,
-                        fit: BoxFit.cover,
-                      ),
-                      SizedBox(width: 10),
+                  Image.network(
+                  itemfavorit.favorit[index].image,
+                    width: 100,
+                    height: 50,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Icon(Icons.image_not_supported, size: 50);
+                    },
+                  ),
+
+                    SizedBox(width: 10),
                       Text(
                         itemfavorit.favorit[index].name,
                         style: TextStyle(
