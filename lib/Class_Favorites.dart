@@ -16,6 +16,7 @@ class PagesCitis {
   bool isFavorite;
 
   PagesCitis(this.name, this.image, {this.isFavorite = false}) ;
+
 }
 
 class FavoritClass {
