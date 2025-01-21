@@ -6,15 +6,16 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get_storage/get_storage.dart';
 import 'Class_Favorites.dart';
 import 'Class_Favorites.dart';
-
+// price?.toString() ?? 'N/A'
 class PagesCitis {
   String name;
 
   String image;
+  int ?price;
 
   bool isFavorite;
 
-  PagesCitis(this.name, this.image, {this.isFavorite = false});
+  PagesCitis(this.name, this.image, {this.isFavorite = false}) ;
 }
 
 class FavoritClass {

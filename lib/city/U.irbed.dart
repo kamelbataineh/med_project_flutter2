@@ -10,8 +10,9 @@ class U_irbed extends StatefulWidget {
 }
 
 class _U_irbedState extends State<U_irbed> {
+
   List<AddHous> randomHousings = [
-    AddHous(
+  AddHous(
         1000.0,
         'House 1',
         'https://i.pinimg.com/236x/3e/08/45/3e084507fe82c5fd9098f5eb1cce758e.jpg',
@@ -183,29 +184,28 @@ class _U_irbedState extends State<U_irbed> {
                           Positioned(
                             top: 8,
                             right: 8,
-                            child: GestureDetector(
+                            child :
+                            GestureDetector(
                               onTap: () {
-                                if (index >= 0 &&
-                                    index < randomHousings.length) {
-                                  final house = randomHousings[index];
-                                  setState(() {
-                                    if (itemfavorit.favorit.contains(house)) {
-                                      itemfavorit.favorit.remove(house);
-                                    } else {
-                                      itemfavorit.favorit.add(PagesCitis(
-                                          house.name, house.cityname));
+                                setState(() {
+                                  bool flag = itemfavorit.favorit.any((flagHouse) =>
+                                  flagHouse.name == house.name && flagHouse.image == house.images);
 
-                                    }
-                                  });
-                                } else {
-
-                                }
+                                  if (flag) {
+                                    itemfavorit.favorit.removeWhere((flagHouse) =>
+                                    flagHouse.name == house.name && flagHouse.image == house.images);
+                                  } else {
+                                    itemfavorit.favorit.add(PagesCitis(house.name, house.images));
+                                  }
+                                });
                               },
                               child: Icon(
-                                itemfavorit.favorit.contains(house)
+                                itemfavorit.favorit.any((flagHouse) =>
+                                flagHouse.name == house.name && flagHouse.image == house.images)
                                     ? Icons.favorite
                                     : Icons.favorite_border,
-                                color: itemfavorit.favorit.contains(house)
+                                color: itemfavorit.favorit.any((flagHouse) =>
+                                flagHouse.name == house.name && flagHouse.image == house.images)
                                     ? Colors.red
                                     : Colors.grey,
                                 size: 28,

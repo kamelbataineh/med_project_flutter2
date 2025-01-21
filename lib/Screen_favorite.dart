@@ -35,16 +35,19 @@ class _FavoritesPageState extends State<FavoritesPage> {
                   ),
                   child: Row(
                     children: [
-                  Image.network(
+                  ClipRRect(
+                  borderRadius:
+                  BorderRadius.vertical(top: Radius.circular(10) ,bottom: Radius.circular(10)),
+                child:Image.network(
                   itemfavorit.favorit[index].image,
                     width: 100,
-                    height: 50,
+                    height: 70,
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return Icon(Icons.image_not_supported, size: 50);
                     },
                   ),
-
+                  ),
                     SizedBox(width: 10),
                       Text(
                         itemfavorit.favorit[index].name,
@@ -52,7 +55,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
-                      ),
+                      ),SizedBox(width: 10),
+
                       Spacer(),
                       IconButton(
                         icon: Icon(Icons.delete),

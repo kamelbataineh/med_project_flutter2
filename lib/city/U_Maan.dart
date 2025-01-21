@@ -110,27 +110,32 @@ class _U_MaanState extends State<U_Maan> {
                             right: 8,
                             child: GestureDetector(
                               onTap: () {
-                                if (index >= 0 &&
-                                    index < randomHousings.length) {
-                                  final house = randomHousings[index];
-                                  setState(() {
-                                    if (itemfavorit.favorit.contains(house)) {
-                                      itemfavorit.favorit.remove(house);
-                                    } else {
-                                      itemfavorit.favorit.add(PagesCitis(
-                                          house.name, house.cityname));
+                                setState(() {
+                                  bool flag = itemfavorit.favorit.any(
+                                          (flagHouse) =>
+                                      flagHouse.name == house.name &&
+                                          flagHouse.image == house.images);
 
-                                    }
-                                  });
-                                } else {
-
-                                }
+                                  if (flag) {
+                                    itemfavorit.favorit.removeWhere(
+                                            (flagHouse) =>
+                                        flagHouse.name == house.name &&
+                                            flagHouse.image == house.images);
+                                  } else {
+                                    itemfavorit.favorit.add(
+                                        PagesCitis(house.name, house.images));
+                                  }
+                                });
                               },
                               child: Icon(
-                                itemfavorit.favorit.contains(house)
+                                itemfavorit.favorit.any((flagHouse) =>
+                                flagHouse.name == house.name &&
+                                    flagHouse.image == house.images)
                                     ? Icons.favorite
                                     : Icons.favorite_border,
-                                color: itemfavorit.favorit.contains(house)
+                                color: itemfavorit.favorit.any((flagHouse) =>
+                                flagHouse.name == house.name &&
+                                    flagHouse.image == house.images)
                                     ? Colors.red
                                     : Colors.grey,
                                 size: 28,

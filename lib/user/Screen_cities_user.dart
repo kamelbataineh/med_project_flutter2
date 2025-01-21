@@ -417,8 +417,9 @@ class _HomeState extends State<ScreenCitiesUser> {
                       ),
                       TextButton(
                         onPressed: () {
-                          Navigator.of(context).pop();
-                        },
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => Userorrented(),
+                          ));                          },
                         child: Text('خروج'),
                       ),
                     ],
