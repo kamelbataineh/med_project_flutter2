@@ -129,100 +129,20 @@ class _HomeState extends State<ScreenCitiesUser> {
       // backgroundColor: Colors.white,
       // ),
       body: indexpage == 0
-          ? SingleChildScrollView(
-            child: Column(
-              children: [
-          /////////////////////////////////////////////
-          /////////////////////////////////////////////
-          /////////////////////////////////////////////
-          /////////////////////////////////////////////
-          /////////////////////////////////////////////
-          /////////////////////////////////////////////
-          /////////////////////////////////////////////
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Card(
-                      // shape: RoundedRectangleBorder(
-                      //   borderRadius: BorderRadius.circular(30.0),
-                      // ),
-                      // elevation: 5,
-                      child: Stack(
-                        alignment: Alignment.topRight,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.asset(
-                              'imgs/p5.jpg',
-                              width: double.infinity,
-                              height: 80,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              " سكنات طلاب ",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-          /////////////////////////////////////////////
-          /////////////////////////////////////////////
-          /////////////////////////////////////////////
-          /////////////////////////////////////////////
-          /////////////////////////////////////////////
-          /////////////////////////////////////////////
-          /////////////////////////////////////////////
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Card(
-                          // shape: RoundedRectangleBorder(
-                          //   borderRadius: BorderRadius.circular(30.0),
-                          // ),
-                          elevation: 5,
-                          child: Stack(
-                            alignment: Alignment.topRight,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(
-                                  'imgs/p2.jpg',
-                                  width: 100,
-                                  height: 90,
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "رحلات",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      GestureDetector(
+          ? SafeArea(
+            child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    /////////////////////////////////////////////
+                    /////////////////////////////////////////////
+                    /////////////////////////////////////////////
+                    /////////////////////////////////////////////
+                    /////////////////////////////////////////////
+                    /////////////////////////////////////////////
+                    /////////////////////////////////////////////
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: GestureDetector(
                         onTap: () {},
                         child: Card(
                           // shape: RoundedRectangleBorder(
@@ -235,19 +155,19 @@ class _HomeState extends State<ScreenCitiesUser> {
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: Image.asset(
-                                  'imgs/p6.jpg',
-                                  width: 100,
-                                  height: 90,
+                                  'imgs/p5.jpg',
+                                  width: double.infinity,
+                                  height: 80,
                                   fit: BoxFit.fill,
                                 ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "إشتكشاف",
+                                  " Student dormitories ",
                                   style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 15,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -256,148 +176,265 @@ class _HomeState extends State<ScreenCitiesUser> {
                           ),
                         ),
                       ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Card(
-                          // shape: RoundedRectangleBorder(
-                          //   borderRadius: BorderRadius.circular(30.0),
-                          // ),
-                          // elevation: 5,
-                          child: Stack(
-                            alignment: Alignment.topRight,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(
-                                  'imgs/p4.jpg',
-                                  width: 100,
-                                  height: 90,
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "فنادق",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Card(
-                    color: Colors.white70,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
                     ),
-                    elevation: 5,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
+                    /////////////////////////////////////////////
+                    /////////////////////////////////////////////
+                    /////////////////////////////////////////////
+                    /////////////////////////////////////////////
+                    /////////////////////////////////////////////
+                    /////////////////////////////////////////////
+                    /////////////////////////////////////////////
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          FristIcon("1", Icons.home, Colors.green),
-                          SizedBox(width: 5,),
-                          FristIcon("2", Icons.home, Colors.green),
-                          SizedBox(width: 5,),
-
-                          FristIcon("3", Icons.home, Colors.green),
-                          SizedBox(width: 5,),
-
-                          FristIcon("4", Icons.home, Colors.black),
-                          SizedBox(width: 5,),
-
-                          FristIcon("5", Icons.home, Colors.green),
-                          SizedBox(width: 5,),
-
-                          FristIcon("6", Icons.home, Colors.green),
-                          SizedBox(width: 5,),
-                          FristIcon("6", Icons.home, Colors.green),
-                          SizedBox(width: 5,),
-                          FristIcon("6", Icons.home, Colors.green),
-                          SizedBox(width: 5,),
-                          FristIcon("6", Icons.home, Colors.green),
-                          SizedBox(width: 5,),
-                          FristIcon("6", Icons.home, Colors.green),
-                          SizedBox(width: 5,),
-
+                          GestureDetector(
+                            onTap: () {},
+                            child: Card(
+                              // shape: RoundedRectangleBorder(
+                              //   borderRadius: BorderRadius.circular(30.0),
+                              // ),
+                              elevation: 5,
+                              child: Stack(
+                                alignment: Alignment.topRight,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Image.asset(
+                                      'imgs/p2.jpg',
+                                      width: 100,
+                                      height: 90,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Flights",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {},
+                            child: Card(
+                              // shape: RoundedRectangleBorder(
+                              //   borderRadius: BorderRadius.circular(30.0),
+                              // ),
+                              // elevation: 5,
+                              child: Stack(
+                                alignment: Alignment.topRight,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Image.asset(
+                                      'imgs/p6.jpg',
+                                      width: 100,
+                                      height: 90,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Explore",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {},
+                            child: Card(
+                              // shape: RoundedRectangleBorder(
+                              //   borderRadius: BorderRadius.circular(30.0),
+                              // ),
+                              // elevation: 5,
+                              child: Stack(
+                                alignment: Alignment.topRight,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Image.asset(
+                                      'imgs/p4.jpg',
+                                      width: 100,
+                                      height: 90,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Hotels",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
-                  ),
-                )
-                ,
-
-                /////////////////////////////////////////////
-          /////////////////////////////////////////////
-          /////////////////////////////////////////////
-          /////////////////////////////////////////////
-          /////////////////////////////////////////////
-          /////////////////////////////////////////////
-          /////////////////////////////////////////////
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: cities.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                          child: City(index),
-                        );
-                      },
+                    SizedBox(
+                      height: 100,
                     ),
-                  ),
-                ),
 
-              ],
-            ),
+                    ////////////////////////////////////////////////
+                    ////////////////////////////////////////////////
+                    ////////////////////////////////////////////////
+                    ////////////////////////////////////////////////
+                    ////////////////////////////////////////////////
+                    PreferredSize(
+                        preferredSize: Size(10, 100),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(children: [
+                            SizedBox(
+                              width: 20,
+                            ),
+                            floatAction(
+                                "FLIGHTS",
+                                Icon(
+                                  Icons.flight,
+                                ),
+                                Colors.blue[900]!,
+                                Colors.white),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            floatAction(
+                                "FLIGHTS",
+                                Icon(
+                                  Icons.flight,
+                                ),
+                                Colors.blue[900]!,
+                                Colors.white),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            floatAction(
+                                "FLIGHTS",
+                                Icon(
+                                  Icons.flight,
+                                ),
+                                Colors.blue[900]!,
+                                Colors.white),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            floatAction("FOODS", Icon(Icons.access_alarm),
+                                Colors.blue[900]!, Colors.white),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            floatAction("FOODS", Icon(Icons.access_alarm),
+                                Colors.blue[900]!, Colors.white),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            floatAction("FOODS", Icon(Icons.access_alarm),
+                                Colors.blue[900]!, Colors.white),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            floatAction("EVENTS", Icon(Icons.event_note),
+                                Colors.blue[900]!, Colors.white),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            floatAction("EVENTS", Icon(Icons.event_note),
+                                Colors.blue[900]!, Colors.white),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            floatAction("EVENTS", Icon(Icons.event_note),
+                                Colors.blue[900]!, Colors.white),
+                            SizedBox(
+                              width: 10,
+                            ),
+                          ]),
+                        )),
+                    SizedBox(
+                      height: 100,
+                    ),
+                    Divider(
+                      color: Colors.grey[400],
+                      thickness: 1,
+                      indent: 1,
+                      endIndent: 1,
+                    ),
+                    ////////////////////////////////////////////////
+                    ////////////////////////////////////////////////
+                    ////////////////////////////////////////////////
+                    ////////////////////////////////////////////////
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "  Explore more places in Jordan",
+
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    buildCityList(),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    /////////////////////////////////////////////
+                    /////////////////////////////////////////////
+                    /////////////////////////////////////////////
+                    /////////////////////////////////////////////
+                    /////////////////////////////////////////////
+                    /////////////////////////////////////////////
+                    /////////////////////////////////////////////
+                  ],
+                ),
+              ),
           )
           : IndexedStack(
               index: indexpage,
               children: pages,
             ),
-      bottomNavigationBar: CurvedNavigationBar(
-        height: 50,
-        index: indexpage,
-        onTap: (index) {
-          setState(() {
-            indexpage = index;
-          });
-        },
-        items: [
-          Icon(Icons.home, color: Colors.black),
-          Icon(Icons.favorite, color: Colors.black),
-        ],
-        color: Color(0xFF15b9b4),
-        backgroundColor: Colors.white,
-        buttonBackgroundColor: Color(0xFF15b9b4),
-        animationDuration: Duration(milliseconds: 300),
-      ),
+        bottomNavigationBar: CurvedNavigationBar(
+      height: 50,
+      index: indexpage,
+      onTap: (index) {
+        setState(() {
+          indexpage = index;
+        });
+      },
+      items: [
+        Icon(Icons.home, color: Colors.black),
+        Icon(Icons.favorite, color: Colors.black),
+      ],
+      color: Colors.white,
+      backgroundColor: Colors.white,
+      buttonBackgroundColor: Color(0xFF15b9b4),
+      animationDuration: Duration(milliseconds: 300),
+    ),
       ////////////////////////
       ////////////////////////
       ////////////////////////
@@ -444,151 +481,256 @@ class _HomeState extends State<ScreenCitiesUser> {
 ////////////////////////////////
 ///////////////////////////////
 //////////////////////////////
-
-  Widget City(int index) {
-    return GestureDetector(
-      onTap: () {
-        switch (cities[index].name) {
-          case 'Irbid':
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ScreenCitiesUser1()),
-            );
-            // Navigator.of(context).push(MaterialPageRoute(
-            //   builder: (context) => U_irbed(),
-            // ));
-            break;
-          case 'Jarash':
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => U_Jarash(),
-            ));
-            break;
-          case 'Ajloun':
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => U_Ajlon(),
-            ));
-            break;
-          case 'Mafraq':
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => U_mafraq(),
-            ));
-            break;
-          case 'Amman':
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => U_Amman(),
-            ));
-            break;
-          case 'Madaba':
-            // Navigator.of(context).push(MaterialPageRoute(
-            //   builder: (context) => U_Mdaba(),
-            // ));
-            break;
-          case 'Balqa':
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => U_Balqa(),
-            ));
-            break;
-          case 'Karak':
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => U_Karak(),
-            ));
-            break;
-          case 'Tafileh':
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => U_Tafileh(),
-            ));
-            break;
-          case 'Maan':
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => U_Maan(),
-            ));
-            break;
-          case 'Aqaba':
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => U_Aqaba(),
-            ));
-            break;
-          default:
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => ScreenCitiesRented(),
-            ));
-            break;
-        }
-      },
-      child: Card(
-        shadowColor: Color(0xFF15b9b4),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        elevation: 5,
-        child: Stack(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.network(
-                cities[index].image,
-                width: double.infinity,
-                height: 200,
-                fit: BoxFit.cover,
-                alignment: Alignment.center,
+  Widget buildCityList() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: cities.map((city) {
+          return GestureDetector(
+            onTap: () {
+              switch (city.name) {
+                case 'Irbid':
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => ScreenCitiesUser1()),
+                  // );
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => U_irbed(),
+                  ));
+                  break;
+                case 'Jarash':
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => U_Jarash(),
+                  ));
+                  break;
+                case 'Ajloun':
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => U_Ajlon(),
+                  ));
+                  break;
+                case 'Mafraq':
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => U_mafraq(),
+                  ));
+                  break;
+                case 'Amman':
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => U_Amman(),
+                  ));
+                  break;
+                case 'Madaba':
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //   builder: (context) => U_Mdaba(),
+                  // ));
+                  break;
+                case 'Balqa':
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => U_Balqa(),
+                  ));
+                  break;
+                case 'Karak':
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => U_Karak(),
+                  ));
+                  break;
+                case 'Tafileh':
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => U_Tafileh(),
+                  ));
+                  break;
+                case 'Maan':
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => U_Maan(),
+                  ));
+                  break;
+                case 'Aqaba':
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => U_Aqaba(),
+                  ));
+                  break;
+                default:
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ScreenCitiesRented(),
+                  ));
+                  break;
+              }
+            },
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
               ),
-            ),
-            Positioned(
-              top: 8,
-              right: 8,
-              child: GestureDetector(
-                onTap: () {
-                  if (index >= 0 && index < cities.length) {
-                    final city = cities[index];
-                    setState(() {
-                      if (itemfavorit.favorit.contains(city)) {
-                        itemfavorit.favorit.remove(city);
-                      } else {
-                        itemfavorit.favorit.add(city);
-                      }
-                    });
-                  } else {
-                  }
-                },
-                child: Icon(
-                  itemfavorit.favorit.contains(cities[index])
-                      ? Icons.favorite
-                      : Icons.favorite_border,
-                  color: Colors.red,
-                  size: 28,
-                ),
-              ),
-            ),
-            Positioned(
-              top: 8,
-              left: 8,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
-                decoration: BoxDecoration(
-                  color: Colors.black54,
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                child: Text(
-                  cities[index].name,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    shadows: [
-                      Shadow(
-                        blurRadius: 5.0,
-                        color: Colors.black.withOpacity(0.7),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: Column(
+                  children: [
+                    Image.network(
+                      city.image,
+                      width: 200,
+                      height: 120,
+                      fit: BoxFit.cover,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        city.name,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ],
-        ),
+          );
+        }).toList(),
       ),
     );
   }
+
+  // Widget City(int index) {
+  //   return GestureDetector(
+  //     onTap: () {
+  //       switch (cities[index].name) {
+  //         case 'Irbid':
+  //           Navigator.push(
+  //             context,
+  //             MaterialPageRoute(builder: (context) => ScreenCitiesUser1()),
+  //           );
+  //           // Navigator.of(context).push(MaterialPageRoute(
+  //           //   builder: (context) => U_irbed(),
+  //           // ));
+  //           break;
+  //         case 'Jarash':
+  //           Navigator.of(context).push(MaterialPageRoute(
+  //             builder: (context) => U_Jarash(),
+  //           ));
+  //           break;
+  //         case 'Ajloun':
+  //           Navigator.of(context).push(MaterialPageRoute(
+  //             builder: (context) => U_Ajlon(),
+  //           ));
+  //           break;
+  //         case 'Mafraq':
+  //           Navigator.of(context).push(MaterialPageRoute(
+  //             builder: (context) => U_mafraq(),
+  //           ));
+  //           break;
+  //         case 'Amman':
+  //           Navigator.of(context).push(MaterialPageRoute(
+  //             builder: (context) => U_Amman(),
+  //           ));
+  //           break;
+  //         case 'Madaba':
+  //           // Navigator.of(context).push(MaterialPageRoute(
+  //           //   builder: (context) => U_Mdaba(),
+  //           // ));
+  //           break;
+  //         case 'Balqa':
+  //           Navigator.of(context).push(MaterialPageRoute(
+  //             builder: (context) => U_Balqa(),
+  //           ));
+  //           break;
+  //         case 'Karak':
+  //           Navigator.of(context).push(MaterialPageRoute(
+  //             builder: (context) => U_Karak(),
+  //           ));
+  //           break;
+  //         case 'Tafileh':
+  //           Navigator.of(context).push(MaterialPageRoute(
+  //             builder: (context) => U_Tafileh(),
+  //           ));
+  //           break;
+  //         case 'Maan':
+  //           Navigator.of(context).push(MaterialPageRoute(
+  //             builder: (context) => U_Maan(),
+  //           ));
+  //           break;
+  //         case 'Aqaba':
+  //           Navigator.of(context).push(MaterialPageRoute(
+  //             builder: (context) => U_Aqaba(),
+  //           ));
+  //           break;
+  //         default:
+  //           Navigator.of(context).push(MaterialPageRoute(
+  //             builder: (context) => ScreenCitiesRented(),
+  //           ));
+  //           break;
+  //       }
+  //     },
+  //     child: Card(
+  //       shadowColor: Color(0xFF15b9b4),
+  //       shape: RoundedRectangleBorder(
+  //         borderRadius: BorderRadius.circular(20.0),
+  //       ),
+  //       elevation: 5,
+  //       child: Stack(
+  //         children: [
+  //           ClipRRect(
+  //             borderRadius: BorderRadius.circular(20),
+  //             child: Image.network(
+  //               cities[index].image,
+  //               width: double.infinity,
+  //               height: 200,
+  //               fit: BoxFit.cover,
+  //               alignment: Alignment.center,
+  //             ),
+  //           ),
+  //           Positioned(
+  //             top: 8,
+  //             right: 8,
+  //             child: GestureDetector(
+  //               onTap: () {
+  //                 if (index >= 0 && index < cities.length) {
+  //                   final city = cities[index];
+  //                   setState(() {
+  //                     if (itemfavorit.favorit.contains(city)) {
+  //                       itemfavorit.favorit.remove(city);
+  //                     } else {
+  //                       itemfavorit.favorit.add(city);
+  //                     }
+  //                   });
+  //                 } else {}
+  //               },
+  //               child: Icon(
+  //                 itemfavorit.favorit.contains(cities[index])
+  //                     ? Icons.favorite
+  //                     : Icons.favorite_border,
+  //                 color: Colors.red,
+  //                 size: 28,
+  //               ),
+  //             ),
+  //           ),
+  //           Positioned(
+  //             top: 8,
+  //             left: 8,
+  //             child: Container(
+  //               padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+  //               decoration: BoxDecoration(
+  //                 color: Colors.black54,
+  //                 borderRadius: BorderRadius.circular(15.0),
+  //               ),
+  //               child: Text(
+  //                 cities[index].name,
+  //                 style: TextStyle(
+  //                   color: Colors.white,
+  //                   fontSize: 15,
+  //                   fontWeight: FontWeight.bold,
+  //                   shadows: [
+  //                     Shadow(
+  //                       blurRadius: 5.0,
+  //                       color: Colors.black.withOpacity(0.7),
+  //                     ),
+  //                   ],
+  //                 ),
+  //               ),
+  //             ),
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 
   ////////////////////////
   ////////////////////////
@@ -664,7 +806,7 @@ class _HomeState extends State<ScreenCitiesUser> {
       mainAxisSize: MainAxisSize.min,
       children: [
         Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(8.0),
           child: FloatingActionButton(
             onPressed: () {
               switch (text) {
@@ -695,13 +837,13 @@ class _HomeState extends State<ScreenCitiesUser> {
       ],
     );
   }
+
   Widget FristIcon(String title, IconData icon, Color color) {
     return Column(
       children: [
         IconButton(
           icon: Icon(icon, size: 25, color: color),
-          onPressed: () {
-          },
+          onPressed: () {},
         ),
         Text(
           title,
@@ -714,5 +856,4 @@ class _HomeState extends State<ScreenCitiesUser> {
       ],
     );
   }
-
 }

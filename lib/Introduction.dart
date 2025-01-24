@@ -1,3 +1,50 @@
+
+// Padding(
+//   padding: const EdgeInsets.all(8.0),
+//   child: Card(
+//     color: Colors.white70,
+//     shape: RoundedRectangleBorder(
+//       borderRadius: BorderRadius.circular(10.0),
+//     ),
+//     elevation: 5,
+//     child: SingleChildScrollView(
+//       scrollDirection: Axis.horizontal,
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.start,
+//         children: [
+//           FristIcon("1", Icons.home, Colors.green),
+//           SizedBox(width: 5,),
+//           FristIcon("2", Icons.home, Colors.green),
+//           SizedBox(width: 5,),
+//
+//           FristIcon("3", Icons.home, Colors.green),
+//           SizedBox(width: 5,),
+//
+//           FristIcon("4", Icons.home, Colors.black),
+//           SizedBox(width: 5,),
+//
+//           FristIcon("5", Icons.home, Colors.green),
+//           SizedBox(width: 5,),
+//
+//           FristIcon("6", Icons.home, Colors.green),
+//           SizedBox(width: 5,),
+//           FristIcon("6", Icons.home, Colors.green),
+//           SizedBox(width: 5,),
+//           FristIcon("6", Icons.home, Colors.green),
+//           SizedBox(width: 5,),
+//           FristIcon("6", Icons.home, Colors.green),
+//           SizedBox(width: 5,),
+//           FristIcon("6", Icons.home, Colors.green),
+//           SizedBox(width: 5,),
+//
+//         ],
+//       ),
+//     ),
+//   ),
+// )
+// ,
+
+
 // import 'package:flutter/material.dart';
 //
 // class U_Zarqa extends StatefulWidget {
