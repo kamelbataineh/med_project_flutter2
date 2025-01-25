@@ -16,7 +16,7 @@ class HousingDetailsPage extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        backgroundColor: Color(0xFF15b9b4),
+        backgroundColor: Colors.blue[900],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -56,7 +56,6 @@ class HousingDetailsPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-
                       _buildDetailRow(Icons.home, 'Housing Type:', housing.typename),
                       SizedBox(height: 8),
                       _buildDetailRow(Icons.meeting_room, 'Number of Rooms:', housing.rooms.toString()),

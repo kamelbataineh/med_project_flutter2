@@ -196,7 +196,7 @@ class _HomeState extends State<ScreenCitiesUser1> {
                 ),
               ),
               GridView.builder(
-                shrinkWrap: true,  // مهم للسماح للشبكة بالتمرير داخل الـ Column
+                shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),  // منع التمرير داخل GridView
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,

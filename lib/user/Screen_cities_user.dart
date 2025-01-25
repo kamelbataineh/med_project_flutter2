@@ -1,13 +1,9 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/Class_Favorites.dart';
 import 'package:med_project_flutter2/More.dart';
 import 'package:med_project_flutter2/Screen_favorite.dart';
-import 'package:med_project_flutter2/App_Appearance.dart';
-import 'package:med_project_flutter2/consr_routes.dart';
+import 'package:med_project_flutter2/Student_Dormitories.dart';
 import 'package:med_project_flutter2/free.dart';
-import 'package:med_project_flutter2/userORrented.dart';
-
 import '../city/U.irbed.dart';
 import '../city/U_Amman.dart';
 import '../city/U_Aqaba.dart';
@@ -19,7 +15,6 @@ import '../city/U_jarash.dart';
 import '../city/U_karak.dart';
 import '../city/U_mafraq.dart';
 import '../rented/Screen_cities_rented.dart';
-import 'Screen_cities_user1.dart';
 
 class ScreenCitiesUser extends StatefulWidget {
   @override
@@ -89,43 +84,6 @@ class _HomeState extends State<ScreenCitiesUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Center(
-      //     child: Text(appBarTitles[indexpage]),
-      //   ),
-      //   leading: IconButton(
-      //     icon: Icon(Icons.search),
-      //     onPressed: () {},
-      //   ),
-      // bottom: indexpage == 0
-      //     ? // PreferredSize(
-      //     preferredSize: Size(0, 100),
-      //     child: SingleChildScrollView(
-      //       scrollDirection: Axis.horizontal,
-      //       child: Row(children: [
-      //         SizedBox(
-      //           width: 20,
-      //         ),
-      //         floatAction("FLIGHTS", Icon(Icons.flight),
-      //             Colors.deepOrange[100]!, Colors.deepOrange[400]!),
-      //         SizedBox(
-      //           width: 10,
-      //         ),
-      //         floatAction("FOODS", Icon(Icons.fastfood_rounded),
-      //             Colors.orange[100]!, Colors.orange),
-      //         SizedBox(
-      //           width: 10,
-      //         ),
-      //         floatAction("EVENTS", Icon(Icons.event_note),
-      //             Colors.purple[100]!, Colors.pink),
-      //         SizedBox(
-      //           width: 10,
-      //         ),
-      //       ]),
-      //     ))
-      // : null,
-      // backgroundColor: Colors.white,
-      // ),
       body: indexpage == 0
           ? SafeArea(
               child: SingleChildScrollView(
@@ -141,12 +99,12 @@ class _HomeState extends State<ScreenCitiesUser> {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => StudentDormitories(),
+                          ));
+                        },
                         child: Card(
-                          // shape: RoundedRectangleBorder(
-                          //   borderRadius: BorderRadius.circular(30.0),
-                          // ),
-                          // elevation: 5,
                           child: Stack(
                             alignment: Alignment.topRight,
                             children: [
@@ -441,44 +399,6 @@ class _HomeState extends State<ScreenCitiesUser> {
         },
       ),
 
-      ////////////////////////
-      ////////////////////////
-      ////////////////////////
-      ////////////////////////
-  //     endDrawer: Drawer(
-  //       child: ListView(
-  //         padding: EdgeInsets.zero,
-  //         children: [
-  //           DrawerHeader(
-  //             decoration: BoxDecoration(
-  //               color: Color(0xFF15b9b4),
-  //             ),
-  //             child: Column(
-  //               children: [
-  //                 Image.network(
-  //                   "https://cdn-icons-png.flaticon.com/128/3177/3177440.png",
-  //                   width: 50,
-  //                   fit: BoxFit.fill,
-  //                 ),
-  //                 Center(
-  //                   child: Text(
-  //                     'name: ',
-  //                     style: TextStyle(
-  //                       color: Colors.white,
-  //                       fontSize: 20,
-  //                     ),
-  //                   ),
-  //                 ),
-  //               ],
-  //             ),
-  //           ),
-  //           FnListTile("ملف شخصي", Icon(Icons.person)),
-  //           FnListTile("الإعدادات", Icon(Icons.settings)),
-  //           FnListTile("دعم فني", Icon(Icons.support_agent_outlined)),
-  //           FnListTile("تسجيل خروج", Icon(Icons.logout))
-  //         ],
-  //       ),
-  //     ),
     );
   }
 
@@ -575,14 +495,20 @@ class _HomeState extends State<ScreenCitiesUser> {
                       height: 120,
                       fit: BoxFit.cover,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        city.name,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            city.name,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                            
+                          ),
                         ),
-                      ),
+                        Icon(Icons.location_on_sharp)
+                      ],
                     ),
                   ],
                 ),
@@ -593,151 +519,6 @@ class _HomeState extends State<ScreenCitiesUser> {
       ),
     );
   }
-
-  // Widget City(int index) {
-  //   return GestureDetector(
-  //     onTap: () {
-  //       switch (cities[index].name) {
-  //         case 'Irbid':
-  //           Navigator.push(
-  //             context,
-  //             MaterialPageRoute(builder: (context) => ScreenCitiesUser1()),
-  //           );
-  //           // Navigator.of(context).push(MaterialPageRoute(
-  //           //   builder: (context) => U_irbed(),
-  //           // ));
-  //           break;
-  //         case 'Jarash':
-  //           Navigator.of(context).push(MaterialPageRoute(
-  //             builder: (context) => U_Jarash(),
-  //           ));
-  //           break;
-  //         case 'Ajloun':
-  //           Navigator.of(context).push(MaterialPageRoute(
-  //             builder: (context) => U_Ajlon(),
-  //           ));
-  //           break;
-  //         case 'Mafraq':
-  //           Navigator.of(context).push(MaterialPageRoute(
-  //             builder: (context) => U_mafraq(),
-  //           ));
-  //           break;
-  //         case 'Amman':
-  //           Navigator.of(context).push(MaterialPageRoute(
-  //             builder: (context) => U_Amman(),
-  //           ));
-  //           break;
-  //         case 'Madaba':
-  //           // Navigator.of(context).push(MaterialPageRoute(
-  //           //   builder: (context) => U_Mdaba(),
-  //           // ));
-  //           break;
-  //         case 'Balqa':
-  //           Navigator.of(context).push(MaterialPageRoute(
-  //             builder: (context) => U_Balqa(),
-  //           ));
-  //           break;
-  //         case 'Karak':
-  //           Navigator.of(context).push(MaterialPageRoute(
-  //             builder: (context) => U_Karak(),
-  //           ));
-  //           break;
-  //         case 'Tafileh':
-  //           Navigator.of(context).push(MaterialPageRoute(
-  //             builder: (context) => U_Tafileh(),
-  //           ));
-  //           break;
-  //         case 'Maan':
-  //           Navigator.of(context).push(MaterialPageRoute(
-  //             builder: (context) => U_Maan(),
-  //           ));
-  //           break;
-  //         case 'Aqaba':
-  //           Navigator.of(context).push(MaterialPageRoute(
-  //             builder: (context) => U_Aqaba(),
-  //           ));
-  //           break;
-  //         default:
-  //           Navigator.of(context).push(MaterialPageRoute(
-  //             builder: (context) => ScreenCitiesRented(),
-  //           ));
-  //           break;
-  //       }
-  //     },
-  //     child: Card(
-  //       shadowColor: Color(0xFF15b9b4),
-  //       shape: RoundedRectangleBorder(
-  //         borderRadius: BorderRadius.circular(20.0),
-  //       ),
-  //       elevation: 5,
-  //       child: Stack(
-  //         children: [
-  //           ClipRRect(
-  //             borderRadius: BorderRadius.circular(20),
-  //             child: Image.network(
-  //               cities[index].image,
-  //               width: double.infinity,
-  //               height: 200,
-  //               fit: BoxFit.cover,
-  //               alignment: Alignment.center,
-  //             ),
-  //           ),
-  //           Positioned(
-  //             top: 8,
-  //             right: 8,
-  //             child: GestureDetector(
-  //               onTap: () {
-  //                 if (index >= 0 && index < cities.length) {
-  //                   final city = cities[index];
-  //                   setState(() {
-  //                     if (itemfavorit.favorit.contains(city)) {
-  //                       itemfavorit.favorit.remove(city);
-  //                     } else {
-  //                       itemfavorit.favorit.add(city);
-  //                     }
-  //                   });
-  //                 } else {}
-  //               },
-  //               child: Icon(
-  //                 itemfavorit.favorit.contains(cities[index])
-  //                     ? Icons.favorite
-  //                     : Icons.favorite_border,
-  //                 color: Colors.red,
-  //                 size: 28,
-  //               ),
-  //             ),
-  //           ),
-  //           Positioned(
-  //             top: 8,
-  //             left: 8,
-  //             child: Container(
-  //               padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
-  //               decoration: BoxDecoration(
-  //                 color: Colors.black54,
-  //                 borderRadius: BorderRadius.circular(15.0),
-  //               ),
-  //               child: Text(
-  //                 cities[index].name,
-  //                 style: TextStyle(
-  //                   color: Colors.white,
-  //                   fontSize: 15,
-  //                   fontWeight: FontWeight.bold,
-  //                   shadows: [
-  //                     Shadow(
-  //                       blurRadius: 5.0,
-  //                       color: Colors.black.withOpacity(0.7),
-  //                     ),
-  //                   ],
-  //                 ),
-  //               ),
-  //             ),
-  //           ),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
-
   ////////////////////////
   ////////////////////////
   ////////////////////////
