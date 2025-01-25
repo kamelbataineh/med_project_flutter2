@@ -16,7 +16,7 @@ import 'package:med_project_flutter2/consr_routes.dart';
 import 'package:med_project_flutter2/free.dart';
 import '../Class_Favorites.dart';
 import '../Screen_favorite.dart';
-import '../Screen_setting.dart';
+import '../App_Appearance.dart';
 
 class ScreenCitiesRented extends StatefulWidget {
   @override
@@ -379,9 +379,9 @@ class _HomeState extends State<ScreenCitiesRented> {
               break;
 
             case "الإعدادات":
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => ScreenSetting(),
-              ));
+              // Navigator.of(context).push(MaterialPageRoute(
+              //   builder: (context) => ScreenSetting(),
+              // ));
               break;
 
             case "دعم فني":

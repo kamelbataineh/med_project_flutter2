@@ -2,7 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/Class_Favorites.dart';
 import 'package:med_project_flutter2/Screen_favorite.dart';
-import 'package:med_project_flutter2/Screen_setting.dart';
+import 'package:med_project_flutter2/App_Appearance.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
 import 'package:med_project_flutter2/free.dart';
 import 'package:med_project_flutter2/userORrented.dart';
@@ -266,10 +266,7 @@ class _HomeState extends State<ScreenCitiesUser1> {
                 ],
               ),
             ),
-            FnListTile("ملف شخصي", Icon(Icons.person)),
-            FnListTile("الإعدادات", Icon(Icons.settings)),
-            FnListTile("دعم فني", Icon(Icons.support_agent_outlined)),
-            FnListTile("تسجيل خروج", Icon(Icons.logout))
+
           ],
         ),
       ),
@@ -432,68 +429,7 @@ class _HomeState extends State<ScreenCitiesUser1> {
   ////////////////////////
   ////////////////////////
 
-  Widget FnListTile(String title, Icon icon) {
-    return ListTile(
-        leading: icon,
-        title: Text(
-          title,
-          style: Theme.of(context).textTheme.bodyMedium,
-          textAlign: TextAlign.right,
-        ),
-        onTap: () {
-          switch (title) {
-            case "ملف شخصي":
-            // Navigator.of(context).push(MaterialPageRoute(
-            // builder: (context) => ProfilePage(),
-            // ));
-              break;
 
-            case "الإعدادات":
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => ScreenSetting(),
-              ));
-              break;
-
-            case "دعم فني":
-            // Navigator.of(context).push(MaterialPageRoute(
-            // builder: (context) => SupportPage(),
-            // ));
-              break;
-
-            case "تسجيل خروج":
-              Navigator.of(context).pop();
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: Text('تسجيل خروج'),
-                    content: Text('هل تريد تسجيل الخروج؟'),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: Text('إلغاء'),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => Userorrented(),
-                          ));
-                        },
-                        child: Text('خروج'),
-                      ),
-                    ],
-                  );
-                },
-              );
-              break;
-
-            default:
-              break;
-          }
-        });
-  }
 
   Widget floatAction(String text, Icon icon, Color col, Color colIcon) {
     return Column(

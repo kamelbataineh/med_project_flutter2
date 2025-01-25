@@ -1,8 +1,9 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/Class_Favorites.dart';
+import 'package:med_project_flutter2/More.dart';
 import 'package:med_project_flutter2/Screen_favorite.dart';
-import 'package:med_project_flutter2/Screen_setting.dart';
+import 'package:med_project_flutter2/App_Appearance.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
 import 'package:med_project_flutter2/free.dart';
 import 'package:med_project_flutter2/userORrented.dart';
@@ -30,10 +31,7 @@ class ScreenCitiesUser extends StatefulWidget {
 class _HomeState extends State<ScreenCitiesUser> {
   bool isicon = false;
   @override
-  List<Widget> pages = [
-    Free(),
-    FavoritesPage(),
-  ];
+  List<Widget> pages = [Free(), FavoritesPage(), MorePage()];
   int indexpage = 0;
 
   final List<PagesCitis> cities = [
@@ -130,7 +128,7 @@ class _HomeState extends State<ScreenCitiesUser> {
       // ),
       body: indexpage == 0
           ? SafeArea(
-            child: SingleChildScrollView(
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
                     /////////////////////////////////////////////
@@ -390,7 +388,6 @@ class _HomeState extends State<ScreenCitiesUser> {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           "  Explore more places in Jordan",
-
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
@@ -413,66 +410,75 @@ class _HomeState extends State<ScreenCitiesUser> {
                   ],
                 ),
               ),
-          )
+            )
           : IndexedStack(
               index: indexpage,
               children: pages,
             ),
-        bottomNavigationBar: CurvedNavigationBar(
-      height: 50,
-      index: indexpage,
-      onTap: (index) {
-        setState(() {
-          indexpage = index;
-        });
-      },
-      items: [
-        Icon(Icons.home, color: Colors.black),
-        Icon(Icons.favorite, color: Colors.black),
-      ],
-      color: Colors.white,
-      backgroundColor: Colors.white,
-      buttonBackgroundColor: Color(0xFF15b9b4),
-      animationDuration: Duration(milliseconds: 300),
-    ),
-      ////////////////////////
-      ////////////////////////
-      ////////////////////////
-      ////////////////////////
-      endDrawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Color(0xFF15b9b4),
-              ),
-              child: Column(
-                children: [
-                  Image.network(
-                    "https://cdn-icons-png.flaticon.com/128/3177/3177440.png",
-                    width: 50,
-                    fit: BoxFit.fill,
-                  ),
-                  Center(
-                    child: Text(
-                      'name: ',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            FnListTile("ملف شخصي", Icon(Icons.person)),
-            FnListTile("الإعدادات", Icon(Icons.settings)),
-            FnListTile("دعم فني", Icon(Icons.support_agent_outlined)),
-            FnListTile("تسجيل خروج", Icon(Icons.logout))
-          ],
-        ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_border),
+            label: 'favorite',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'More',
+          ),
+        ],
+        backgroundColor: Colors.white,
+        currentIndex: indexpage,
+        selectedItemColor: Colors.blue[900],
+        unselectedItemColor: Colors.grey,
+         onTap: (index) {
+            setState(() {
+              indexpage = index;
+            });
+        },
       ),
+
+      ////////////////////////
+      ////////////////////////
+      ////////////////////////
+      ////////////////////////
+  //     endDrawer: Drawer(
+  //       child: ListView(
+  //         padding: EdgeInsets.zero,
+  //         children: [
+  //           DrawerHeader(
+  //             decoration: BoxDecoration(
+  //               color: Color(0xFF15b9b4),
+  //             ),
+  //             child: Column(
+  //               children: [
+  //                 Image.network(
+  //                   "https://cdn-icons-png.flaticon.com/128/3177/3177440.png",
+  //                   width: 50,
+  //                   fit: BoxFit.fill,
+  //                 ),
+  //                 Center(
+  //                   child: Text(
+  //                     'name: ',
+  //                     style: TextStyle(
+  //                       color: Colors.white,
+  //                       fontSize: 20,
+  //                     ),
+  //                   ),
+  //                 ),
+  //               ],
+  //             ),
+  //           ),
+  //           FnListTile("ملف شخصي", Icon(Icons.person)),
+  //           FnListTile("الإعدادات", Icon(Icons.settings)),
+  //           FnListTile("دعم فني", Icon(Icons.support_agent_outlined)),
+  //           FnListTile("تسجيل خروج", Icon(Icons.logout))
+  //         ],
+  //       ),
+  //     ),
     );
   }
 
@@ -738,68 +744,7 @@ class _HomeState extends State<ScreenCitiesUser> {
   ////////////////////////
   ////////////////////////
 
-  Widget FnListTile(String title, Icon icon) {
-    return ListTile(
-        leading: icon,
-        title: Text(
-          title,
-          style: Theme.of(context).textTheme.bodyMedium,
-          textAlign: TextAlign.right,
-        ),
-        onTap: () {
-          switch (title) {
-            case "ملف شخصي":
-              // Navigator.of(context).push(MaterialPageRoute(
-              // builder: (context) => ProfilePage(),
-              // ));
-              break;
 
-            case "الإعدادات":
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => ScreenSetting(),
-              ));
-              break;
-
-            case "دعم فني":
-              // Navigator.of(context).push(MaterialPageRoute(
-              // builder: (context) => SupportPage(),
-              // ));
-              break;
-
-            case "تسجيل خروج":
-              Navigator.of(context).pop();
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: Text('تسجيل خروج'),
-                    content: Text('هل تريد تسجيل الخروج؟'),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: Text('إلغاء'),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => Userorrented(),
-                          ));
-                        },
-                        child: Text('خروج'),
-                      ),
-                    ],
-                  );
-                },
-              );
-              break;
-
-            default:
-              break;
-          }
-        });
-  }
 
   Widget floatAction(String text, Icon icon, Color col, Color colIcon) {
     return Column(
