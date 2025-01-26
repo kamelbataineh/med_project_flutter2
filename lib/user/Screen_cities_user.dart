@@ -113,7 +113,7 @@ class _HomeState extends State<ScreenCitiesUser> {
                                 child: Image.asset(
                                   'imgs/p5.jpg',
                                   width: double.infinity,
-                                  height: 80,
+                                  height: 90,
                                   fit: BoxFit.fill,
                                 ),
                               ),
@@ -160,7 +160,7 @@ class _HomeState extends State<ScreenCitiesUser> {
                                     child: Image.asset(
                                       'imgs/p2.jpg',
                                       width: 100,
-                                      height: 90,
+                                      height: 120,
                                       fit: BoxFit.fill,
                                     ),
                                   ),
@@ -194,7 +194,7 @@ class _HomeState extends State<ScreenCitiesUser> {
                                     child: Image.asset(
                                       'imgs/p6.jpg',
                                       width: 100,
-                                      height: 90,
+                                      height: 120,
                                       fit: BoxFit.fill,
                                     ),
                                   ),
@@ -228,7 +228,7 @@ class _HomeState extends State<ScreenCitiesUser> {
                                     child: Image.asset(
                                       'imgs/p4.jpg',
                                       width: 100,
-                                      height: 90,
+                                      height:120,
                                       fit: BoxFit.fill,
                                     ),
                                   ),
