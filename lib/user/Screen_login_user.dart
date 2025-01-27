@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
+import 'package:med_project_flutter2/user/Screen_cities_user.dart';
+
 class ScreenLoginUser extends StatefulWidget {
   const ScreenLoginUser({super.key});
 
@@ -9,7 +11,39 @@ class ScreenLoginUser extends StatefulWidget {
 }
 
 class _ScreenLoginUserState extends State<ScreenLoginUser> {
-bool isPasswordVisible=true;
+  bool isPasswordVisible = true;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  bool isValidEmail(String email) {
+    String pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
+    RegExp regex = RegExp(pattern);
+    return regex.hasMatch(email);
+  }
+
+  void validateAndLogin() {
+    String email = emailController.text.trim();
+    String password = passwordController.text.trim();
+
+    if (email.isEmpty || !isValidEmail(email)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('يرجى إدخال بريد إلكتروني ')),
+      );
+      return;
+    }
+    if (password.isEmpty || password.length < 8) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+            content: Text('كلمة المرور يجب أن تحتوي على 8 أحرف على الأقل')),
+      );
+      return;
+    }
+
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => ScreenCitiesUser(),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +51,8 @@ bool isPasswordVisible=true;
       appBar: AppBar(
         title: Align(
           alignment: Alignment.centerRight,
-          child: Text('تسجيل الدخول'),),
+          child: Text('تسجيل الدخول'),
+        ),
         backgroundColor: Color(0xFF15b9b4),
       ),
       body: SingleChildScrollView(
@@ -25,7 +60,6 @@ bool isPasswordVisible=true;
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -41,7 +75,9 @@ bool isPasswordVisible=true;
                       ),
                     ),
                     child: Text(
-                      'حساب جديد', style: TextStyle(color: Colors.black),),
+                      'حساب جديد',
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
                 ),
                 SizedBox(width: 10),
@@ -70,15 +106,15 @@ bool isPasswordVisible=true;
               height: 100,
               fit: BoxFit.none,
             ),
-            SizedBox(height: 20,),
-            buildTextField('البريد الإلكتروني', Icons.email, false, ),
-            buildPasswordField("كلمة السر"),
+            SizedBox(
+              height: 20,
+            ),
+            buildTextField(
+                'البريد الإلكتروني', Icons.email, false, emailController),
+            buildPasswordField("كلمة السر", passwordController),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pushReplacementNamed(
-                    route_ScreenCitiesUser);
-              },
+              onPressed: validateAndLogin,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF15b9b4),
                 padding: EdgeInsets.symmetric(vertical: 10),
@@ -101,10 +137,12 @@ bool isPasswordVisible=true;
   ///////////////////////////////////
   ///////////////////////////////////
 //////////////////////////////////////
-  Widget buildTextField(String label, IconData icon, bool x) {
+  Widget buildTextField(
+      String label, IconData icon, bool x, TextEditingController controller) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextField(
+        controller: controller,
         decoration: InputDecoration(
           fillColor: Colors.grey[200],
           filled: true,
@@ -114,26 +152,28 @@ bool isPasswordVisible=true;
             borderRadius: BorderRadius.circular(8),
           ),
         ),
-obscureText:x ,
+        obscureText: x,
       ),
     );
   }
 
-  Widget buildPasswordField(String label) {
+  Widget buildPasswordField(String label, TextEditingController controller) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextField(
-       ////////////////مهم////////////////////
+        ////////////////مهم////////////////////
+        controller: controller,
         obscureText: isPasswordVisible,
         ///////////////////////////////////
         decoration: InputDecoration(
           fillColor: Colors.grey[200],
           filled: true,
           labelText: label,
-          prefixIcon:  Icon(Icons.lock, color: Color(0xFF15b9b4)),
+          prefixIcon: Icon(Icons.lock, color: Color(0xFF15b9b4)),
           suffixIcon: IconButton(
-            icon: Icon(isPasswordVisible ? Icons.visibility : Icons.visibility_off,
-              color:  Color(0xFF15b9b4),
+            icon: Icon(
+              isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+              color: Color(0xFF15b9b4),
             ),
             onPressed: () {
               setState(() {
@@ -149,4 +189,3 @@ obscureText:x ,
     );
   }
 }
-

@@ -103,16 +103,16 @@ class _AddHousingScreenState extends State<Addinfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: Text("Add Housing"),
-        ),
+        title: Text("Add Housing"),
+        centerTitle: true,
+        backgroundColor: Colors.blue[900],
+        automaticallyImplyLeading: false,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: Colors.white,
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -256,7 +256,7 @@ class _AddHousingScreenState extends State<Addinfo> {
                       ElevatedButton(
                         onPressed: addHousingItem,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFF15b9b4),
+                          backgroundColor:Colors.blue[900],
                           padding: EdgeInsets.symmetric(
                               vertical: 10, horizontal: 40),
                           shape: RoundedRectangleBorder(
@@ -293,7 +293,7 @@ class _AddHousingScreenState extends State<Addinfo> {
         decoration: InputDecoration(
           labelText: label,
           labelStyle: TextStyle(color: Colors.grey[600]),
-          prefixIcon: Icon(icon, color: Color(0xFF15b9b4)),
+          prefixIcon: Icon(icon, color:Colors.blue[900]),
           filled: true,
           fillColor: Colors.grey[200],
           border: OutlineInputBorder(
@@ -302,7 +302,7 @@ class _AddHousingScreenState extends State<Addinfo> {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Color(0xFF15b9b4), width: 2),
+            borderSide: BorderSide(color: Colors.blue[900]!, width: 2),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
@@ -329,7 +329,7 @@ class _AddHousingScreenState extends State<Addinfo> {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Color(0xFF15b9b4), width: 2),
+            borderSide: BorderSide(color: Colors.blue[900]!, width: 2),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),

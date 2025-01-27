@@ -322,6 +322,15 @@ class _HomeState extends State<ScreenCitiesRented> {
                               width: 20,
                             ),
                             floatAction(
+                                "ADD",
+                                Icon(
+                                  Icons.add,
+                                ),
+                                Colors.white,
+                                Colors.blue[900]!),
+                            SizedBox(
+                              width: 10,
+                            ),   floatAction(
                                 "FLIGHTS",
                                 Icon(
                                   Icons.flight,

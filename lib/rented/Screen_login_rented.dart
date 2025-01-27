@@ -27,13 +27,13 @@ class _ScreenLoginRentedState extends State<ScreenLoginRented> {
 
     if (email.isEmpty || !isValidEmail(email)) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('يرجى إدخال بريد إلكتروني صحيح')),
+        SnackBar(content: Text('يرجى إدخال بريد إلكتروني ')),
       );
       return;
     }
-    if (password.isEmpty || password.length < 6) {
+    if (password.isEmpty || password.length < 8) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('كلمة المرور يجب أن تحتوي على 6 أحرف على الأقل')),
+        SnackBar(content: Text('كلمة المرور يجب أن تحتوي على 8 أحرف على الأقل')),
       );
       return;
     }
