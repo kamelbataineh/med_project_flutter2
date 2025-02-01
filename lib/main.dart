@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:med_project_flutter2/userORrented.dart';
 
 import 'Class_Favorites.dart';
 import 'based_router.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: route_ScreenCitiesUser,
+      initialRoute: Userorrented(),
       onGenerateRoute: RouteClass.generator,
  // home:ScreenCitiesUser(),
       //////////////////////////////////

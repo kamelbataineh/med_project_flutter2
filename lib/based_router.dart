@@ -35,6 +35,10 @@ class RouteClass {
       case route_Addinfo:
         return builderscreen(Addinfo());
 
+
+ case route_Userorrented:
+        return builderscreen(Userorrented());
+
       case route_ScreenLoginRented:
         return builderscreen(ScreenLoginRented());
 
