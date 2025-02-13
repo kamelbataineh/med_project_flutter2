@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:med_project_flutter2/Profile.dart';
+import 'package:med_project_flutter2/More/Profile.dart';
 import 'package:med_project_flutter2/userORrented.dart';
 import 'App_Appearance.dart';
 
@@ -16,7 +16,7 @@ class _MorePageState extends State<MorePage> {
     return Scaffold(
       appBar: AppBar(
         title:  Text(
-          "Profile",
+          "More",
           style: TextStyle(fontSize: 20),
         ),
         centerTitle: true,

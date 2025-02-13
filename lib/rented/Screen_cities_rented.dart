@@ -2,7 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/Addinfo.dart';
 import 'package:med_project_flutter2/City_Housing.dart';
-import 'package:med_project_flutter2/More.dart';
+import 'package:med_project_flutter2/More/More.dart';
 import 'package:med_project_flutter2/city/U.irbed.dart';
 import 'package:med_project_flutter2/city/U_Amman.dart';
 import 'package:med_project_flutter2/city/U_Aqaba.dart';
@@ -16,8 +16,8 @@ import 'package:med_project_flutter2/city/U_mafraq.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
 import 'package:med_project_flutter2/free.dart';
 import '../Class_Favorites.dart';
-import '../Screen_favorite.dart';
-import '../App_Appearance.dart';
+import '../More/Screen_favorite.dart';
+import '../More/App_Appearance.dart';
 import '../Student_Dormitories.dart';
 
 class ScreenCitiesRented extends StatefulWidget {

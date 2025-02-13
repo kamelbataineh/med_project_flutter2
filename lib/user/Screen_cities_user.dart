@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/Class_Favorites.dart';
-import 'package:med_project_flutter2/More.dart';
-import 'package:med_project_flutter2/Screen_favorite.dart';
+import 'package:med_project_flutter2/More/More.dart';
+import 'package:med_project_flutter2/More/Screen_favorite.dart';
 import 'package:med_project_flutter2/Student_Dormitories.dart';
 import 'package:med_project_flutter2/free.dart';
 import '../city/U.irbed.dart';

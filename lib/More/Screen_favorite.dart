@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/Housing_Details_Page.dart';
 
-import 'Class_Favorites.dart';
+import '../Class_Favorites.dart';
 
 class FavoritesPage extends StatefulWidget {
   @override

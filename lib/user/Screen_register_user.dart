@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:med_project_flutter2/user/Screen_cities_user.dart';
-import 'package:med_project_flutter2/Screen_favorite.dart';
-import 'package:med_project_flutter2/App_Appearance.dart';
+import 'package:med_project_flutter2/More/Screen_favorite.dart';
+import 'package:med_project_flutter2/More/App_Appearance.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
 import 'package:lottie/lottie.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';

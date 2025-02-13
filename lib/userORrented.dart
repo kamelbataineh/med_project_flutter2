@@ -73,7 +73,7 @@ class _UserorrentedState extends State<Userorrented> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),child: const Text(
-                        'مؤجر',
+                        'Lessor',
                         style: TextStyle(fontSize: 18, color: Colors.black),
                       ),
                     ),
@@ -92,7 +92,7 @@ class _UserorrentedState extends State<Userorrented> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      child: Text('مستأجر',
+                      child: Text('Tenant',
                           style: TextStyle(fontSize: 18, color: Colors.black)),
                     ),
                   ],
