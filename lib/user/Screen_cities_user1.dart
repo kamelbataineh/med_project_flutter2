@@ -1,3 +1,157 @@
+// final TextEditingController emailController = TextEditingController();
+// final TextEditingController passwordController = TextEditingController();
+//
+// bool isValidEmail(String email) {
+//   String pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
+//   RegExp regex = RegExp(pattern);
+//   return regex.hasMatch(email);
+// }
+//
+// void validateAndLogin() {
+//   String email = emailController.text.trim();
+//   String password = passwordController.text.trim();
+//
+//   if (email.isEmpty || !isValidEmail(email)) {
+//     ScaffoldMessenger.of(context).showSnackBar(
+//       SnackBar(content: Text('يرجى إدخال بريد إلكتروني ')),
+//     );
+//     return;
+//   }
+//   if (password.isEmpty || password.length < 8) {
+//     ScaffoldMessenger.of(context).showSnackBar(
+//       SnackBar(
+//           content: Text('كلمة المرور يجب أن تحتوي على 8 أحرف على الأقل')),
+//     );
+//     return;
+//   }
+//
+//   Navigator.of(context).push(MaterialPageRoute(
+//     builder: (context) => ScreenCitiesUser(),
+//   ));
+// }
+
+
+// Padding(
+// padding: const EdgeInsets.all(8.0),
+// child: Row(
+// mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+// children: [
+// GestureDetector(
+// onTap: () {},
+// child: Card(
+// // shape: RoundedRectangleBorder(
+// //   borderRadius: BorderRadius.circular(30.0),
+// // ),
+// elevation: 5,
+// child: Stack(
+// alignment: Alignment.topRight,
+// children: [
+// ClipRRect(
+// borderRadius: BorderRadius.circular(10),
+// child: Image.asset(
+// 'imgs/p2.jpg',
+// width: 100,
+// height: 120,
+// fit: BoxFit.fill,
+// ),
+// ),
+// Padding(
+// padding: const EdgeInsets.all(8.0),
+// child: Text(
+// "Flights",
+// style: TextStyle(
+// color: Colors.black,
+// fontSize: 12,
+// fontWeight: FontWeight.bold,
+// ),
+// ),
+// ),
+// ],
+// ),
+// ),
+// ),
+// GestureDetector(
+// onTap: () {},
+// child: Card(
+// // shape: RoundedRectangleBorder(
+// //   borderRadius: BorderRadius.circular(30.0),
+// // ),
+// // elevation: 5,
+// child: Stack(
+// alignment: Alignment.topRight,
+// children: [
+// ClipRRect(
+// borderRadius: BorderRadius.circular(10),
+// child: Image.asset(
+// 'imgs/p6.jpg',
+// width: 100,
+// height: 120,
+// fit: BoxFit.fill,
+// ),
+// ),
+// Padding(
+// padding: const EdgeInsets.all(8.0),
+// child: Text(
+// "Explore",
+// style: TextStyle(
+// color: Colors.black,
+// fontSize: 12,
+// fontWeight: FontWeight.bold,
+// ),
+// ),
+// ),
+// ],
+// ),
+// ),
+// ),
+// GestureDetector(
+// onTap: () {},
+// child: Card(
+// // shape: RoundedRectangleBorder(
+// //   borderRadius: BorderRadius.circular(30.0),
+// // ),
+// // elevation: 5,
+// child: Stack(
+// alignment: Alignment.topRight,
+// children: [
+// ClipRRect(
+// borderRadius: BorderRadius.circular(10),
+// child: Image.asset(
+// 'imgs/p4.jpg',
+// width: 100,
+// height: 120,
+// fit: BoxFit.fill,
+// ),
+// ),
+// Padding(
+// padding: const EdgeInsets.all(8.0),
+// child: Text(
+// "Hotels",
+// style: TextStyle(
+// color: Colors.black,
+// fontSize: 12,
+// fontWeight: FontWeight.bold,
+// ),
+// ),
+// ),
+// ],
+// ),
+// ),
+// ),
+// ],
+// ),
+// ),
+// SizedBox(
+// height: 100,
+// ),
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////
+///
+///
 // import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 // import 'package:flutter/material.dart';
 // import 'package:med_project_flutter2/Class_Favorites.dart';

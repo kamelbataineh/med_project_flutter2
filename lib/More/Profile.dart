@@ -1,4 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../FireBase/Read_FireBase.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -8,6 +12,17 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  ///////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////
+  CollectionReference users = FirebaseFirestore.instance.collection('Rented');
+
+  ///////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////
+  final credential = FirebaseAuth.instance.currentUser;
+
+  ///////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,44 +39,75 @@ class _ProfilePageState extends State<ProfilePage> {
           padding: const EdgeInsets.all(20.0),
           child: Center(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const CircleAvatar(
-                  radius: 60,
-                  backgroundColor: Colors.grey,
-                  backgroundImage: NetworkImage(
-                    'https://via.placeholder.com/150',
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const CircleAvatar(
+                    radius: 60,
+                    backgroundColor: Colors.grey,
+                    backgroundImage: NetworkImage(
+                      'https://via.placeholder.com/150',
+                    ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  "Name",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-                const Text(
-                  "Name@example.com",
-                  style: TextStyle(fontSize: 18, color: Colors.grey),
-                ),
-                const SizedBox(height: 30),
-                ListTile(
-                  leading: Icon(Icons.phone, color: Colors.blue[900]),
-                  title: const Text("Phone Number"),
-                  subtitle: const Text("+962 00 456 7890"),
-                ),
-                ListTile(
-                  leading: Icon(Icons.location_on, color: Colors.blue[900]),
-                  title: const Text("Address"),
-                  subtitle: const Text("Jordan"),
-                ),
-                ListTile(
-                  leading: Icon(Icons.person, color: Colors.blue[900]),
-                  title: const Text("Username"),
-                  subtitle: const Text("name"),
-                ),
-                const SizedBox(height: 40),
-
-              ],
-            ),
+                  SizedBox(height: 20),
+                  ReadFirebase(
+                    documentId: credential!.uid,
+                    fieldName: "BusinessName",
+                    showEditButton: false,
+                    location1: MainAxisAlignment.center,
+                    location2: CrossAxisAlignment.center,
+                    Edit: 'BusinessName',
+                    showDeleteButton: false,
+                  ),
+                  ReadFirebase(
+                    documentId: credential!.uid,
+                    fieldName: "Email",
+                    showEditButton: false,
+                    Edit: 'Email',
+                    showDeleteButton: false,
+                  ),
+                  SizedBox(height: 30),
+                  ListTile(
+                    leading: Icon(Icons.phone, color: Colors.blue[900]),
+                    title: Text("Phone Number"),
+                    subtitle: ReadFirebase(
+                      documentId: credential!.uid,
+                      fieldName: "Phone",
+                      textStyle:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                      showEditButton: true,
+                      Edit: 'Phone',
+                      showDeleteButton: true,
+                    ),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.email, color: Colors.blue[900]),
+                    title: Text("Email"),
+                    subtitle: ReadFirebase(
+                      documentId: credential!.uid,
+                      fieldName: "Email",
+                      textStyle:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                      showEditButton: true,
+                      Edit: 'Email',
+                      showDeleteButton: true,
+                    ),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.person, color: Colors.blue[900]),
+                    title: Text("Username"),
+                    subtitle: ReadFirebase(
+                      documentId: credential!.uid,
+                      fieldName: "BusinessName",
+                      textStyle:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                      showEditButton: true,
+                      Edit: 'BusinessName',
+                      showDeleteButton: true,
+                    ),
+                  ),
+                  SizedBox(height: 40),
+                ]),
           ),
         ),
       ),

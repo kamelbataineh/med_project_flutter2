@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:lottie/lottie.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
+import 'package:med_project_flutter2/rented/Screen_register_rented_packg.dart';
+import 'package:med_project_flutter2/user/Screen_register_user.dart';
+import 'package:med_project_flutter2/user/Screen_register_user_page.dart';
+import 'package:med_project_flutter2/user/SiginORSigup_user.dart';
 
 class Userorrented extends StatefulWidget {
   const Userorrented({super.key});
@@ -20,33 +24,33 @@ class _UserorrentedState extends State<Userorrented> {
       child: IntroductionScreen(
         key: inkey,
         pages: [
+          // PageViewModel(
+          //   title: "Welcome",
+          //   body: "",
+          //   image: Image.asset("imgs/map1.png"),
+          //   decoration: PageDecoration(
+          //     titleTextStyle:
+          //         TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+          //     bodyTextStyle: TextStyle(fontSize: 18),
+          //     pageColor: Colors.white,
+          //     imagePadding: EdgeInsets.all(5),
+          //   ),
+          // ),
+          // PageViewModel(
+          //   title: "Welcome",
+          //   body: "",
+          //   image:  Image.asset("imgs/map2.png"),
+          //   decoration: PageDecoration(
+          //     titleTextStyle:
+          //         TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+          //     bodyTextStyle: TextStyle(fontSize: 18),
+          //     pageColor: Colors.white,
+          //     imagePadding: EdgeInsets.all(5),
+          //   ),
+          // ),
           PageViewModel(
-            title: "Welcome",
-            body: "",
-            image: Image.asset("imgs/map1.png"),
-            decoration: PageDecoration(
-              titleTextStyle:
-                  TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-              bodyTextStyle: TextStyle(fontSize: 18),
-              pageColor: Colors.white,
-              imagePadding: EdgeInsets.all(5),
-            ),
-          ),
-          PageViewModel(
-            title: "Welcome",
-            body: "",
-            image:  Image.asset("imgs/map2.png"),
-            decoration: PageDecoration(
-              titleTextStyle:
-                  TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-              bodyTextStyle: TextStyle(fontSize: 18),
-              pageColor: Colors.white,
-              imagePadding: EdgeInsets.all(5),
-            ),
-          ),
-          PageViewModel(
-            title: "Welcome",
-            body: "",
+            title: "Welcome to Skanat",
+            body: "Looking for a home? Renting out your place? Skanat makes it simple!",
             image: Image.asset("imgs/map3.png"),
             decoration: PageDecoration(
               titleTextStyle:
@@ -82,9 +86,11 @@ class _UserorrentedState extends State<Userorrented> {
                     ElevatedButton(
 
                       onPressed: () {
-                        Navigator.of(context)
-                            .pushReplacementNamed(route_ScreenRegisterUser);
-                      },
+                        // Navigator.of(context)
+                        //     .pushReplacementNamed(route_ScreenRegisterUser);
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => SiginorsigupUser(),
+                        ));          },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF15b9b4),
                         padding: EdgeInsets.symmetric(vertical: 10),
@@ -102,14 +108,14 @@ class _UserorrentedState extends State<Userorrented> {
           ),
         ],
         onDone: () {
-          Navigator.of(context).pushReplacementNamed(route_ScreenRegisterUser);
+          // Navigator.of(context).pushReplacementNamed(route_ScreenRegisterUser);
         },
         showBackButton: true,
         back: Text("Back", style: TextStyle(color: Colors.black)),
         next: Text("Next", style: TextStyle(color: Colors.black)),
         done: Text(
           "Done",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
         dotsDecorator: DotsDecorator(
             size: const Size(10.0, 10.0),
@@ -118,7 +124,7 @@ class _UserorrentedState extends State<Userorrented> {
             activeShape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25.0),
             ),
-            activeColor: Colors.black),
+            activeColor: Colors.white),
       ),
     );
     ///////////////////////////////////

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
 import 'package:med_project_flutter2/rented/Screen_cities_rented.dart';
+import 'package:med_project_flutter2/rented/Screen_register_rented.dart';
 
 class ScreenLoginRented extends StatefulWidget {
   const ScreenLoginRented({super.key});
@@ -50,7 +51,7 @@ class _ScreenLoginRentedState extends State<ScreenLoginRented> {
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => ScreenCitiesRented(),
+              builder: (context) => ScreenRegisterRented(),
             ));
           },
         ),

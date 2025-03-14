@@ -19,7 +19,7 @@ class AppAppearance extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-          ThemeService().changeTheme();
+          // ThemeService().changeTheme();
               },
               child: Text("تغير لون الخلفيه"),
             ),

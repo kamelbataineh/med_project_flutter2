@@ -119,127 +119,127 @@ class AddHous {
 //////////////////////
 //////////////////////
 //////////////////////
-
-class ThemeService {
-  final lightTheme = ThemeData.light().copyWith(
-    primaryColor: Colors.blueGrey.shade300,
-    appBarTheme: const AppBarTheme(
-      backgroundColor: Color(0xFF15b9b4),
-      iconTheme: IconThemeData(color: Colors.black),
-      titleTextStyle: TextStyle(
-        color: Colors.black,
-        fontSize: 20,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-    canvasColor: Colors.black,
-    dividerColor: Colors.black,
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.black,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-      ),
-    ),
-    inputDecorationTheme: InputDecorationTheme(
-      filled: true,
-      fillColor: Colors.grey,
-      hintStyle: TextStyle(
-        color: Colors.black,
-        fontSize: 16,
-      ),
-      labelStyle: TextStyle(
-        color: Colors.black,
-        fontWeight: FontWeight.bold,
-      ),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: Colors.black45),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: Color(0xFF15b9b4), width: 2),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: Colors.black45, width: 1),
-      ),
-    ),
-  );
-
-  final darkTheme = ThemeData.dark().copyWith(
-    primaryColor: Colors.blue,
-    appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.black,
-      iconTheme: IconThemeData(color: Colors.white),
-      titleTextStyle: TextStyle(
-        color: Colors.white,
-        fontSize: 20,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-    dividerColor: Colors.white54,
-    elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-      iconColor: Colors.black,
-      backgroundColor: Colors.white54,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-    )),
-    /////////////////////
-    /////////////////////
-    /////////////////////
-    /////////////////////
-    /////////////////////
-    inputDecorationTheme: InputDecorationTheme(
-      filled: true,
-      fillColor: Colors.grey,
-      hintStyle: TextStyle(
-        color: Colors.black,
-        fontSize: 16,
-      ),
-      labelStyle: TextStyle(
-        color: Colors.black,
-        fontWeight: FontWeight.bold,
-      ),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: Colors.black45),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: Color(0xFF15b9b4), width: 2),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: Colors.black45, width: 1),
-      ),
-    ),
-  );
-
-  final _getStorage = GetStorage();
-  final _darkThemeKey = 'isDarkTheme';
-
-  void saveThemeData(bool isDarkTheme) {
-    _getStorage.write(_darkThemeKey, isDarkTheme);
-  }
-
-  bool isSavedDarkMode() {
-    return _getStorage.read(_darkThemeKey) ?? false;
-  }
-
-  ThemeMode getThemeMode() {
-    return isSavedDarkMode() ? ThemeMode.dark : ThemeMode.light;
-  }
-
-  void changeTheme() {
-    bool isDark = isSavedDarkMode();
-    Get.changeThemeMode(isDark ? ThemeMode.light : ThemeMode.dark);
-    saveThemeData(!isDark);
-  }
-}
+//
+// class ThemeService {
+//   final lightTheme = ThemeData.light().copyWith(
+//     primaryColor: Colors.blueGrey.shade300,
+//     appBarTheme: const AppBarTheme(
+//       backgroundColor: Color(0xFF15b9b4),
+//       iconTheme: IconThemeData(color: Colors.black),
+//       titleTextStyle: TextStyle(
+//         color: Colors.black,
+//         fontSize: 20,
+//         fontWeight: FontWeight.bold,
+//       ),
+//     ),
+//     canvasColor: Colors.black,
+//     dividerColor: Colors.black,
+//     elevatedButtonTheme: ElevatedButtonThemeData(
+//       style: ElevatedButton.styleFrom(
+//         backgroundColor: Colors.black,
+//         shape: RoundedRectangleBorder(
+//           borderRadius: BorderRadius.circular(10),
+//         ),
+//       ),
+//     ),
+//     inputDecorationTheme: InputDecorationTheme(
+//       filled: true,
+//       fillColor: Colors.grey,
+//       hintStyle: TextStyle(
+//         color: Colors.black,
+//         fontSize: 16,
+//       ),
+//       labelStyle: TextStyle(
+//         color: Colors.black,
+//         fontWeight: FontWeight.bold,
+//       ),
+//       border: OutlineInputBorder(
+//         borderRadius: BorderRadius.circular(12),
+//         borderSide: BorderSide(color: Colors.black45),
+//       ),
+//       focusedBorder: OutlineInputBorder(
+//         borderRadius: BorderRadius.circular(12),
+//         borderSide: BorderSide(color: Color(0xFF15b9b4), width: 2),
+//       ),
+//       enabledBorder: OutlineInputBorder(
+//         borderRadius: BorderRadius.circular(12),
+//         borderSide: BorderSide(color: Colors.black45, width: 1),
+//       ),
+//     ),
+//   );
+//
+//   final darkTheme = ThemeData.dark().copyWith(
+//     primaryColor: Colors.blue,
+//     appBarTheme: const AppBarTheme(
+//       backgroundColor: Colors.black,
+//       iconTheme: IconThemeData(color: Colors.white),
+//       titleTextStyle: TextStyle(
+//         color: Colors.white,
+//         fontSize: 20,
+//         fontWeight: FontWeight.bold,
+//       ),
+//     ),
+//     dividerColor: Colors.white54,
+//     elevatedButtonTheme: ElevatedButtonThemeData(
+//         style: ElevatedButton.styleFrom(
+//       iconColor: Colors.black,
+//       backgroundColor: Colors.white54,
+//       shape: RoundedRectangleBorder(
+//         borderRadius: BorderRadius.circular(10),
+//       ),
+//     )),
+//     /////////////////////
+//     /////////////////////
+//     /////////////////////
+//     /////////////////////
+//     /////////////////////
+//     inputDecorationTheme: InputDecorationTheme(
+//       filled: true,
+//       fillColor: Colors.grey,
+//       hintStyle: TextStyle(
+//         color: Colors.black,
+//         fontSize: 16,
+//       ),
+//       labelStyle: TextStyle(
+//         color: Colors.black,
+//         fontWeight: FontWeight.bold,
+//       ),
+//       border: OutlineInputBorder(
+//         borderRadius: BorderRadius.circular(12),
+//         borderSide: BorderSide(color: Colors.black45),
+//       ),
+//       focusedBorder: OutlineInputBorder(
+//         borderRadius: BorderRadius.circular(12),
+//         borderSide: BorderSide(color: Color(0xFF15b9b4), width: 2),
+//       ),
+//       enabledBorder: OutlineInputBorder(
+//         borderRadius: BorderRadius.circular(12),
+//         borderSide: BorderSide(color: Colors.black45, width: 1),
+//       ),
+//     ),
+//   );
+//
+//   final _getStorage = GetStorage();
+//   final _darkThemeKey = 'isDarkTheme';
+//
+//   void saveThemeData(bool isDarkTheme) {
+//     _getStorage.write(_darkThemeKey, isDarkTheme);
+//   }
+//
+//   bool isSavedDarkMode() {
+//     return _getStorage.read(_darkThemeKey) ?? false;
+//   }
+//
+//   ThemeMode getThemeMode() {
+//     return isSavedDarkMode() ? ThemeMode.dark : ThemeMode.light;
+//   }
+//
+//   void changeTheme() {
+//     bool isDark = isSavedDarkMode();
+//     Get.changeThemeMode(isDark ? ThemeMode.light : ThemeMode.dark);
+//     saveThemeData(!isDark);
+//   }
+// }
 //
 // class ThemeSerrvice{
 //   final lightTeme= ThemeData.light().copyWith(

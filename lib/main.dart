@@ -1,17 +1,35 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:med_project_flutter2/userORrented.dart';
-
 import 'Class_Favorites.dart';
 import 'based_router.dart';
-import 'consr_routes.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+// @override
+//   void initState(){
+//     super.initState();
+//     FirebaseAuth.instance.authStateChanges().listen((User? user) {
+//       if (user == null) {
+//         print('User is currently signed out!');
+//       } else {
+//         print('User is signed in!');
+//       }
+//     });
+//   }
+//
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +44,12 @@ class MyApp extends StatelessWidget {
       //////////////////////////////////
       //////////////////////////////////
       //////////////////////////////////
-      //////////////////////////////////
-        theme: ThemeService().lightTheme,
-    darkTheme: ThemeService().darkTheme,
-    themeMode: ThemeService().getThemeMode()
-
-
+    //   //////////////////////////////////
+    //     theme: ThemeService().lightTheme,
+    // darkTheme: ThemeService().darkTheme,
+    // themeMode: ThemeService().getThemeMode()
+    //
+    //
 
 
 

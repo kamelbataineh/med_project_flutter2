@@ -140,296 +140,318 @@ class _HomeState extends State<ScreenCitiesRented> {
       // ),
       body: indexpage == 0
           ? SafeArea(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    /////////////////////////////////////////////
-                    /////////////////////////////////////////////
-                    /////////////////////////////////////////////
-                    /////////////////////////////////////////////
-                    /////////////////////////////////////////////
-                    /////////////////////////////////////////////
-                    /////////////////////////////////////////////
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => StudentDormitories(),
-                          ));
-                        },
-                        child: Card(
-                          child: Stack(
-                            alignment: Alignment.topRight,
+              child: Stack(
+
+                children: [
+                  SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        /////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                       SizedBox(height: 50,),
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => StudentDormitories(),
+                              ));
+                            },
+                            child: Card(
+                              child: Stack(
+                                alignment: Alignment.topRight,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Image.asset(
+                                      'imgs/p5.jpg',
+                                      width: double.infinity,
+                                      height: 90,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      " Student dormitories ",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        /////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(
-                                  'imgs/p5.jpg',
-                                  width: double.infinity,
-                                  height: 90,
-                                  fit: BoxFit.fill,
+                              GestureDetector(
+                                onTap: () {},
+                                child: Card(
+                                  // shape: RoundedRectangleBorder(
+                                  //   borderRadius: BorderRadius.circular(30.0),
+                                  // ),
+                                  elevation: 5,
+                                  child: Stack(
+                                    alignment: Alignment.topRight,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image.asset(
+                                          'imgs/p2.jpg',
+                                          width: 100,
+                                          height: 120,
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "Flights",
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  " Student dormitories ",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
+                              GestureDetector(
+                                onTap: () {},
+                                child: Card(
+                                  // shape: RoundedRectangleBorder(
+                                  //   borderRadius: BorderRadius.circular(30.0),
+                                  // ),
+                                  // elevation: 5,
+                                  child: Stack(
+                                    alignment: Alignment.topRight,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image.asset(
+                                          'imgs/p6.jpg',
+                                          width: 100,
+                                          height: 120,
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "Explore",
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Card(
+                                  // shape: RoundedRectangleBorder(
+                                  //   borderRadius: BorderRadius.circular(30.0),
+                                  // ),
+                                  // elevation: 5,
+                                  child: Stack(
+                                    alignment: Alignment.topRight,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image.asset(
+                                          'imgs/p4.jpg',
+                                          width: 100,
+                                          height: 120,
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "Hotels",
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                      ),
-                    ),
-                    /////////////////////////////////////////////
-                    /////////////////////////////////////////////
-                    /////////////////////////////////////////////
-                    /////////////////////////////////////////////
-                    /////////////////////////////////////////////
-                    /////////////////////////////////////////////
-                    /////////////////////////////////////////////
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          GestureDetector(
-                            onTap: () {},
-                            child: Card(
-                              // shape: RoundedRectangleBorder(
-                              //   borderRadius: BorderRadius.circular(30.0),
-                              // ),
-                              elevation: 5,
-                              child: Stack(
-                                alignment: Alignment.topRight,
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: Image.asset(
-                                      'imgs/p2.jpg',
-                                      width: 100,
-                                      height: 120,
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "Flights",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Card(
-                              // shape: RoundedRectangleBorder(
-                              //   borderRadius: BorderRadius.circular(30.0),
-                              // ),
-                              // elevation: 5,
-                              child: Stack(
-                                alignment: Alignment.topRight,
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: Image.asset(
-                                      'imgs/p6.jpg',
-                                      width: 100,
-                                      height: 120,
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "Explore",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Card(
-                              // shape: RoundedRectangleBorder(
-                              //   borderRadius: BorderRadius.circular(30.0),
-                              // ),
-                              // elevation: 5,
-                              child: Stack(
-                                alignment: Alignment.topRight,
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: Image.asset(
-                                      'imgs/p4.jpg',
-                                      width: 100,
-                                      height: 120,
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "Hotels",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 100,
-                    ),
+                        SizedBox(
+                          height: 100,
+                        ),
 
-                    ////////////////////////////////////////////////
-                    ////////////////////////////////////////////////
-                    ////////////////////////////////////////////////
-                    ////////////////////////////////////////////////
-                    ////////////////////////////////////////////////
-                    PreferredSize(
-                        preferredSize: Size(10, 100),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(children: [
-                            SizedBox(
-                              width: 20,
-                            ),
-                            floatAction(
-                                "ADD",
-                                Icon(
-                                  Icons.add,
+                        ////////////////////////////////////////////////
+                        ////////////////////////////////////////////////
+                        ////////////////////////////////////////////////
+                        ////////////////////////////////////////////////
+                        ////////////////////////////////////////////////
+                        PreferredSize(
+                            preferredSize: Size(10, 100),
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(children: [
+                                SizedBox(
+                                  width: 20,
                                 ),
-                                Colors.white,
-                                Colors.blue[900]!),
-                            SizedBox(
-                              width: 10,
-                            ),   floatAction(
-                                "FLIGHTS",
-                                Icon(
-                                  Icons.flight,
+                                floatAction(
+                                    "ADD",
+                                    Icon(
+                                      Icons.add,
+                                    ),
+                                    Colors.white,
+                                    Colors.blue[900]!),
+                                SizedBox(
+                                  width: 10,
+                                ),   floatAction(
+                                    "FLIGHTS",
+                                    Icon(
+                                      Icons.flight,
+                                    ),
+                                    Colors.blue[900]!,
+                                    Colors.white),
+                                SizedBox(
+                                  width: 10,
                                 ),
-                                Colors.blue[900]!,
-                                Colors.white),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            floatAction(
-                                "FLIGHTS",
-                                Icon(
-                                  Icons.flight,
+                                floatAction(
+                                    "FLIGHTS",
+                                    Icon(
+                                      Icons.flight,
+                                    ),
+                                    Colors.blue[900]!,
+                                    Colors.white),
+                                SizedBox(
+                                  width: 10,
                                 ),
-                                Colors.blue[900]!,
-                                Colors.white),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            floatAction(
-                                "FLIGHTS",
-                                Icon(
-                                  Icons.flight,
+                                floatAction(
+                                    "FLIGHTS",
+                                    Icon(
+                                      Icons.flight,
+                                    ),
+                                    Colors.blue[900]!,
+                                    Colors.white),
+                                SizedBox(
+                                  width: 10,
                                 ),
-                                Colors.blue[900]!,
-                                Colors.white),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            floatAction("FOODS", Icon(Icons.access_alarm),
-                                Colors.blue[900]!, Colors.white),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            floatAction("FOODS", Icon(Icons.access_alarm),
-                                Colors.blue[900]!, Colors.white),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            floatAction("FOODS", Icon(Icons.access_alarm),
-                                Colors.blue[900]!, Colors.white),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            floatAction("EVENTS", Icon(Icons.event_note),
-                                Colors.blue[900]!, Colors.white),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            floatAction("EVENTS", Icon(Icons.event_note),
-                                Colors.blue[900]!, Colors.white),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            floatAction("EVENTS", Icon(Icons.event_note),
-                                Colors.blue[900]!, Colors.white),
-                            SizedBox(
-                              width: 10,
-                            ),
-                          ]),
-                        )),
-                    SizedBox(
-                      height: 100,
+                                floatAction("FOODS", Icon(Icons.access_alarm),
+                                    Colors.blue[900]!, Colors.white),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                floatAction("FOODS", Icon(Icons.access_alarm),
+                                    Colors.blue[900]!, Colors.white),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                floatAction("FOODS", Icon(Icons.access_alarm),
+                                    Colors.blue[900]!, Colors.white),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                floatAction("EVENTS", Icon(Icons.event_note),
+                                    Colors.blue[900]!, Colors.white),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                floatAction("EVENTS", Icon(Icons.event_note),
+                                    Colors.blue[900]!, Colors.white),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                floatAction("EVENTS", Icon(Icons.event_note),
+                                    Colors.blue[900]!, Colors.white),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                              ]),
+                            )),
+                        SizedBox(
+                          height: 100,
+                        ),
+                        Divider(
+                          color: Colors.grey[400],
+                          thickness: 1,
+                          indent: 1,
+                          endIndent: 1,
+                        ),
+                        ////////////////////////////////////////////////
+                        ////////////////////////////////////////////////
+                        ////////////////////////////////////////////////
+                        ////////////////////////////////////////////////
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              "  Explore more places in Jordan",
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        buildCityList(),
+                        SizedBox(
+                          height: 50,
+                        ),
+                        /////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                        /////////////////////////////////////////////
+                      ],
                     ),
-                    Divider(
-                      color: Colors.grey[400],
-                      thickness: 1,
-                      indent: 1,
-                      endIndent: 1,
-                    ),
-                    ////////////////////////////////////////////////
-                    ////////////////////////////////////////////////
-                    ////////////////////////////////////////////////
-                    ////////////////////////////////////////////////
-                    Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "  Explore more places in Jordan",
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    buildCityList(),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    /////////////////////////////////////////////
-                    /////////////////////////////////////////////
-                    /////////////////////////////////////////////
-                    /////////////////////////////////////////////
-                    /////////////////////////////////////////////
-                    /////////////////////////////////////////////
-                    /////////////////////////////////////////////
-                  ],
-                ),
+                  ),
+                  Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                  child: Container(
+                  padding: EdgeInsets.all(8),
+                  child: Text(
+                  "Home",
+                  style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  ),))
+    ))
+
+                ],
               ),
             )
           : IndexedStack(

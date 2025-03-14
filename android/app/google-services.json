@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "142766539239",
+    "project_id": "student-housing-5bd58",
+    "storage_bucket": "student-housing-5bd58.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142766539239:android:5d9f3cde75827337b6bd42",
+        "android_client_info": {
+          "package_name": "com.example.med_project_flutter2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAewLcC4nz6PrIPCyPSFP49m2Bhq7m7wJQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
