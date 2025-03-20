@@ -1,5 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:twitter_login/twitter_login.dart';
 
 class AuthService {
   ///////////////////////////////////////////////////////////////////////////////
@@ -23,7 +26,7 @@ class AuthService {
   static Future<Authprocess> registerUser(String email, String pass) async {
     try {
       final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: pass,
       );
@@ -58,10 +61,11 @@ class AuthService {
 
   //
   //////////////////////////////////////////////////////////////////////////////
-  static Future<Authprocess> registerRented(String email, String pass ,String  business_Name ,int phone) async {
+  static Future<Authprocess> registerRented(String email, String pass,
+      String business_Name, int phone) async {
     try {
       final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: pass,
 
@@ -70,8 +74,8 @@ class AuthService {
       doc(credential.user!.uid).
       set({
         'Email': credential.user!.email,
-            'BusinessName': business_Name,
-            'Phone': phone,
+        'BusinessName': business_Name,
+        'Phone': phone,
       });
 
       return Authprocess(isValid: true);
@@ -117,10 +121,72 @@ class AuthService {
     }
     return Authprocess(isValid: false, errorMsg: "error default");
   }
-}
+
+
+///////////////////////////////////////////////////////////////////////////////
+  ///
+  ///  Google
+  ///
+///////////////////////////////////////////////////////////////////////////////
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+  ///
+  ///  Facebook
+  ///
+///////////////////////////////////////////////////////////////////////////////
+
+
+///////////////////////////////////////////////////////////////////////////////
+  ///
+  ///  Twitter
+  ///
+///////////////////////////////////////////////////////////////////////////////
+
+  Future<UserCredential> signInWithTwitter() async {
+    // Create a TwitterLogin instance
+    final twitterLogin = new TwitterLogin(
+        apiKey: '<your consumer key>',
+        apiSecretKey:' <your consumer secret>',
+        redirectURI: '<your_scheme>://'
+    );
+
+    // Trigger the sign-in flow
+    final authResult = await twitterLogin.login();
+
+    // Create a credential from the access token
+    final twitterAuthCredential = TwitterAuthProvider.credential(
+      accessToken: authResult.authToken!,
+      secret: authResult.authTokenSecret!,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(twitterAuthCredential);
+  }
+}
+
+
+
+
+
+
 
 class Authprocess {
   bool isValid;

@@ -3,6 +3,7 @@ import 'package:introduction_screen/introduction_screen.dart';
 import 'package:lottie/lottie.dart';
 import 'package:med_project_flutter2/consr_routes.dart';
 import 'package:med_project_flutter2/rented/Screen_register_rented_packg.dart';
+import 'package:med_project_flutter2/rented/SiginORSigup_rented.dart';
 import 'package:med_project_flutter2/user/Screen_register_user.dart';
 import 'package:med_project_flutter2/user/Screen_register_user_page.dart';
 import 'package:med_project_flutter2/user/SiginORSigup_user.dart';
@@ -59,29 +60,32 @@ class _UserorrentedState extends State<Userorrented> {
               pageColor: Colors.white,
               imagePadding: EdgeInsets.all(5),
             ),
+
             footer: SingleChildScrollView(
+
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+            SizedBox(height: 20,),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context)
-                            .pushReplacementNamed(route_ScreenRegisterRented);
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => SiginorsigupRented(),));
                       },
-                      style: ElevatedButton.styleFrom(
+                      style:ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF15b9b4),
                         padding: EdgeInsets.symmetric(vertical: 10),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                      ),child: const Text(
-                        'Lessor',
-                        style: TextStyle(fontSize: 18, color: Colors.black),
                       ),
+                      child: Text('Lessor',
+                          style: TextStyle(fontSize: 14, color: Colors.black)),
+
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
 
                     ElevatedButton(
 
@@ -99,7 +103,7 @@ class _UserorrentedState extends State<Userorrented> {
                         ),
                       ),
                       child: Text('Tenant',
-                          style: TextStyle(fontSize: 18, color: Colors.black)),
+                          style: TextStyle(fontSize: 14, color: Colors.black)),
                     ),
                   ],
                 ),

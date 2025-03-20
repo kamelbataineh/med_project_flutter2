@@ -101,3 +101,193 @@ return name;
     );
   }
 }
+
+
+// bool isPasswordVisible = true;
+// bool isPasswordVisibleConfirm = true;
+// String? select;
+//
+// ///////////////////////////////////////////////////////////////////////////////
+//
+// final _formkey = GlobalKey<FormState>();
+// int? phone;
+// String? business_Name;
+// String? email;
+// String? password;
+//
+// ///////////////////////////////////////////////////////////////////////////////
+//
+// @override
+// Widget build(BuildContext context) {
+//   return Scaffold(
+//     drawerEnableOpenDragGesture: false,
+//     appBar: AppBar(
+//       leading: IconButton(
+//         icon: Icon(Icons.arrow_back),
+//         onPressed: () {
+//           Navigator.of(context).pushReplacement(
+//             MaterialPageRoute(
+//               builder: (context) => Userorrented(),
+//             ),
+//           );
+//         },
+//       ),
+//       title: Align(
+//         alignment: Alignment.centerRight,
+//         child: Text('تسجيل'),
+//       ),
+//       backgroundColor: Color(0xFF15b9b4),
+//     ),
+//     body: SingleChildScrollView(
+//       padding: const EdgeInsets.all(16.0),
+//       child: Form(
+//         key: _formkey,
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.stretch,
+//           children: [
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//               children: [
+//                 Expanded(
+//                   child: ElevatedButton(
+//                     onPressed: () {
+//                       Navigator.of(context)
+//                           .popAndPushNamed(route_ScreenRegisterRented);
+//                     },
+//                     style: ElevatedButton.styleFrom(
+//                       backgroundColor: Color(0xFF15b9b4),
+//                       shape: RoundedRectangleBorder(
+//                         borderRadius: BorderRadius.circular(8),
+//                       ),
+//                     ),
+//                     child: Text(
+//                       'حساب جديد',
+//                       style: TextStyle(color: Colors.black),
+//                     ),
+//                   ),
+//                 ),
+//                 SizedBox(width: 10),
+//                 Expanded(
+//                   child: ElevatedButton(
+//                     onPressed: () {
+//                       Navigator.of(context)
+//                           .pushNamed(route_ScreenLoginRented);
+//                     },
+//                     style: ElevatedButton.styleFrom(
+//                       backgroundColor: Colors.grey[300],
+//                       shape: RoundedRectangleBorder(
+//                         borderRadius: BorderRadius.circular(8),
+//                       ),
+//                     ),
+//                     child: Text(
+//                       'تسجيل دخول',
+//                       style: TextStyle(color: Colors.black),
+//                     ),
+//                   ),
+//                 ),
+//               ],
+//             ),
+//             Align(
+//               alignment: Alignment.center,
+//               child: TextButton(
+//                 onPressed: () {
+//                   Navigator.of(context).pushNamed(route_ScreenCitiesUser);
+//                 },
+//                 child: Text(
+//                   "دخول دون تسجيل",
+//                   style: TextStyle(
+//                     color: Colors.black,
+//                     fontSize: 10,
+//                     fontWeight: FontWeight.bold,
+//                   ),
+//                 ),
+//               ),
+//             ),
+//
+//             Lottie.network(
+//               "https://lottie.host/84ad8c2d-1bdd-4b4a-ba71-16243f26c7c5/zNoEoKMJy6.json",
+//               width: 100,
+//               height: 100,
+//               fit: BoxFit.none,
+//             ),
+//             SizedBox(
+//               height: 20,
+//             ),
+//             ///////////////
+//             buildTextField(
+//               'الاسم التجاري',
+//               Icons.home,
+//               false,
+//                   (value) {
+//                 business_Name = value;
+//               },
+//             ),
+//             buildTextField('البريد الإلكتروني', Icons.email, true, (value) {
+//               email = value;
+//             }),
+//             buildTextField("Phone", Icons.phone, true, (value) {
+//               if (value != null && value.isNotEmpty) {
+//                 if (value.length <= 10) {
+//                   phone = int.tryParse(value);
+//                 } else {
+//                   ScaffoldMessenger.of(context).showSnackBar(
+//                     SnackBar(
+//                       content: Text(
+//                           "رقم الهاتف يجب أن يحتوي على 10 أرقام أو أقل."),
+//                       backgroundColor: Colors.red,
+//                     ),
+//                   );
+//                 }
+//               }
+//             }),
+//             buildPasswordField("كلمة السر", isPasswordVisible, () {
+//               setState(() {
+//                 isPasswordVisible = !isPasswordVisible;
+//               });
+//             }),
+//             // buildPasswordField("تأكيد كلمة السر", isPasswordVisibleConfirm, () {
+//             //   setState(() {
+//             //     isPasswordVisibleConfirm = !isPasswordVisibleConfirm;
+//             //   });
+//             // }),
+//
+//             //////////////
+//             SizedBox(height: 10),
+//
+//             ElevatedButton(
+//               onPressed: () {
+//                 if (_formkey.currentState!.validate()) {
+//                   _formkey.currentState!.save();
+//                   signup();
+//                 }
+//               },
+//               style: ElevatedButton.styleFrom(
+//                 backgroundColor: Color(0xFF15b9b4),
+//                 padding: EdgeInsets.symmetric(vertical: 10),
+//                 shape: RoundedRectangleBorder(
+//                   borderRadius: BorderRadius.circular(8),
+//                 ),
+//               ),
+//               child: Text('حساب جديد',
+//                   style: TextStyle(fontSize: 18, color: Colors.black)),
+//             ),
+//           ],
+//         ),
+//       ),
+//     ),
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

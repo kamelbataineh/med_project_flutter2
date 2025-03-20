@@ -167,7 +167,7 @@ class _ScreenLoginRentedState extends State<ScreenLoginRented> {
           suffixIcon: IconButton(
             icon: Icon(
               isPasswordVisible ? Icons.visibility : Icons.visibility_off,
-              color: Color(0xFF15b9b4),
+              color: Colors.black,
             ),
             onPressed: () {
               setState(() {

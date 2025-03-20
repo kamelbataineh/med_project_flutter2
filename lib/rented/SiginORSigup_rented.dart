@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:med_project_flutter2/rented/Screen_login_rented.dart';
+import 'package:med_project_flutter2/rented/Screen_register_rented.dart';
 
+import '../user/Screen_login_user.dart';
+import '../user/Screen_register_user.dart';
 import '../userORrented.dart';
-import 'Screen_login_user.dart';
-import 'Screen_register_user.dart';
-class SiginorsigupUser extends StatefulWidget {
-  const SiginorsigupUser({super.key});
+class SiginorsigupRented extends StatefulWidget {
+  const SiginorsigupRented({super.key});
 
   @override
-  State<SiginorsigupUser> createState() => _SiginorsigupState();
+  State<SiginorsigupRented> createState() => _SiginorsigupRentedState();
 }
 
-class _SiginorsigupState extends State<SiginorsigupUser> {
+class _SiginorsigupRentedState extends State<SiginorsigupRented> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +56,7 @@ SizedBox(height: 160,),
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => ScreenRegisterUser(),
+                        builder: (context) => ScreenRegisterRented(),
                       ));
 
                     },
@@ -78,7 +79,7 @@ SizedBox(height: 160,),
                 Expanded(
                   child: ElevatedButton(onPressed: (){
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => ScreenLoginUser(),
+                      builder: (context) => ScreenLoginRented(),
                     ));
 
                   },

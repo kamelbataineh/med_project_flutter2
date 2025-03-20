@@ -3,16 +3,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:med_project_flutter2/FireBase/AuthService.dart';
-import 'package:med_project_flutter2/user/Screen_cities_user.dart';
-import 'package:med_project_flutter2/More/Screen_favorite.dart';
-import 'package:med_project_flutter2/More/App_Appearance.dart';
-import 'package:med_project_flutter2/consr_routes.dart';
 import 'package:lottie/lottie.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:curved_bottom_navigation_bar/curved_bottom_navigation_bar.dart';
 import 'package:med_project_flutter2/user/Screen_login_user.dart';
 import 'package:med_project_flutter2/user/SiginORSigup_user.dart';
-import 'package:med_project_flutter2/userORrented.dart';
+import 'package:twitter_login/twitter_login.dart';
 
 class ScreenRegisterUser extends StatefulWidget {
   const ScreenRegisterUser({super.key});
@@ -27,7 +21,7 @@ class _HomeState extends State<ScreenRegisterUser> {
   bool isPasswordVisibleConfirm = true;
   String? email;
   String? password;
-
+AuthService authService=AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -142,61 +136,76 @@ class _HomeState extends State<ScreenRegisterUser> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        width: 70,
-                        height: 35,
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8),
-                          border:
-                              Border.all(color: Colors.grey[200]!, width: 1),
-                        ),
-                        child: Image.network(
-                          'https://imgs.search.brave.com/g17BH7ApM9d8-w9e-JPSNcH8j_6dKtlc-P0jl3lYp6Y/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGIyNDZlZGM5/Y2MxOTI5ODg1NTU5/YTA0YTYxNTEwMjZi/NTZlZDY4NGE2ODVm/OGVjNTg4MzE3ZDMz/YjdhNDI4Yi93d3cu/Z29vZ2xlLmNvbS8',
-                          width: 40,
-                          height: 40,
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        width: 70,
-                        height: 35,
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(8),
-                          border:
-                              Border.all(color: Colors.grey[200]!, width: 1),
-                        ),
-                        child: Image.network(
-                          'https://imgs.search.brave.com/VpOsyUaQQGp5MT_drqEzgpxdO8o12jax0jeq0Vojuto/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMmQzM2JiZDhi/OWVhNGYxZmRkNDli/NzAxODUzMzFhYTNm/ODcxNmE4ZGQ5OTE3/MWU4OGZjNDQyZDdh/NzQ4MWE4YS94LmNv/bS8',
-                          width: 30,
-                          height: 30,
-                          fit: BoxFit.contain,
+                      GestureDetector(
+                        onTap: (){
+                          authService.signInWithTwitter();
+                        },
+                        child: Container(
+                          width: 70,
+                          height: 35,
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            border:
+                                Border.all(color: Colors.grey[200]!, width: 1),
+                          ),
+                          child: Image.network(
+                            'https://imgs.search.brave.com/g17BH7ApM9d8-w9e-JPSNcH8j_6dKtlc-P0jl3lYp6Y/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGIyNDZlZGM5/Y2MxOTI5ODg1NTU5/YTA0YTYxNTEwMjZi/NTZlZDY4NGE2ODVm/OGVjNTg4MzE3ZDMz/YjdhNDI4Yi93d3cu/Z29vZ2xlLmNvbS8',
+                            width: 40,
+                            height: 40,
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
                       SizedBox(
                         width: 10,
                       ),
-                      Container(
-                        width: 70,
-                        height: 35,
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8),
-                          border:
-                              Border.all(color: Colors.grey[200]!, width: 1),
+                      GestureDetector(
+                      onTap: (){
+                      authService.signInWithTwitter();
+                      },
+                        child: Container(
+                          width: 70,
+                          height: 35,
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(8),
+                            border:
+                                Border.all(color: Colors.grey[200]!, width: 1),
+                          ),
+                          child: Image.network(
+                            'https://imgs.search.brave.com/VpOsyUaQQGp5MT_drqEzgpxdO8o12jax0jeq0Vojuto/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMmQzM2JiZDhi/OWVhNGYxZmRkNDli/NzAxODUzMzFhYTNm/ODcxNmE4ZGQ5OTE3/MWU4OGZjNDQyZDdh/NzQ4MWE4YS94LmNv/bS8',
+                            width: 30,
+                            height: 30,
+                            fit: BoxFit.contain,
+                          ),
                         ),
-                        child: Image.network(
-                          'https://imgs.search.brave.com/dLixlA4UobvGUEiaQkUND9GlJ8LNiMYgm1baQcXkgP4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/bG9nb2pveS5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMjMw/OTIxMTA0NDA4L0Zh/Y2Vib29rLWxvZ28t/NjAweDMxOS5wbmc',
-                          width: 30,
-                          height: 30,
-                          fit: BoxFit.contain,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      GestureDetector(
+                        onTap: ()async {
+                          authService.signInWithTwitter();
+                        },
+                        child: Container(
+                          width: 70,
+                          height: 35,
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            border:
+                                Border.all(color: Colors.grey[200]!, width: 1),
+                          ),
+                          child: Image.network(
+                            'https://imgs.search.brave.com/dLixlA4UobvGUEiaQkUND9GlJ8LNiMYgm1baQcXkgP4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/bG9nb2pveS5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMjMw/OTIxMTA0NDA4L0Zh/Y2Vib29rLWxvZ28t/NjAweDMxOS5wbmc',
+                            width: 30,
+                            height: 30,
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
                     ],
@@ -214,15 +223,17 @@ class _HomeState extends State<ScreenRegisterUser> {
                       style: TextStyle(fontSize: 12, color: Colors.black),
                       children: [
                         TextSpan(
-                          text: "Sign in",
+                          text: "Sign In",
                           style: TextStyle(
                             fontSize: 12,
-                            color: Colors.blue,
+                            color: Color(0xFF15b9b4),
                             fontWeight: FontWeight.bold,
                           ),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-
+                              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                builder: (context) => ScreenLoginUser(),
+                              ));
                             },
                         ),
                       ],
@@ -241,6 +252,23 @@ class _HomeState extends State<ScreenRegisterUser> {
 //////////////////////////////////////////
 ////////////////////////////////////////// sign up
 //////////////////////////////////////////
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
 //////////////////////////////////////////
 //////////////////////////////////////////
 //////////////////////////////////////////
@@ -270,31 +298,6 @@ class _HomeState extends State<ScreenRegisterUser> {
     }
   }
 
-//////////////////////////////////////////
-//////////////////////////////////////////
-//////////////////////////////////////////
-//////////////////////////////////////////
-////////////////////////////////////////// google
-//////////////////////////////////////////
-//////////////////////////////////////////
-
-  Future<UserCredential> signInWithGoogle() async {
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
-
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
-
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
-  }
 
 //////////////////////////////////////////
 //////////////////////////////////////////
@@ -355,7 +358,7 @@ class _HomeState extends State<ScreenRegisterUser> {
           suffixIcon: IconButton(
               icon: Icon(
                 isVisible ? Icons.visibility_off : Icons.visibility,
-                color: Colors.black,
+                color: Colors.black,size: 15
               ),
               onPressed: toggleVisibility),
           border: OutlineInputBorder(
