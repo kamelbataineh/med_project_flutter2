@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../FireBase/Read_FireBase.dart';
 
@@ -42,13 +45,30 @@ class _ProfilePageState extends State<ProfilePage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const CircleAvatar(
-                    radius: 60,
-                    backgroundColor: Colors.grey,
-                    backgroundImage: NetworkImage(
-                      'https://via.placeholder.com/150',
+                  Stack(children: [
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundImage: ImageFile != null
+                          ? FileImage(ImageFile!) as ImageProvider
+                          : const NetworkImage("https://www.w3schools.com/w3images/avatar2.png"),
                     ),
-                  ),
+
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: CircleAvatar(
+                        radius: 18,
+                        backgroundColor: Colors.blue,
+                        child: IconButton(
+                          icon:
+                          Icon(Icons.camera_alt, color: Colors.white, size: 18),
+                          onPressed: () {
+                            showImageOptions();
+                          },
+                        ),
+                      ),
+                    ),
+                  ]),
                   SizedBox(height: 20),
                   ReadFirebase(
                     documentId: credential!.uid,
@@ -74,7 +94,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       documentId: credential!.uid,
                       fieldName: "Phone",
                       textStyle:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                       showEditButton: true,
                       Edit: 'Phone',
                       showDeleteButton: true,
@@ -87,7 +107,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       documentId: credential!.uid,
                       fieldName: "Email",
                       textStyle:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                       showEditButton: true,
                       Edit: 'Email',
                       showDeleteButton: true,
@@ -100,7 +120,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       documentId: credential!.uid,
                       fieldName: "BusinessName",
                       textStyle:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                       showEditButton: true,
                       Edit: 'BusinessName',
                       showDeleteButton: true,
@@ -113,4 +133,56 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
+    void showImageOptions() {
+      showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Container(
+            padding: EdgeInsets.all(16.0),
+            height: 160,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ListTile(
+                  leading: Icon(Icons.camera_alt, color: Colors.blue),
+                  title: Text("Take a Photo"),
+                  onTap: () {
+                    pickImage(ImageSource.camera);
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.image, color: Colors.green),
+                  title: Text("Pick from Gallery"),
+                  onTap: () {
+                    pickImage(ImageSource.gallery);
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+          );
+        },
+      );
+    }
+
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+    File? ImageFile;
+
+    void pickImage(ImageSource source) async {
+      final ImagePicker picker = ImagePicker();
+      final XFile? pickimage = await picker.pickImage(source: source);
+      if (pickimage != null) {
+        setState(() {
+          ImageFile = File(pickimage.path);
+        });
+      }
+    }
+
 }
