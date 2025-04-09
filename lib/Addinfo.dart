@@ -1,4 +1,9 @@
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'City_Housing.dart';
 import 'Class_Favorites.dart';
 
@@ -8,6 +13,18 @@ class Addinfo extends StatefulWidget {
 }
 
 class _AddHousingScreenState extends State<Addinfo> {
+  FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+  CollectionReference tasksCollection =
+      FirebaseFirestore.instance.collection('AddHousing_rented');
+
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+
   String? imageUrl = '';
   String? imageUrl1 = '';
   double? price;
@@ -86,12 +103,12 @@ class _AddHousingScreenState extends State<Addinfo> {
         SnackBar(content: Text('تم إضافة السكن بنجاح!')),
       );
 
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => CityHousing(),
-        ),
-      );
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => CityHousing(),
+      //   ),
+      // );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('يرجى تعبئة جميع الحقول!')),
@@ -130,42 +147,30 @@ class _AddHousingScreenState extends State<Addinfo> {
                         SizedBox(width: 8),
                         TextButton(
                           child: Text(
-                            'إضافة صورة',
+                            'إضافة صور',
                             style: TextStyle(color: Colors.black),
                           ),
                           onPressed: () {
                             setState(() {
-                              imageUrl =
-                                  'https://i.pinimg.com/236x/f5/4b/bc/f54bbc3f479cfe3cad0cc629f72d4b61.jpg';
-                              imageUrl1 =
-                                  'https://i.pinimg.com/236x/3b/4a/b3/3b4ab3a6f53616bc80882372503c2122.jpg'; // Second image URL
+                              pickImages();
                             });
                           },
                         ),
-                        // First image
-                        if (imageUrl != null && imageUrl!.isNotEmpty)
-                          ClipRRect(
-                            borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(10),
-                                bottom: Radius.circular(10)),
-                            child: Image.network(
-                              imageUrl!,
-                              fit: BoxFit.cover,
+                        if (imageFiles.isNotEmpty) ...[
+                          for (var imageFile in imageFiles)
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.file(
+                                  imageFile,
+                                  fit: BoxFit.cover,
+                                  height: 150,
+                                  width: 150,
+                                ),
+                              ),
                             ),
-                          ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        if (imageUrl1 != null && imageUrl1!.isNotEmpty)
-                          ClipRRect(
-                            borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(10),
-                                bottom: Radius.circular(10)),
-                            child: Image.network(
-                              imageUrl1!,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                        ],
                       ],
                     ),
                   ),
@@ -256,7 +261,7 @@ class _AddHousingScreenState extends State<Addinfo> {
                       ElevatedButton(
                         onPressed: addHousingItem,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor:Colors.blue[900],
+                          backgroundColor: Colors.blue[900],
                           padding: EdgeInsets.symmetric(
                               vertical: 10, horizontal: 40),
                           shape: RoundedRectangleBorder(
@@ -293,7 +298,7 @@ class _AddHousingScreenState extends State<Addinfo> {
         decoration: InputDecoration(
           labelText: label,
           labelStyle: TextStyle(color: Colors.grey[600]),
-          prefixIcon: Icon(icon, color:Colors.blue[900]),
+          prefixIcon: Icon(icon, color: Colors.blue[900]),
           filled: true,
           fillColor: Colors.grey[200],
           border: OutlineInputBorder(
@@ -347,90 +352,43 @@ class _AddHousingScreenState extends State<Addinfo> {
       ),
     );
   }
+
+  ///////////////////////////////////////////////////////////////////////////////
+  ///
+  /// اضافه عده صور
+  ///
+  ///////////////////////////////////////////////////////////////////////////////
+
+  List<File> imageFiles = [];
+
+  void pickImages1() async {
+    final ImagePicker picker = ImagePicker();
+
+    // اذا بدنا نغير لضوره واحده او فيديو  روح على بكجimage_picker
+    // غير هاي
+
+    final List<XFile> pickedImages = await picker.pickMultiImage();
+
+    if (pickedImages.isNotEmpty) {
+      setState(() {
+        imageFiles = pickedImages.map((xfile) => File(xfile.path)).toList();
+      });
+    }
+  }
+
+  void pickImages() async {
+    final ImagePicker picker = ImagePicker();
+
+    // اختيار عدة صور
+    final List<XFile> pickedImages = await picker.pickMultiImage();
+
+    if (pickedImages.isNotEmpty) {
+      setState(() {
+        // تحويل الصور إلى ملفات وإضافتها للقائمة
+        imageFiles = pickedImages.map((xfile) => File(xfile.path)).toList();
+      });
+    }
+  }
+
+
 }
-// import 'package:flutter/material.dart';
-// import 'Class_Favorites.dart';
-//
-// class Addinfo extends StatefulWidget {
-//   @override
-//   _AddHousePageState createState() => _AddHousePageState();
-// }
-//
-// class _AddHousePageState extends State<Addinfo> {
-//   final TextEditingController priceController = TextEditingController();
-//   final TextEditingController nameController = TextEditingController();
-//   final TextEditingController phoneController = TextEditingController();
-//   final TextEditingController cityController = TextEditingController();
-//   final TextEditingController linkController = TextEditingController();
-//   final TextEditingController typeController = TextEditingController();
-//   final TextEditingController idController = TextEditingController();
-//
-//   void addHouse() {
-//     final double price = double.tryParse(priceController.text) ?? 0.0;
-//     final String name = nameController.text;
-//     final String phone = phoneController.text;
-//     final String city = cityController.text;
-//     final String link = linkController.text;
-//     final String type = typeController.text;
-//     final int id = int.tryParse(idController.text) ?? 0;
-//
-//     final newHouse = AddHous(price, name, 'https://via.placeholder.com/150', phone, city, link, type, id);
-//
-//     Navigator.pop(context, newHouse);
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Add New House'),
-//       ),
-//       body: Padding(
-//         padding: const EdgeInsets.all(16.0),
-//         child: ScrollNotificationObserver(
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               TextField(
-//                 controller: priceController,
-//                 decoration: InputDecoration(labelText: 'Price'),
-//                 keyboardType: TextInputType.number,
-//               ),
-//               TextField(
-//                 controller: nameController,
-//                 decoration: InputDecoration(labelText: 'House Name'),
-//               ),
-//               TextField(
-//                 controller: phoneController,
-//                 decoration: InputDecoration(labelText: 'Phone'),
-//               ),
-//               TextField(
-//                 controller: cityController,
-//                 decoration: InputDecoration(labelText: 'City'),
-//               ),
-//               TextField(
-//                 controller: linkController,
-//                 decoration: InputDecoration(labelText: 'Location Link'),
-//               ),
-//               TextField(
-//                 controller: typeController,
-//                 decoration: InputDecoration(labelText: 'Type'),
-//               ),
-//               TextField(
-//                 controller: idController,
-//                 decoration: InputDecoration(labelText: 'House ID'),
-//                 keyboardType: TextInputType.number,
-//               ),
-//               SizedBox(height: 20),
-//               ElevatedButton(
-//                 onPressed: addHouse,
-//                 child: Text('Add House'),
-//                 style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.green)),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }

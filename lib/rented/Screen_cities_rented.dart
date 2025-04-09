@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:med_project_flutter2/Add_housing/AddHousing.dart';
 import 'package:med_project_flutter2/Addinfo.dart';
 import 'package:med_project_flutter2/City_Housing.dart';
 import 'package:med_project_flutter2/More/More.dart';
@@ -28,15 +29,6 @@ class ScreenCitiesRented extends StatefulWidget {
 }
 
 class _HomeState extends State<ScreenCitiesRented> {
-  bool isicon = false;
-
-  @override
-  List<Widget> pages = [
-    Free(),
-    FavoritesPage(),
-    MorePage()
-  ];
-  int indexpage = 0;
 
   final List<PagesCitis> cities = [
     PagesCitis(
@@ -84,6 +76,15 @@ class _HomeState extends State<ScreenCitiesRented> {
       'https://i.pinimg.com/564x/9f/d6/83/9fd683479f339e1f9d2a6a62958c379a.jpg',
     ),
   ];
+  bool isicon = false;
+
+  @override
+  List<Widget> pages = [
+    Free(),
+    FavoritesPage(),
+    MorePage()
+  ];
+  int indexpage = 0;
 
   List<String> list = ["تسجيل دخول", "حساب جديد", "تسجيل خروج"];
   String? select;
@@ -811,7 +812,7 @@ class _HomeState extends State<ScreenCitiesRented> {
                 case "ADD":
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Addinfo()),
+                    MaterialPageRoute(builder: (context) => AddHousing()),
                   );
                   break;
                 case "FLIGHTS":
