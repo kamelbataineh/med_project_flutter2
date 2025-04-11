@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -14,7 +15,7 @@ class AddHousing extends StatefulWidget {
 class _AddHousingState extends State<AddHousing> {
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   CollectionReference AddCollection =
-  FirebaseFirestore.instance.collection('AddHousing');
+      FirebaseFirestore.instance.collection('AddHousing');
 
   // Controllers for additional fields
   TextEditingController priceController = TextEditingController();
@@ -41,7 +42,10 @@ class _AddHousingState extends State<AddHousing> {
     setState(() {
       switch (selectedGovernorate) {
         case 'Irbid':
-          regions = ['Yarmouk University', 'Jordan University of Science and Technology'];
+          regions = [
+            'Yarmouk University',
+            'Jordan University of Science and Technology'
+          ];
           break;
         case 'Amman':
           regions = [
@@ -86,31 +90,28 @@ class _AddHousingState extends State<AddHousing> {
     });
   }
 
+  pickImages() async {
+    final ImagePicker picker = ImagePicker();
 
-  // // Method to pick multiple images
-  // pickImages() async {
-  //   final ImagePicker picker = ImagePicker();
-  //
-  //   // Pick multiple images
-  //   final List<XFile> pickedImages = await picker.pickMultiImage();
-  //
-  //   if (pickedImages.isNotEmpty) {
-  //     setState(() {
-  //       imageFiles = pickedImages.map((xfile) => File(xfile.path)).toList();
-  //     });
-  //   }
-  // }
+    // Pick multiple images
+    final List<XFile> pickedImages = await picker.pickMultiImage();
+
+    if (pickedImages.isNotEmpty) {
+      setState(() {
+        imageFiles = pickedImages.map((xfile) => File(xfile.path)).toList();
+      });
+    }
+  }
+
   List<QueryDocumentSnapshot> data = [];
   bool isLoading = true;
-
-
 
   getHousing() async {
     setState(() {
       isLoading = true;
     });
-    QuerySnapshot querySnapshot = await AddCollection
-        .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+    QuerySnapshot querySnapshot = await AddCollection.where('uid',
+            isEqualTo: FirebaseAuth.instance.currentUser!.uid)
         .get();
 
     setState(() {
@@ -119,57 +120,77 @@ class _AddHousingState extends State<AddHousing> {
     });
   }
 
+  addHousingItem() async {
+    if (housingName != null &&
+        residentType != null &&
+        governorate != null &&
+        region != null &&
+        phoneNumber != null &&
+        address != null &&
+        googleMapLink != null &&
+        price != null &&
+        imageFiles.isNotEmpty) {
+      try {
+        List<String> imageUrls = [];
 
 
+        for (File image in imageFiles) {
+          String fileName = DateTime.now().millisecondsSinceEpoch.toString();
+          Reference ref = FirebaseStorage.instance
+              .ref()
+              .child('housing_images')
+              .child(fileName);
+
+          UploadTask uploadTask = ref.putFile(image);
+          TaskSnapshot snapshot = await uploadTask;
+          String imageUrl = await snapshot.ref.getDownloadURL();
+          imageUrls.add(imageUrl);
+        }
 
 
+        await FirebaseFirestore.instance.collection('AddHousing').add({
+          'uid': FirebaseAuth.instance.currentUser!.uid,
+          'housingName': housingName,
+          'residentType': residentType,
+          'governorate': governorate,
+          'region': region,
+          'phoneNumber': phoneNumber,
+          'address': address,
+          'googleMapLink': googleMapLink,
+          'price': price,
+          'images': imageUrls,
+        });
 
-  addHousingItem() {
-
-    if (housingName != null && residentType != null && governorate != null &&
-        region != null && phoneNumber != null && address != null &&
-        googleMapLink != null && price != null //&& imageFiles.isNotEmpty
-         ) {
-      FirebaseFirestore.instance.collection('AddHousing').add({
-        'uid': FirebaseAuth.instance.currentUser!.uid,
-        'housingName': housingName,
-        'residentType': residentType,
-        'governorate': governorate,
-        'region': region,
-        'phoneNumber': phoneNumber,
-        'address': address,
-        'googleMapLink': googleMapLink,
-        'price': price,
-        // 'images': imageFiles,
-      }).then((value) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('تم إضافة السكن بنجاح')),
         );
-      }).catchError((e) {
-        print('خطأ أثناء إضافة السكن: ');
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('فشل في إضافة السكن: ')),
-        );
-      });
 
-      // Update UI state
-      setState(() {
-        data.clear();
-        getHousing();
-      });
-    }else {
+        setState(() {
+          data.clear();
+          getHousing();
+        });
+      } catch (e) {
+        print('خطأ أثناء إضافة السكن: $e');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('فشل في إضافة السكن: $e')),
+        );
+      }
+    } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('الرجاء ملء جميع الحقول و إضافة صور')),
       );
     }
   }
+
+
   @override
   void initState() {
     getHousing();
     super.initState();
   }
 
-  Widget buildTextField(String label, IconData icon, {Function(String)? onChanged}) {
+  Widget buildTextField(String label, IconData icon,
+      {Function(String)? onChanged}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(
@@ -183,8 +204,8 @@ class _AddHousingState extends State<AddHousing> {
     );
   }
 
-
-  Widget buildDropdown(String label, List<String> options, Function(String?)? onChanged) {
+  Widget buildDropdown(
+      String label, List<String> options, Function(String?)? onChanged) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: DropdownButtonFormField<String>(
@@ -217,7 +238,6 @@ class _AddHousingState extends State<AddHousing> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Horizontal Scroll for Images
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -228,13 +248,15 @@ class _AddHousingState extends State<AddHousing> {
                       children: [
                         Icon(Icons.camera_alt, color: Colors.grey),
                         SizedBox(width: 8),
-                        // TextButton(
-                        //   child: Text(
-                        //     'إضافة صور',
-                        //     style: TextStyle(color: Colors.black),
-                        //   ),
-                        //   // onPressed: pickImages,
-                        // ),
+                        TextButton(
+                          //////////////////////
+                          onPressed: pickImages,
+                          child: Text(
+                            'إضافة صور',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          // onPressed: pickImages,
+                        ),
                         if (imageFiles.isNotEmpty) ...[
                           for (var imageFile in imageFiles)
                             Padding(
@@ -271,7 +293,7 @@ class _AddHousingState extends State<AddHousing> {
                   buildDropdown(
                     'Select Resident Type',
                     ['Female Students', 'Male Students'],
-                        (value) {
+                    (value) {
                       setState(() => residentType = value);
                     },
                   ),
@@ -290,7 +312,7 @@ class _AddHousingState extends State<AddHousing> {
                       'Tafilah',
                       'Maan',
                     ],
-                        (value) {
+                    (value) {
                       setState(() {
                         governorate = value;
                         updateRegions(value!);
@@ -300,7 +322,7 @@ class _AddHousingState extends State<AddHousing> {
                   buildDropdown(
                     'Nearby To',
                     regions,
-                        (value) {
+                    (value) {
                       setState(() => region = value);
                     },
                   ),
@@ -334,13 +356,13 @@ class _AddHousingState extends State<AddHousing> {
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed:(){
+                    onPressed: () {
                       addHousingItem();
-                      Navigator.pop(context);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue[900],
-                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 40),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -358,7 +380,6 @@ class _AddHousingState extends State<AddHousing> {
                 ],
               ),
             ),
-
           ],
         ),
       ),
