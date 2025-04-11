@@ -103,7 +103,9 @@ class _AddHousingState extends State<AddHousing> {
   List<QueryDocumentSnapshot> data = [];
   bool isLoading = true;
 
-  getTasks() async {
+
+
+  getHousing() async {
     setState(() {
       isLoading = true;
     });
@@ -120,19 +122,14 @@ class _AddHousingState extends State<AddHousing> {
 
 
 
-  @override
-  void initState() {
-    getTasks();
-    super.initState();
-  }
+
 
   addHousingItem() {
-    // Check if all fields are filled before adding to Firestore
+
     if (housingName != null && residentType != null && governorate != null &&
         region != null && phoneNumber != null && address != null &&
         googleMapLink != null && price != null //&& imageFiles.isNotEmpty
          ) {
-
       FirebaseFirestore.instance.collection('AddHousing').add({
         'uid': FirebaseAuth.instance.currentUser!.uid,
         'housingName': housingName,
@@ -157,23 +154,20 @@ class _AddHousingState extends State<AddHousing> {
 
       // Update UI state
       setState(() {
-        housingName = null;
-        residentType = null;
-        governorate = null;
-        region = null;
-        phoneNumber = null;
-        address = null;
-        googleMapLink = null;
-        price = null;
-        // imageFiles.clear();
+        data.clear();
+        getHousing();
       });
-    } else {
+    }else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('الرجاء ملء جميع الحقول و إضافة صور')),
       );
     }
   }
-
+  @override
+  void initState() {
+    getHousing();
+    super.initState();
+  }
 
   Widget buildTextField(String label, IconData icon, {Function(String)? onChanged}) {
     return Padding(
