@@ -59,7 +59,7 @@ class _U_TafilehState extends State<U_Tafileh> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => HousingDetailsPage(housing: house),
+                builder: (context) => HousingDetailsPage( house),
               ),
             );
           },

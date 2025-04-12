@@ -66,7 +66,7 @@ class _U_ZarqaState extends State<U_Zarqa> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => HousingDetailsPage(housing: house),
+                builder: (context) => HousingDetailsPage( house),
               ),
             );
           },

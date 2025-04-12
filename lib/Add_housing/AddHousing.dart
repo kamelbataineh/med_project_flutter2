@@ -93,7 +93,7 @@ class _AddHousingState extends State<AddHousing> {
   pickImages() async {
     final ImagePicker picker = ImagePicker();
 
-    // Pick multiple images
+
     final List<XFile> pickedImages = await picker.pickMultiImage();
 
     if (pickedImages.isNotEmpty) {
@@ -128,8 +128,9 @@ class _AddHousingState extends State<AddHousing> {
         phoneNumber != null &&
         address != null &&
         googleMapLink != null &&
-        price != null &&
-        imageFiles.isNotEmpty) {
+        price != null
+    && imageFiles.isNotEmpty
+    ) {
       try {
         List<String> imageUrls = [];
 
@@ -141,11 +142,18 @@ class _AddHousingState extends State<AddHousing> {
               .child('housing_images')
               .child(fileName);
 
-          UploadTask uploadTask = ref.putFile(image);
-          TaskSnapshot snapshot = await uploadTask;
-          String imageUrl = await snapshot.ref.getDownloadURL();
-          imageUrls.add(imageUrl);
-        }
+          try {
+            UploadTask uploadTask = ref.putFile(image);
+            TaskSnapshot snapshot = await uploadTask;
+            String imageUrl = await snapshot.ref.getDownloadURL();
+            imageUrls.add(imageUrl);
+          } catch (e) {
+            print("Error uploading image: $e");
+
+          }
+
+
+      }
 
 
         await FirebaseFirestore.instance.collection('AddHousing').add({
@@ -158,7 +166,7 @@ class _AddHousingState extends State<AddHousing> {
           'address': address,
           'googleMapLink': googleMapLink,
           'price': price,
-          'images': imageUrls,
+          // 'images': imageUrls,
         });
 
         ScaffoldMessenger.of(context).showSnackBar(
@@ -170,9 +178,9 @@ class _AddHousingState extends State<AddHousing> {
           getHousing();
         });
       } catch (e) {
-        print('خطأ أثناء إضافة السكن: $e');
+        print('خطأ أثناء إضافة السكن: ');
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('فشل في إضافة السكن: $e')),
+          SnackBar(content: Text('فشل في إضافة السكن: ')),
         );
       }
     } else {

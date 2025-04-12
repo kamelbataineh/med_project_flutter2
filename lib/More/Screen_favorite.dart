@@ -32,24 +32,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HousingDetailsPage(
-                                housing: AddHous(
-                                  0000,
-                                  itemfavorit.favorit[index].name,
-                                  itemfavorit.favorit[index].image,
-                                  '000000000',
-                                  'CityName',
-                                  // Use the corresponding data
-                                  'Map Link',
-                                  'Type Name',
-                                  3, // You can also set default values here
-                                ),
-                              ),
-                            ),
-                          );
+
                         },
                         child: Container(
                           margin: EdgeInsets.all(10),

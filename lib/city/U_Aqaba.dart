@@ -62,7 +62,7 @@ class _U_AqabaState extends State<U_Aqaba> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => HousingDetailsPage(housing: house),
+                builder: (context) => HousingDetailsPage( house),
               ),
             );
           },

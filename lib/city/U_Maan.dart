@@ -66,7 +66,7 @@ class _U_MaanState extends State<U_Maan> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => HousingDetailsPage(housing: house),
+                builder: (context) => HousingDetailsPage( house),
               ),
             );
           },

@@ -64,7 +64,7 @@ class _U_JarashState extends State<U_Jarash> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => HousingDetailsPage(housing: house),
+                builder: (context) => HousingDetailsPage( house),
               ),
             );
           },

@@ -77,7 +77,7 @@ class _U_AjlonState extends State<U_Ajlon> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => HousingDetailsPage(housing: house),
+                builder: (context) => HousingDetailsPage(house),
               ),
             );
           },

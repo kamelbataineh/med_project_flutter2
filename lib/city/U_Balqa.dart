@@ -62,7 +62,7 @@ class _U_BalqaState extends State<U_Balqa> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => HousingDetailsPage(housing: house),
+                builder: (context) => HousingDetailsPage(house),
               ),
             );
           },
