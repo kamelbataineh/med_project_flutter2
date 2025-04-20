@@ -36,7 +36,9 @@ class _AddHousingState extends State<AddHousing> {
   String? phoneNumber;
   String? address;
   String? googleMapLink;
-  double? price;
+  double? dailyPrice;
+  double? weeklyPrice;
+  double? monthlyPrice;
 
   void updateRegions(String selectedGovernorate) {
     setState(() {
@@ -93,7 +95,6 @@ class _AddHousingState extends State<AddHousing> {
   pickImages() async {
     final ImagePicker picker = ImagePicker();
 
-
     final List<XFile> pickedImages = await picker.pickMultiImage();
 
     if (pickedImages.isNotEmpty) {
@@ -128,12 +129,12 @@ class _AddHousingState extends State<AddHousing> {
         phoneNumber != null &&
         address != null &&
         googleMapLink != null &&
-        price != null
-    && imageFiles.isNotEmpty
-    ) {
+        dailyPrice != null &&
+        weeklyPrice != null &&
+        monthlyPrice != null &&
+        imageFiles.isNotEmpty) {
       try {
         List<String> imageUrls = [];
-
 
         for (File image in imageFiles) {
           String fileName = DateTime.now().millisecondsSinceEpoch.toString();
@@ -149,12 +150,8 @@ class _AddHousingState extends State<AddHousing> {
             imageUrls.add(imageUrl);
           } catch (e) {
             print("Error uploading image: $e");
-
           }
-
-
-      }
-
+        }
 
         await FirebaseFirestore.instance.collection('AddHousing').add({
           'uid': FirebaseAuth.instance.currentUser!.uid,
@@ -165,8 +162,11 @@ class _AddHousingState extends State<AddHousing> {
           'phoneNumber': phoneNumber,
           'address': address,
           'googleMapLink': googleMapLink,
-          'price': price,
-          // 'images': imageUrls,
+          'price': {
+            'daily': dailyPrice,
+            'weekly': weeklyPrice,
+            'monthly': monthlyPrice,
+          }, // 'images': imageUrls,
         });
 
         ScaffoldMessenger.of(context).showSnackBar(
@@ -189,7 +189,6 @@ class _AddHousingState extends State<AddHousing> {
       );
     }
   }
-
 
   @override
   void initState() {
@@ -356,10 +355,24 @@ class _AddHousingState extends State<AddHousing> {
                     },
                   ),
                   buildTextField(
-                    'Price',
-                    Icons.monetization_on_outlined,
+                    'Daily Price',
+                    Icons.attach_money,
                     onChanged: (value) {
-                      price = double.tryParse(value);
+                      dailyPrice = double.tryParse(value);
+                    },
+                  ),
+                  buildTextField(
+                    'Weekly Price',
+                    Icons.attach_money,
+                    onChanged: (value) {
+                      weeklyPrice = double.tryParse(value);
+                    },
+                  ),
+                  buildTextField(
+                    'Monthly Price',
+                    Icons.attach_money,
+                    onChanged: (value) {
+                      monthlyPrice = double.tryParse(value);
                     },
                   ),
                   SizedBox(height: 20),

@@ -11,6 +11,7 @@ class FavoritesPage extends StatefulWidget {
 }
 
 class _FavoritesPageState extends State<FavoritesPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +33,12 @@ class _FavoritesPageState extends State<FavoritesPage> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>HousingDetailsPage(AddHous),
+                            ),
+                          );
                         },
                         child: Container(
                           margin: EdgeInsets.all(10),
