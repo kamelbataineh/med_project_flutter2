@@ -9,6 +9,7 @@ import 'package:med_project_flutter2/city/U_Amman.dart';
 import 'package:med_project_flutter2/city/U_Aqaba.dart';
 import 'package:med_project_flutter2/city/U_Balqa.dart';
 import 'package:med_project_flutter2/city/U_Maan.dart';
+import 'package:med_project_flutter2/city/U_Mdapa.dart';
 import 'package:med_project_flutter2/city/U_Tafileh.dart';
 import 'package:med_project_flutter2/city/U_ajlon.dart';
 import 'package:med_project_flutter2/city/U_jarash.dart';
@@ -19,6 +20,7 @@ import 'package:med_project_flutter2/free.dart';
 import '../Class_Favorites.dart';
 import '../More/Screen_favorite.dart';
 import '../More/App_Appearance.dart';
+import '../Search.dart';
 import '../Student_Dormitories.dart';
 
 class ScreenCitiesRented extends StatefulWidget {
@@ -29,7 +31,6 @@ class ScreenCitiesRented extends StatefulWidget {
 }
 
 class _HomeState extends State<ScreenCitiesRented> {
-
   final List<PagesCitis> cities = [
     PagesCitis(
       'Irbid',
@@ -79,11 +80,7 @@ class _HomeState extends State<ScreenCitiesRented> {
   bool isicon = false;
 
   @override
-  List<Widget> pages = [
-    Free(),
-    FavoritesPage(),
-    MorePage()
-  ];
+  List<Widget> pages = [Free(), FavoritesPage(), MorePage()];
   int indexpage = 0;
 
   List<String> list = ["تسجيل دخول", "حساب جديد", "تسجيل خروج"];
@@ -93,6 +90,9 @@ class _HomeState extends State<ScreenCitiesRented> {
     "City",
     "Favorites",
   ];
+
+  bool showSearch = false;
+  TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -142,7 +142,6 @@ class _HomeState extends State<ScreenCitiesRented> {
       body: indexpage == 0
           ? SafeArea(
               child: Stack(
-
                 children: [
                   SingleChildScrollView(
                     child: Column(
@@ -154,7 +153,9 @@ class _HomeState extends State<ScreenCitiesRented> {
                         /////////////////////////////////////////////
                         /////////////////////////////////////////////
                         /////////////////////////////////////////////
-                       SizedBox(height: 50,),
+                        SizedBox(
+                          height: 50,
+                        ),
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: GestureDetector(
@@ -205,7 +206,13 @@ class _HomeState extends State<ScreenCitiesRented> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => AddHousing()),
+                                  );
+                                },
                                 child: Card(
                                   // shape: RoundedRectangleBorder(
                                   //   borderRadius: BorderRadius.circular(30.0),
@@ -226,7 +233,7 @@ class _HomeState extends State<ScreenCitiesRented> {
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Text(
-                                          "Flights",
+                                          "Add Housing",
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 12,
@@ -252,6 +259,7 @@ class _HomeState extends State<ScreenCitiesRented> {
                                         borderRadius: BorderRadius.circular(10),
                                         child: Image.asset(
                                           'imgs/p6.jpg',
+                                          semanticLabel: 'Dash mascot',
                                           width: 100,
                                           height: 120,
                                           fit: BoxFit.fill,
@@ -286,6 +294,7 @@ class _HomeState extends State<ScreenCitiesRented> {
                                         borderRadius: BorderRadius.circular(10),
                                         child: Image.asset(
                                           'imgs/p4.jpg',
+                                          semanticLabel: 'Dash mascot',
                                           width: 100,
                                           height: 120,
                                           fit: BoxFit.fill,
@@ -309,94 +318,91 @@ class _HomeState extends State<ScreenCitiesRented> {
                             ],
                           ),
                         ),
-                        SizedBox(
-                          height: 100,
-                        ),
 
                         ////////////////////////////////////////////////
                         ////////////////////////////////////////////////
                         ////////////////////////////////////////////////
                         ////////////////////////////////////////////////
                         ////////////////////////////////////////////////
-                        PreferredSize(
-                            preferredSize: Size(10, 100),
-                            child: SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(children: [
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                floatAction(
-                                    "ADD",
-                                    Icon(
-                                      Icons.add,
-                                    ),
-                                    Colors.white,
-                                    Colors.blue[900]!),
-                                SizedBox(
-                                  width: 10,
-                                ),   floatAction(
-                                    "FLIGHTS",
-                                    Icon(
-                                      Icons.flight,
-                                    ),
-                                    Colors.blue[900]!,
-                                    Colors.white),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                floatAction(
-                                    "FLIGHTS",
-                                    Icon(
-                                      Icons.flight,
-                                    ),
-                                    Colors.blue[900]!,
-                                    Colors.white),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                floatAction(
-                                    "FLIGHTS",
-                                    Icon(
-                                      Icons.flight,
-                                    ),
-                                    Colors.blue[900]!,
-                                    Colors.white),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                floatAction("FOODS", Icon(Icons.access_alarm),
-                                    Colors.blue[900]!, Colors.white),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                floatAction("FOODS", Icon(Icons.access_alarm),
-                                    Colors.blue[900]!, Colors.white),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                floatAction("FOODS", Icon(Icons.access_alarm),
-                                    Colors.blue[900]!, Colors.white),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                floatAction("EVENTS", Icon(Icons.event_note),
-                                    Colors.blue[900]!, Colors.white),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                floatAction("EVENTS", Icon(Icons.event_note),
-                                    Colors.blue[900]!, Colors.white),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                floatAction("EVENTS", Icon(Icons.event_note),
-                                    Colors.blue[900]!, Colors.white),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                              ]),
-                            )),
+                        // PreferredSize(
+                        //     preferredSize: Size(10, 100),
+                        //     child: SingleChildScrollView(
+                        //       scrollDirection: Axis.horizontal,
+                        //       child: Row(children: [
+                        //         SizedBox(
+                        //           width: 20,
+                        //         ),
+                        //         floatAction(
+                        //             "ADD",
+                        //             Icon(
+                        //               Icons.add,
+                        //             ),
+                        //             Colors.white,
+                        //             Colors.blue[900]!),
+                        //         SizedBox(
+                        //           width: 10,
+                        //         ),   floatAction(
+                        //             "FLIGHTS",
+                        //             Icon(
+                        //               Icons.flight,
+                        //             ),
+                        //             Colors.blue[900]!,
+                        //             Colors.white),
+                        //         SizedBox(
+                        //           width: 10,
+                        //         ),
+                        //         floatAction(
+                        //             "FLIGHTS",
+                        //             Icon(
+                        //               Icons.flight,
+                        //             ),
+                        //             Colors.blue[900]!,
+                        //             Colors.white),
+                        //         SizedBox(
+                        //           width: 10,
+                        //         ),
+                        //         floatAction(
+                        //             "FLIGHTS",
+                        //             Icon(
+                        //               Icons.flight,
+                        //             ),
+                        //             Colors.blue[900]!,
+                        //             Colors.white),
+                        //         SizedBox(
+                        //           width: 10,
+                        //         ),
+                        //         floatAction("FOODS", Icon(Icons.access_alarm),
+                        //             Colors.blue[900]!, Colors.white),
+                        //         SizedBox(
+                        //           width: 10,
+                        //         ),
+                        //         floatAction("FOODS", Icon(Icons.access_alarm),
+                        //             Colors.blue[900]!, Colors.white),
+                        //         SizedBox(
+                        //           width: 10,
+                        //         ),
+                        //         floatAction("FOODS", Icon(Icons.access_alarm),
+                        //             Colors.blue[900]!, Colors.white),
+                        //         SizedBox(
+                        //           width: 10,
+                        //         ),
+                        //         floatAction("EVENTS", Icon(Icons.event_note),
+                        //             Colors.blue[900]!, Colors.white),
+                        //         SizedBox(
+                        //           width: 10,
+                        //         ),
+                        //         floatAction("EVENTS", Icon(Icons.event_note),
+                        //             Colors.blue[900]!, Colors.white),
+                        //         SizedBox(
+                        //           width: 10,
+                        //         ),
+                        //         floatAction("EVENTS", Icon(Icons.event_note),
+                        //             Colors.blue[900]!, Colors.white),
+                        //         SizedBox(
+                        //           width: 10,
+                        //         ),
+                        //       ]),
+                        //     )),
                         SizedBox(
                           height: 100,
                         ),
@@ -437,21 +443,52 @@ class _HomeState extends State<ScreenCitiesRented> {
                     ),
                   ),
                   Positioned(
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  child: Center(
-                  child: Container(
-                  padding: EdgeInsets.all(8),
-                  child: Text(
-                  "Home",
-                  style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                  ),))
-    ))
-
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    child: Center(
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            if (!showSearch)
+                              Text(
+                                "Home",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            if (showSearch)
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.8,                                height: 45,
+                                child: TextField(
+                                  controller: searchController,
+                                  decoration: InputDecoration(
+                                    hintText: 'Search...',
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            IconButton(
+                              icon:
+                                  Icon(showSearch ? Icons.close : Icons.search),
+                              onPressed: () {
+    Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => SearchPage()),
+    );
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
             )
@@ -528,7 +565,7 @@ class _HomeState extends State<ScreenCitiesRented> {
                     builder: (context) => U_Jarash(),
                   ));
                   break;
-                case 'Ajloun':
+                case 'Ajlon':
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => U_Ajlon(),
                   ));
@@ -543,10 +580,10 @@ class _HomeState extends State<ScreenCitiesRented> {
                     builder: (context) => U_Amman(),
                   ));
                   break;
-                case 'Madaba':
-                  // Navigator.of(context).push(MaterialPageRoute(
-                  //   builder: (context) => U_Mdaba(),
-                  // ));
+                case 'Mdapa':
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => U_Mdapa(),
+                  ));
                   break;
                 case 'Balqa':
                   Navigator.of(context).push(MaterialPageRoute(

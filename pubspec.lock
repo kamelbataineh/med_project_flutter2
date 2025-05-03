@@ -840,6 +840,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.2"
+  searchable_listview:
+    dependency: "direct main"
+    description:
+      name: searchable_listview
+      sha256: d2caa32d08b25cf0384094d87b2e41f575634a239726266f5fce8fa3d066c3e5
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.17.2"
   sign_in_button:
     dependency: transitive
     description:

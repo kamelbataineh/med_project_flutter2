@@ -15,16 +15,15 @@ class AddHousing extends StatefulWidget {
 class _AddHousingState extends State<AddHousing> {
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   CollectionReference AddCollection =
-      FirebaseFirestore.instance.collection('AddHousing');
+  FirebaseFirestore.instance.collection('AddHousing');
 
-  // Controllers for additional fields
-  TextEditingController priceController = TextEditingController();
-  TextEditingController housingNameController = TextEditingController();
-  TextEditingController residentTypeController = TextEditingController();
-  TextEditingController governorateController = TextEditingController();
-  TextEditingController regionController = TextEditingController();
-  TextEditingController phoneNumberController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
+  TextEditingController priceController         = TextEditingController();
+  TextEditingController housingNameController   = TextEditingController();
+  TextEditingController residentTypeController  = TextEditingController();
+  TextEditingController governorateController   = TextEditingController();
+  TextEditingController regionController        = TextEditingController();
+  TextEditingController phoneNumberController   = TextEditingController();
+  TextEditingController addressController       = TextEditingController();
   TextEditingController googleMapLinkController = TextEditingController();
 
   List<File> imageFiles = [];
@@ -46,41 +45,41 @@ class _AddHousingState extends State<AddHousing> {
         case 'Irbid':
           regions = [
             'Yarmouk University',
-            'Jordan University of Science and Technology'
+            'Jordan University of Science and Technology',
           ];
           break;
         case 'Amman':
           regions = [
             'University of Jordan',
-            'Princess Sumaya University for Technology',
-            'Petra University',
             'German Jordanian University',
-            'Middle East University'
           ];
           break;
         case 'Zarqa':
-          regions = ['Al-Hussein Bin Talal University'];
+          regions = ['Hashemite University'];
           break;
         case 'Aqaba':
           regions = ['University of Jordan - Aqaba Branch'];
           break;
         case 'Madaba':
-          regions = ['Zaytoonah University of Jordan', 'Al-Israa University'];
+          regions = ['American University of Madaba']; // جامعة خاصة
           break;
         case 'Salt':
-          regions = ['Balqa Applied University'];
+          regions = ['Al-Balqa Applied University'];
           break;
         case 'Jerash':
-          regions = ['Jerash University'];
+          regions = ['Jerash University']; // جامعة خاصة
           break;
         case 'Ajloun':
-          regions = ['Ajloun National University'];
+          regions = ['Ajloun National University']; // جامعة خاصة
+          break;
+        case 'Mafraq':
+          regions = ['Al al-Bayt University'];
           break;
         case 'Karak':
           regions = ['Mutah University'];
           break;
         case 'Tafilah':
-          regions = ['Al-Tafila Technical University'];
+          regions = ['Tafila Technical University'];
           break;
         case 'Maan':
           regions = ['Hussein Bin Talal University'];
@@ -91,18 +90,21 @@ class _AddHousingState extends State<AddHousing> {
       region = null;
     });
   }
-
   pickImages() async {
     final ImagePicker picker = ImagePicker();
+    try {
+      final List<XFile> pickedImages = await picker.pickMultiImage();
 
-    final List<XFile> pickedImages = await picker.pickMultiImage();
-
-    if (pickedImages.isNotEmpty) {
-      setState(() {
-        imageFiles = pickedImages.map((xfile) => File(xfile.path)).toList();
-      });
+      if (pickedImages.isNotEmpty) {
+        setState(() {
+          imageFiles = pickedImages.map((xfile) => File(xfile.path)).toList();
+        });
+      }
+    } catch (e) {
+      print("Error picking images: $e");
     }
   }
+
 
   List<QueryDocumentSnapshot> data = [];
   bool isLoading = true;
@@ -140,7 +142,7 @@ class _AddHousingState extends State<AddHousing> {
           String fileName = DateTime.now().millisecondsSinceEpoch.toString();
           Reference ref = FirebaseStorage.instance
               .ref()
-              .child('housing_images')
+              .child('images')
               .child(fileName);
 
           try {
@@ -166,7 +168,7 @@ class _AddHousingState extends State<AddHousing> {
             'daily': dailyPrice,
             'weekly': weeklyPrice,
             'monthly': monthlyPrice,
-          }, // 'images': imageUrls,
+          },  'images': imageUrls,
         });
 
         ScaffoldMessenger.of(context).showSnackBar(
@@ -176,6 +178,7 @@ class _AddHousingState extends State<AddHousing> {
         setState(() {
           data.clear();
           getHousing();
+          Navigator.pop(context);
         });
       } catch (e) {
         print('خطأ أثناء إضافة السكن: ');
@@ -223,13 +226,21 @@ class _AddHousingState extends State<AddHousing> {
         items: options.map((option) {
           return DropdownMenuItem(
             value: option,
-            child: Text(option),
+            child: Text(
+              option,
+              style: TextStyle(fontSize: 14),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+            ),
           );
         }).toList(),
         onChanged: onChanged,
+        dropdownColor: Colors.grey[300],
       ),
+
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -294,8 +305,9 @@ class _AddHousingState extends State<AddHousing> {
                     'Housing Name',
                     Icons.apartment,
                     onChanged: (value) {
-                      housingName = value;
-                    },
+                      if (value.length <= 10) {
+                        housingName = value;
+                      }                    },
                   ),
                   buildDropdown(
                     'Select Resident Type',
@@ -308,16 +320,18 @@ class _AddHousingState extends State<AddHousing> {
                     'Select Governorate',
                     [
                       'Irbid',
-                      'Amman',
-                      'Zarqa',
-                      'Aqaba',
-                      'Madaba',
-                      'Salt',
                       'Jerash',
                       'Ajloun',
+                      'Mafraq',
+                      'Amman',
+                      'Zarqa',
+                      'Mdapa',
+                      'Balqa',
+                      'Madaba',
                       'Karak',
                       'Tafilah',
                       'Maan',
+                      'Aqaba',
                     ],
                     (value) {
                       setState(() {
@@ -327,6 +341,7 @@ class _AddHousingState extends State<AddHousing> {
                     },
                   ),
                   buildDropdown(
+
                     'Nearby To',
                     regions,
                     (value) {
@@ -337,8 +352,9 @@ class _AddHousingState extends State<AddHousing> {
                     'Phone Number',
                     Icons.phone,
                     onChanged: (value) {
-                      phoneNumber = value;
-                    },
+                      if (value.length <= 10) {
+                        phoneNumber = value;
+                      }                    },
                   ),
                   buildTextField(
                     'Address - Street - Near Place',
@@ -358,22 +374,27 @@ class _AddHousingState extends State<AddHousing> {
                     'Daily Price',
                     Icons.attach_money,
                     onChanged: (value) {
+
+                      if (value.length <= 10) {
                       dailyPrice = double.tryParse(value);
+                      }
                     },
                   ),
                   buildTextField(
                     'Weekly Price',
                     Icons.attach_money,
                     onChanged: (value) {
-                      weeklyPrice = double.tryParse(value);
-                    },
+                      if (value.length <= 10) {
+                        weeklyPrice = double.tryParse(value);
+                      }                    },
                   ),
                   buildTextField(
                     'Monthly Price',
                     Icons.attach_money,
                     onChanged: (value) {
-                      monthlyPrice = double.tryParse(value);
-                    },
+                      if (value.length <= 10) {
+                        monthlyPrice = double.tryParse(value);
+                      }                    },
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(

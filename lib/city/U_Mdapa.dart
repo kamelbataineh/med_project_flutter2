@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:med_project_flutter2/Add_housing/AddHousing.dart';
-
 import '../Class_Favorites.dart';
 import '../Housing_Details_Page.dart';
 
-class U_Jarash extends StatefulWidget {
-  const U_Jarash({super.key});
+class U_Mdapa extends StatefulWidget {
+  const U_Mdapa({super.key});
 
   @override
-  _U_JarashState createState() => _U_JarashState();
+  _U_MdapaState createState() => _U_MdapaState();
 }
 
-class _U_JarashState extends State<U_Jarash> {
+class _U_MdapaState extends State<U_Mdapa> {
   List<AddHous> favorit = [];
 
 
@@ -25,7 +23,7 @@ class _U_JarashState extends State<U_Jarash> {
     try {
       QuerySnapshot querySnapshot = await firebaseFirestore
           .collection('AddHousing')
-          .where('governorate', isEqualTo: 'Jerash')
+          .where('governorate', isEqualTo: 'Mdapa')
           .get();
 
       setState(() {

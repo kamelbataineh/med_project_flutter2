@@ -45,7 +45,7 @@ class _CardtaskState extends State<Cardtask> {
                 style: TextStyle(
                     decoration:
                         widget.isCheck ? TextDecoration.lineThrough : null,
-                    decorationThickness: 4, // سمك الخط المرسوم فوق النص
+                    decorationThickness: 4,
                     color: Colors.cyan),
               ),
               Row(

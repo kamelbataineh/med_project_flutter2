@@ -20,8 +20,14 @@ class _StudentDormitoriesState extends State<StudentDormitories> {
     "Tafila Technical University",
     "Al al-Bayt University",
     "German-Jordanian University",
-    "Zarqa Private University"
+    "Zarqa Private University",
+    "American University of Madaba",
+    "Jerash University",
+    "Ajloun National University",
+    "Hashemite University",
+    "University of Jordan - Aqaba Branch",
   ];
+
   String? selectedGender;
   String? selectedUniversities;
   List<DocumentSnapshot> housings = [];
@@ -88,10 +94,15 @@ class _StudentDormitoriesState extends State<StudentDormitories> {
               DropdownButtonFormField<String>(
                 value: selectedUniversities,
                 hint: Text("Choose a city"),
-                items: universities.map((String city) {
-                  return DropdownMenuItem<String>(
-                    value: city,
-                    child: Text(city),
+                items: universities.map((option) {
+                  return DropdownMenuItem(
+                    value: option,
+                    child: Text(
+                      option,
+                      style: TextStyle(fontSize: 13),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                    ),
                   );
                 }).toList(),
                 onChanged: (String? value) {
@@ -103,7 +114,14 @@ class _StudentDormitoriesState extends State<StudentDormitories> {
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+
                 ),
+                isExpanded: true,
+                icon: Icon(Icons.arrow_drop_down),
+                iconSize: 30,
+                dropdownColor: Colors.grey[300],
+                elevation: 4,
+                style: TextStyle(fontSize: 16, color: Colors.black),
               ),
 
               SizedBox(height: 30),
